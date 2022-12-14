@@ -1,0 +1,41 @@
+@import '../../../styles//variables.scss';
+.table__container {
+  border: 1px solid #ededed;
+  .table {
+    width: 100%;
+    border-spacing: 0;
+    border-radius: 0.25rem;
+    overflow: scroll;
+
+    &__head {
+      font-weight: 600;
+      text-align: left;
+
+      th {
+        padding: 1rem;
+        border: 1px solid #ededed;
+      }
+    }
+
+    &__body {
+      tr {
+        border: 1px solid #ededed;
+        &:nth-child(even) {
+          background-color: #ffffff;
+          background-color: #f7f7f7;
+        }
+        &:hover {
+          background-color: #f7f7f7;
+        }
+        td {
+          padding: 1rem;
+          font-size: 1rem;
+          border: 1px solid #ededed;
+        }
+        .credit {
+          color: #00bfa5;
+        }
+      }
+    }
+  }
+}
