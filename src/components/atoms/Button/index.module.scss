@@ -1,0 +1,36 @@
+@import '../../../styles/variables.scss';
+.button {
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 1rem 1.25rem;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.primary {
+  background-color: $primary;
+
+  &:hover {
+    background-color: #0f3f5a;
+  }
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid $primary;
+  color: $primary;
+
+  &:hover {
+    background-color: $primary;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: $secondary-text;
+    border: 1px solid $primary-text;
+    color: $primary-text;
+  }
+}
