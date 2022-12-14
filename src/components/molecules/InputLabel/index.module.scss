@@ -1,0 +1,14 @@
+@import '../../../styles/variables.scss';
+.form__input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+
+  &__label {
+    font-size: 1.125rem;
+    font-weight: $montserrat-bold;
+    color: $primary-text;
+    margin-bottom: 0.7rem;
+    margin-top: 1rem;
+  }
+}
