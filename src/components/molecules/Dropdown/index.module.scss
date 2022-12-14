@@ -1,0 +1,25 @@
+@import '../../../styles/variables.scss';
+
+.input {
+  background: #f9f9f9;
+  border: 1px solid #dddddd;
+  border-radius: 0.3rem;
+  padding-right: 0.5rem;
+
+  select {
+    border: none;
+    width: 100%;
+    background: transparent;
+    padding: 0.65rem 1rem;
+    color: $secondary-text;
+
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      background: #f9f9f9;
+      font-size: rem;
+    }
+  }
+}
