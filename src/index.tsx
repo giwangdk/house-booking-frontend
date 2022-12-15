@@ -13,8 +13,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
       <Provider store={store}>
+      <RouterProvider router={router}/>
         <App />
       </Provider>
   </React.StrictMode>,
