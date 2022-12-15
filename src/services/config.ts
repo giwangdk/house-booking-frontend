@@ -46,9 +46,6 @@ const postWithoutHeader =
 const get = (api: string) => (params?: string) => {
   return AxiosInstance(api, {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${cookies.get('token')}`,
-    },
     params,
   });
 };
@@ -56,9 +53,6 @@ const get = (api: string) => (params?: string) => {
 const getWithSlug = (api: string) => (slug?: string, params?: string) => {
   return AxiosInstance(`${api}?${slug}`, {
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${cookies.get('token')}`,
-    },
     params,
   });
 };
@@ -68,9 +62,6 @@ const post =
   (data: T, params?: string) => {
     return AxiosInstance.post(api, data, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${cookies.get('token')}`,
-      },
       params,
     });
   };

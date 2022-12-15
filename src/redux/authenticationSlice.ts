@@ -87,7 +87,7 @@ export const Login =
     console.log(data);
    submitLogin(data)
       .then((res) => {
-        cookies.set('token', res.data.data.token, { path: '/' });
+        cookies.set('token', res.data.data.token, { path: '/', maxAge:20000});
         return res;
       })
       .then((res) => {

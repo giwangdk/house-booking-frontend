@@ -10,5 +10,5 @@ export interface IUser{
     password: string;
     address?: string;
     photo?: string;
-    city?: ICity;
+    city?: string;
 }

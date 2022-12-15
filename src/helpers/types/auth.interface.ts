@@ -1,3 +1,4 @@
+import React from "react";
 import { IUser } from "./entity.interface";
 
 export interface AuthState{
@@ -13,6 +14,7 @@ export interface LoginProps{
     password: string;
 }
 
+
 export interface ErrorLogin {
     email: string;
     password: string;
@@ -23,4 +25,28 @@ export interface FormReturnLogin<T> {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     values: T;
     errors: ErrorLogin | undefined;
+  }
+
+  export interface RegisterProps{
+    name:string;
+    email: string;
+    address?: string;
+    city:string;
+    password: string;
+}
+
+
+export interface ErrorRegister {
+    name:string;
+    email: string;
+    city:string;
+    password: string;
+
+}
+
+export interface FormReturnRegister<T> {
+    handleChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    values: T;
+    errors: ErrorRegister| undefined;
   }

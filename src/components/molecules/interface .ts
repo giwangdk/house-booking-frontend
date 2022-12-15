@@ -2,7 +2,7 @@ import { InputProps } from '../atoms/interface';
 
 export interface InputLabelProps extends InputProps {
   label: string;
-  message: string | undefined ;
+  message?: string | undefined ;
 }
 
 
