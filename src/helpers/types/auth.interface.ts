@@ -13,3 +13,14 @@ export interface LoginProps{
     password: string;
 }
 
+export interface ErrorLogin {
+    email: string;
+    password: string;
+}
+
+export interface FormReturnLogin<T> {
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    values: T;
+    errors: ErrorLogin | undefined;
+  }
