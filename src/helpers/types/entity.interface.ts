@@ -4,11 +4,11 @@ export interface ICity{
 }
 
 export interface IUser{
-    id: number;
-    fullname: string;
-    email: string;
+    id?: number;
+    fullname?: string;
+    email?: string;
     password: string;
-    address: string;
-    photo: string;
-    city: ICity;
+    address?: string;
+    photo?: string;
+    city?: ICity;
 }
