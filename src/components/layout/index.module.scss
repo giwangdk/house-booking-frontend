@@ -1,0 +1,30 @@
+.auth__layout {
+  &__content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &__form {
+      margin-top: 4rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      height: 100vh;
+      justify-content: space-between;
+      align-items: center;
+
+
+      &__form {
+        margin-top: 0;
+      }
+
+      &__icon {
+        width: 100%;
+        right: 0;
+      }
+    }
+  }
+}
