@@ -1,11 +1,10 @@
 import React from 'react';
-import { TableProps } from '../interface';
 import style from './index.module.scss';
-import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
+import { TableProps } from '../../organisms/interface';
 
 const Table: React.FC<TableProps> = (props) => {
-  const { headers, transactions, isLoading } = props;
+  const { headers, isLoading } = props;
 
   return (
     <div className={style.table__container}>
@@ -84,42 +83,6 @@ const Table: React.FC<TableProps> = (props) => {
                 />
               </td>
             </tr>
-          )}
-          {transactions ? (
-            transactions?.data?.map((datum) => {
-              return (
-                <tr key={datum?.id}>
-                  <td>
-                    {moment(datum?.created_at).format('h:mm:ss, MMMM Do YYYY')}
-                  </td>
-                  <td>
-                    {' '}
-                    {datum?.to_wallet_id === datum.to_user?.wallet_id
-                      ? 'DEBIT'
-                      : 'CREDIT'}
-                  </td>
-                  <td>
-                    {datum?.to_wallet_id
-                      ? datum?.to_wallet_id
-                      : datum?.wallet_id}
-                  </td>
-                  <td>{datum?.description}</td>
-                  <td
-                    className={
-                      datum?.to_wallet_id === datum.to_user?.wallet_id
-                        ? style.debit
-                        : style.credit
-                    }
-                  >
-                    {datum?.to_wallet_id === datum.to_user?.wallet_id
-                      ? '-' + datum?.amount
-                      : '+' + datum?.amount}
-                  </td>
-                </tr>
-              );
-            })
-          ) : (
-            <tr>data empty...</tr>
           )}
         </tbody>
       </table>
