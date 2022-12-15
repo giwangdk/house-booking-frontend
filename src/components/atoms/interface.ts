@@ -10,7 +10,7 @@ export interface ButtonProps {
   }
   
   export interface ErrorProps {
-    message: string | null;
+    message: string | undefined;
   }
   
   export interface InputProps {
