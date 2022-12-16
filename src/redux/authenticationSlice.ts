@@ -11,6 +11,7 @@ import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import { NavigateFunction } from 'react-router-dom';
 import { AuthState, IUser, LoginProps } from '../helpers/types';
+import { getUserDetails } from '../services/service';
 
 const cookies = new Cookies();
 
@@ -127,21 +128,21 @@ export const getUser =
   () =>
   async (dispatch: Dispatch<AnyAction>): Promise<void> => {
     dispatch(setIsLoading(true));
-    // await getUserDetails()
-    //   .then((res) => {
-    //     dispatch(setUser(res.data.data));
-    //   })
-    //   .catch((error) => {
-    //     const message =
-    //       (error.response &&
-    //         error.response.data &&
-    //         error.response.data.message) ||
-    //       error.message ||
-    //       error.toString();
-    //     dispatch(setIsError(true));
-    //     toast.error(message);
-    //   })
-    //   .finally(() => {
-    //     dispatch(setIsLoading(false));
-    //   });
+    await getUserDetails()
+      .then((res) => {
+        dispatch(setUser(res.data.data));
+      })
+      .catch((error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        dispatch(setIsError(true));
+        toast.error(message);
+      })
+      .finally(() => {
+        dispatch(setIsLoading(false));
+      });
   };
