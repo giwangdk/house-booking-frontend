@@ -5,10 +5,10 @@ import { Container } from '../organisms';
 
 const AppLayout = (): JSX.Element => {
   return (
-    <Container>
+    <>
       <Navbar />
       <Outlet />
-    </Container>
+    </>
   );
 };
 
