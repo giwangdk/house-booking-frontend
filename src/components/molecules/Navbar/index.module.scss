@@ -8,11 +8,13 @@
   top: 0;
   margin: auto;
   position: fixed;
-  width: 90vw;
+  width: 70vw;
   z-index: 100;
 
   &__brand {
     font-weight: $text-bold;
+    font-family: 'Norican', sans-serif;
+    color: $primary-dark;
     font-size: 1.5rem;
   }
 

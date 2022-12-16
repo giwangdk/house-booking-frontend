@@ -1,6 +1,6 @@
 import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedPage from "../components/layout/ProtectedPage";
+import { AppLayout, ProtectedPage } from "../components";
 
 
 const Login = lazy(() => import("../pages/auth/Login"));
@@ -17,11 +17,16 @@ export const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    element:<ProtectedPage />,
+    element:<AppLayout />,
     children: [
       {
-        path: "/profile",
-        element: <Profile />,
+        element:<ProtectedPage />,
+        children: [
+          {
+            path: "/profile",
+            element: <Profile />,
+          }
+        ]
       }
     ]
   }
