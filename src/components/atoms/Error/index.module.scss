@@ -1,7 +1,6 @@
 @import '../../../styles/variables.scss';
 .error {
-  color: red;
+  color: $danger;
   font-weight: $text-regular;
-  margin-bottom: 0.8rem;
   font-size: 0.8rem;
 }

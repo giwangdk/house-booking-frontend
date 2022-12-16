@@ -3,7 +3,7 @@
 .input {
   border: none;
   border-radius: 2rem;
-  background-color: $primary-light;
+  background-color: $gray;
   min-height: 3rem;
   padding: 0.6rem 1.3rem;
   font-size: 0.8rem;
@@ -11,7 +11,7 @@
 
   &:focus {
     outline: none;
-    border: 1px solid $danger;
+    border: 1px solid $primary;
   }
 
   &__disabled {
@@ -20,6 +20,6 @@
   }
 
   &__error {
-    border: 1px solid #ff0000;
+    border: 1px solid $danger;
   }
 }
