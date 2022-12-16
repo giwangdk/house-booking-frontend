@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Logout } from '../../../redux/authenticationSlice';
 import { Button } from '../../atoms';
+import { Container } from '../../organisms';
 import style from './index.module.scss';
 
 const Navbar = (): JSX.Element => {
@@ -23,9 +24,9 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   return (
-    <div
+    <Container>
+      <div
       className={style.navbar}
-      style={{ backgroundColor: isLoggedIn ? 'white' : '' }}
     >
       <div className={style.navbar__brand} onClick={() => navigate('/')}>
         <p>DigiHouse</p>
@@ -79,6 +80,7 @@ const Navbar = (): JSX.Element => {
         )}
       </ul>
     </div>
+    </Container>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownProps } from '../interface ';
+import { DropdownProps } from '../interface';
 import style from './index.module.scss';
 
 const Dropdown: React.FC<DropdownProps> = ({

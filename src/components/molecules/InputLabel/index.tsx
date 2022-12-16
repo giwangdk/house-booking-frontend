@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './index.module.scss';
 import { Error, Input } from '../../atoms';
-import { InputLabelProps } from '../interface ';
+import { InputLabelProps } from '../interface';
 
 const InputLabel: React.FC<InputLabelProps> = (props) => {
   const { label = 'label', message, ...rest } = props;

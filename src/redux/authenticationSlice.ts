@@ -88,7 +88,7 @@ export const Login =
     console.log(data);
    submitLogin(data)
       .then((res) => {
-        cookies.set('token', res.data.data.access_token, { path: '/', maxAge:20000});
+        cookies.set('token', res.data.data.access_token, { path: '/', maxAge:210000});
         return res;
       })
       .then((res) => {
@@ -98,7 +98,7 @@ export const Login =
       .then((data) => {
         dispatch(setUser(data.data.data));
         toast.success('Login Successful');
-        navigate(from);
+        navigate('/profile');
       })
       .catch((error) => {
         const message =

@@ -20,3 +20,18 @@ export interface SearchProps {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
 }
+
+export interface CardProps{
+  children: React.ReactNode;
+  className: string
+}
+
+export interface CardProfileProps{
+  src?: string;
+  name?: string;
+}
+
+export interface CardWalletProps{
+  id?: string;
+  balance?: number;
+}

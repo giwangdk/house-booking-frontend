@@ -23,7 +23,6 @@ AxiosInstance.interceptors.request.use(
 AxiosInstance.interceptors.response.use(
   (response) => {
     return response;
-    
   },
   (error) => {
     if (error.response?.status === 401) {
@@ -46,7 +45,7 @@ const postWithoutHeader =
 
 const get = (api: string) => (params?: string) => {
   return AxiosInstance(api, {
-    method: 'GET', 
+    method: 'GET',
     params,
   });
 };
