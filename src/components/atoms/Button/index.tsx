@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { ClipLoader } from 'react-spinners';
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { children, onClick, variant = 'primary', type, loading, size= 'medium', border='default' } = props;
+  const { children, onClick, variant = 'primary', type, loading, size= 'medium', border='pill' } = props;
   const className = classNames(
     style.button,
     style[variant],
