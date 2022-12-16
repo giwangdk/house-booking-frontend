@@ -1,4 +1,6 @@
 import React from 'react';
+import { Navbar } from '../molecules';
+import { Container } from '../organisms';
 import style from './index.module.scss';
 
 interface AuthLayoutProps {
@@ -15,6 +17,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
 }): JSX.Element => {
   return (
     <div className={style.auth__layout}>
+      <Container>
+        <Navbar />
+      </Container>
       <div className={style.auth__layout__content}>
         <div className={`${style.auth__layout__content__icon} ${style[layout]}`}>
           <img src={image} alt="" />

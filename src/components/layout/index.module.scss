@@ -12,6 +12,17 @@
       width: 100%;
       padding: 0 1rem;
     }
+    &__icon {
+      padding: 4rem 2rem 2rem 2rem;
+    }
+
+    .login{
+      background-color: $peach;
+    }
+
+    .register{
+      background-color: $beige;
+    }
     @media screen and (min-width: 768px) {
       flex-direction: row;
       height: 100vh;
@@ -35,13 +46,6 @@
         justify-content: center;
       }
 
-      .login{
-        background-color: $peach;
-      }
-
-      .register{
-        background-color: $beige;
-      }
     }
   }
 }
