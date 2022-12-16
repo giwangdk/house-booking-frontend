@@ -1,0 +1,46 @@
+@import '../../../styles/variables.scss';
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.125rem 0;
+  background-color: transparent;
+  top: 0;
+  margin: auto;
+  position: fixed;
+  width: 90vw;
+  z-index: 100;
+
+  &__brand {
+    font-weight: $text-bold;
+    font-size: 1.5rem;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+
+    &__list__item {
+      &__isActive {
+        text-decoration: underline;
+        font-size: 1rem;
+        font-weight: $text-medium;
+      }
+      &__link {
+        color: $primary-dark;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: $text-medium;
+      }
+
+      &:last-child {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
