@@ -4,6 +4,8 @@ import Skeleton from 'react-loading-skeleton';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './helpers/routes';
 
 function App(): JSX.Element {
   return (
@@ -21,6 +23,7 @@ function App(): JSX.Element {
         </div>
       }
     >
+    <RouterProvider router={router}/>
       <ToastContainer
         position="top-center"
         autoClose={1000}
