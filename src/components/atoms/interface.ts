@@ -22,4 +22,8 @@ export interface ButtonProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
   }
+
+  export interface AvatarProps{
+    src?: string;
+  }
   
