@@ -10,7 +10,7 @@ const cookies = new Cookies();
 const token = cookies.get('token');
 AxiosInstance.interceptors.request.use(
   (config?: any) => {
-    if (!cookies.get('token')) {
+    if (config.headers.Authorization === undefined) {
       config.headers.Authorization = `Bearer ${cookies.get('token')}`;
     }
     return config;
@@ -45,7 +45,6 @@ const postWithoutHeader =
 
 const get = (api: string) => (params?: string) => {
   return AxiosInstance(api, {
-    method: 'GET',
     params,
   });
 };
