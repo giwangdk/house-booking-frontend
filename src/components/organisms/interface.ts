@@ -4,6 +4,7 @@ export interface AuthHeroProps {
 
 export interface ContainerProps {
   children: React.ReactNode;
+  className?: string;
 }
 
 export interface TableProps {
