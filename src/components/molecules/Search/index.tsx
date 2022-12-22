@@ -8,15 +8,17 @@ const Search: React.FC<SearchProps> = ({
   value,
 }): JSX.Element => {
   return (
-    <div className={style.search}>
-      <AiOutlineSearch />
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={handleSearch}
-        value={value}
-      />
-    </div>
+    <React.StrictMode>
+      <div className={style.search}>
+        <AiOutlineSearch />
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={handleSearch}
+          value={value}
+        />
+      </div>
+    </React.StrictMode>
   );
 };
 

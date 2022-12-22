@@ -9,17 +9,19 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
 }) => {
   return (
-    <div className={style.input}>
-      <select name={name} value={value} onChange={onChange}>
-        {values?.map((value) => {
-          return (
-            <option key={value.value} value={value.value}>
-              {value.label}
-            </option>
-          );
-        })}
-      </select>
-    </div>
+    <React.StrictMode>
+      <div className={style.input}>
+        <select name={name} value={value} onChange={onChange}>
+          {values?.map((value) => {
+            return (
+              <option key={value.value} value={value.value}>
+                {value.label}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+    </React.StrictMode>
   );
 };
 

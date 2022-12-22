@@ -24,41 +24,34 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   return (
-    <Container>
-      <div
-      className={style.navbar}
-    >
-      <div className={style.navbar__brand} onClick={() => navigate('/')}>
-        <p>DigiHouse</p>
-      </div>
-      <ul className={style.navbar__menu}>
-        <li>
-          <NavLink to="/" className={classActive}>
-            Home
-          </NavLink>
-        </li>
-        {!isLoggedIn ? (
-          <>
-            <li className={style.navbar__menu__list__item}>
-              <NavLink
-                to="/login"
-                className={classActive}
-              >
-                Login
+    <React.StrictMode>
+      <Container>
+        <div className={style.navbar}>
+          <div className={style.navbar__brand} onClick={() => navigate('/')}>
+            <p>DigiHouse</p>
+          </div>
+          <ul className={style.navbar__menu}>
+            <li>
+              <NavLink to="/" className={classActive}>
+                Home
               </NavLink>
             </li>
-            <li className={style.navbar__menu__list__item}>
-              <NavLink
-                to="/register"
-                className={classActive}
-              >
-                Register
-              </NavLink>
-            </li>
-          </>
-        ) : (
-          <>
-            {/* <li className={style.list__item}>
+            {!isLoggedIn ? (
+              <>
+                <li className={style.navbar__menu__list__item}>
+                  <NavLink to="/login" className={classActive}>
+                    Login
+                  </NavLink>
+                </li>
+                <li className={style.navbar__menu__list__item}>
+                  <NavLink to="/register" className={classActive}>
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* <li className={style.list__item}>
               <NavLink to="/transfer" className={classActive}>
                 Transfer
               </NavLink>
@@ -76,11 +69,12 @@ const Navbar = (): JSX.Element => {
             <li className={style.navbar__menu__list__item}>
               {isLoggedIn && <Button onClick={handleLogout}>Logout</Button>}
             </li> */}
-          </>
-        )}
-      </ul>
-    </div>
-    </Container>
+              </>
+            )}
+          </ul>
+        </div>
+      </Container>
+    </React.StrictMode>
   );
 };
 

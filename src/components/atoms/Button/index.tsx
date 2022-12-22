@@ -5,7 +5,15 @@ import classNames from 'classnames';
 import { ClipLoader } from 'react-spinners';
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { children, onClick, variant = 'primary', type, loading, size= 'medium', border='pill' } = props;
+  const {
+    children,
+    onClick,
+    variant = 'primary',
+    type,
+    loading,
+    size = 'medium',
+    border = 'pill',
+  } = props;
   const className = classNames(
     style.button,
     style[variant],
@@ -14,21 +22,23 @@ const Button: React.FC<ButtonProps> = (props) => {
     loading && style.loading,
   );
   return (
-    <button
-      onClick={onClick}
-      data-testid="button-test-id"
-      className={className}
-      type={type}
-      disabled={loading}
-    >
-      {loading ? (
-        <div className={style.button__loading}>
-          <ClipLoader size={20} />
-        </div>
-      ) : (
-        children
-      )}
-    </button>
+    <React.StrictMode>
+      <button
+        onClick={onClick}
+        data-testid="button-test-id"
+        className={className}
+        type={type}
+        disabled={loading}
+      >
+        {loading ? (
+          <div className={style.button__loading}>
+            <ClipLoader size={20} />
+          </div>
+        ) : (
+          children
+        )}
+      </button>
+    </React.StrictMode>
   );
 };
 
