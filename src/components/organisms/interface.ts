@@ -1,3 +1,5 @@
+import { ICity } from '../../helpers/types';
+
 export interface AuthHeroProps {
   image?: string;
 }
@@ -10,4 +12,29 @@ export interface ContainerProps {
 export interface TableProps {
   headers: string[];
   isLoading: boolean;
+}
+export interface CardProfileProps {
+  src?: string;
+  name?: string;
+}
+
+export interface CardWalletProps {
+  id?: string;
+  balance?: number;
+}
+
+export interface CardDetailProfileProps {
+  fullname?: string;
+  email?: string;
+  address?: string;
+  city?: ICity;
+}
+
+export interface CardDetailProfileItemProps {
+  label?: string;
+  item?: string;
+}
+
+export interface CardEditDetailProfileProps {
+  handleCloseEdit: () => void;
 }

@@ -2,9 +2,8 @@ import { InputProps } from '../atoms/interface';
 
 export interface InputLabelProps extends InputProps {
   label: string;
-  message?: string | undefined ;
+  message?: string | undefined;
 }
-
 
 export interface DropdownProps {
   name?: string;
@@ -21,17 +20,8 @@ export interface SearchProps {
   value: string;
 }
 
-export interface CardProps{
+export interface CardProps {
   children: React.ReactNode;
-  className: string
+  className: string;
 }
 
-export interface CardProfileProps{
-  src?: string;
-  name?: string;
-}
-
-export interface CardWalletProps{
-  id?: string;
-  balance?: number;
-}
