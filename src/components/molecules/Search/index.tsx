@@ -10,7 +10,7 @@ const Search: React.FC<SearchProps> = ({
   return (
     <React.StrictMode>
       <div className={style.search}>
-        <AiOutlineSearch />
+        <p>Where</p>
         <input
           type="text"
           placeholder="Search"

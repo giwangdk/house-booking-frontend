@@ -4,6 +4,7 @@ import Container from './Container';
 import CardProfile from './CardProfile';
 import CardWallet from './CardWallet';
 import CardDetailProfile from './CardDetailProfile';
+import SearchBar from './SearchBar';
 
 export {
   CardLogin,
@@ -12,4 +13,5 @@ export {
   CardProfile,
   CardWallet,
   CardDetailProfile,
+  SearchBar,
 };

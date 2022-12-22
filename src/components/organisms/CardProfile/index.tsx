@@ -11,7 +11,7 @@ const CardProfile: React.FC<CardDetailProfileProps> = () => {
   return (
     <React.StrictMode>
       <Card className={style.card__profile}>
-        <Avatar />
+        <Avatar className={style.card__profile__avatar} />
         <div className={style.card__profile__profile}>
           <p>{user?.fullname}</p>
           <p>{user?.address}</p>

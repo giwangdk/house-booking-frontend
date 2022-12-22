@@ -5,5 +5,17 @@ import Table from './Table';
 import Navbar from './Navbar';
 import Card from './Card';
 import NavProfile from './NavProfile';
+import InputDate from './InputDate';
+import SearchAndDateBar from './SearchAndDateBar';
 
-export { Dropdown, InputLabel, Search, Table, Navbar, Card, NavProfile };
+export {
+  Dropdown,
+  InputLabel,
+  Search,
+  Table,
+  Navbar,
+  Card,
+  NavProfile,
+  InputDate,
+  SearchAndDateBar,
+};

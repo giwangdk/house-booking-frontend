@@ -16,8 +16,8 @@ export interface DropdownProps {
 }
 
 export interface SearchProps {
-  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
+  handleSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
 export interface CardProps {
@@ -25,3 +25,11 @@ export interface CardProps {
   className: string;
 }
 
+export interface CalendarProps {
+  onChange: (ranges: any) => void;
+  state: {
+    startDate: Date;
+    endDate: Date;
+    key: string;
+  }[];
+}

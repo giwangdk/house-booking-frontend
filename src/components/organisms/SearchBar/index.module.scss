@@ -1,0 +1,9 @@
+@import '../../../styles/variables';
+.search__navbar {
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  height: 6rem;
+  background-color: $primary-white;
+}

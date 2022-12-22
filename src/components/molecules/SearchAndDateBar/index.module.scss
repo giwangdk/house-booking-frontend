@@ -1,0 +1,21 @@
+@import '../../../styles/variables';
+.search__bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.1fr;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 0 auto;
+  width: 40vw;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: $text-bold;
+  }
+}

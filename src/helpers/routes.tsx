@@ -1,34 +1,37 @@
-import React, { lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
-import { AppLayout, ProtectedPage } from "../components";
+import React, { lazy } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { AppLayout, ProtectedPage } from '../components';
 
-
-const Login = lazy(() => import("../pages/auth/Login"));
-const Register = lazy(() => import("../pages/auth/Register"));
-const Profile = lazy(() => import("../pages/Profile"));
+const Login = lazy(() => import('../pages/auth/Login'));
+const Register = lazy(() => import('../pages/auth/Register'));
+const Profile = lazy(() => import('../pages/Profile'));
+const Home = lazy(() => import('../pages/Home'));
 
 export const router = createBrowserRouter([
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
   },
   {
-    element:<AppLayout />,
+    element: <AppLayout />,
     children: [
       {
-        element:<ProtectedPage />,
+        element: <ProtectedPage />,
         children: [
           {
-            path: "/profile",
+            path: '/profile',
             element: <Profile />,
-          }
-        ]
-      }
-    ]
-  }
-])
-  
+          },
+          {
+            path: '/',
+            element: <Home />,
+          },
+        ],
+      },
+    ],
+  },
+]);
