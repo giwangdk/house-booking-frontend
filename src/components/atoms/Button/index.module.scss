@@ -7,17 +7,20 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.default{
+.default {
   border-radius: 0;
 }
 
-.rounded{
+.rounded {
   border-radius: 0.3px;
 }
 
-.pill{
+.pill {
   border-radius: 50px;
 }
 
@@ -28,7 +31,7 @@
     background-color: $primary-light;
   }
 
-  &__outline{
+  &__outline {
     background-color: transparent;
     border: 1px solid $primary;
     color: $primary;
@@ -40,15 +43,14 @@
   }
 }
 
-
-.secondary{
+.secondary {
   background-color: $secondary;
 
   &:hover {
     background-color: #0f3f5a;
   }
 
-  &__outline{
+  &__outline {
     background-color: transparent;
     border: 1px solid $secondary;
     color: $secondary;
