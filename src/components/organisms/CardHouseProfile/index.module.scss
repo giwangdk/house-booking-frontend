@@ -1,0 +1,60 @@
+@import '../../../styles/variables';
+.card__house__profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+
+  hr {
+    color: $primary-light;
+    margin: 1.5rem 0;
+  }
+
+  &__right {
+    margin-left: 2.5rem;
+    h4 {
+      font-size: 2rem;
+      font-weight: $text-bold;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1rem;
+      font-weight: $text-medium;
+      margin-bottom: 1rem;
+      color: $secondary-text;
+    }
+
+    &__details {
+      display: flex;
+      gap: 1.5rem;
+      li {
+        font-weight: $text-medium;
+      }
+    }
+
+    &__description {
+      margin-bottom: 1rem;
+      h6 {
+        font-weight: $text-bold;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+      p {
+        color: $primary-dark;
+        font-weight: $text-regular;
+      }
+    }
+
+    &__price {
+      h6 {
+        font-weight: $text-bold;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      p {
+        color: $primary-dark;
+        font-size: 1rem;
+        font-weight: $text-bold;
+      }
+    }
+  }
+}

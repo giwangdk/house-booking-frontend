@@ -44,5 +44,5 @@ export interface IHouse {
   user: IUser;
   city: ICity;
   photos: IHousePhoto[];
-  details: IHouseDetail;
+  detail: IHouseDetail;
 }

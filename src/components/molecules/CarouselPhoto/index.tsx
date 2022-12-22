@@ -5,13 +5,15 @@ import style from './index.module.scss';
 
 const CarouselPhoto: React.FC<CarouselProps> = ({ photos }) => {
   return (
-      <Carousel autoPlay className={style.carousel}>
+    <div className={style.carousel}>
+      <Carousel>
         {photos?.map((photo) => (
-          <div key={photo.photo}>
+          <div key={photo.photo} className={style.carousel__photo}>
             <img src={photo.photo} alt="detail-house" />
           </div>
         ))}
       </Carousel>
+    </div>
   );
 };
 
