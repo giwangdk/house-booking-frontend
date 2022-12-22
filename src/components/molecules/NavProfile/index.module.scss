@@ -1,5 +1,8 @@
 .nav__profile {
   padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &__avatar {
     width: 30px;
     height: 30px;
