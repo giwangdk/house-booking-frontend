@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { IHouseResponse } from '../../helpers/types/response.interface';
 
 const Home = (): JSX.Element => {
-  const { data, error, isLoading, isError } = useQuery<IHouseResponse>(
+  const { data, isLoading } = useQuery<IHouseResponse>(
     'getHouses',
     () => getHouses().then((res) => res.data),
   );

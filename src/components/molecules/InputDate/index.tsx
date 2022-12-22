@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import style from './index.module.scss';
-import { addDays } from 'date-fns';
-import Calendar from '../Calendar';
+import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
 
-const InputDate = (): JSX.Element => {
+const InputDate:React.FC<ReactDatePickerProps> = (props): JSX.Element => {
   return (
-      <div>
-        <div className={style.input__date}>
-          <label htmlFor="date">Date</label>
-          <p className={style.placeholder}>Pick date</p>
-        </div>
-      </div>
+    <div className={style.input__date}>
+      <p>Pick date</p>
+      <DatePicker
+    className={style.input__date__input}
+      selected={props.selected}
+        onChange={props.onChange}
+        selectsStart={props.selectsStart}
+        startDate={props.startDate}
+        endDate={props.endDate}
+        selectsEnd={props.selectsEnd}
+        minDate={props.minDate}
+  />
+    </div>
   );
 };
 

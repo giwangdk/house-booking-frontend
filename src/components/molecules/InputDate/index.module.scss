@@ -7,17 +7,14 @@
   border: 1px solid $tertiary-light;
   border-radius: 10rem;
   box-shadow: $box-shadow;
-  width: 100%;
-  label {
+  p {
     font-size: 0.8rem;
     font-weight: $text-medium;
     color: #000;
     margin-bottom: 0.3rem;
   }
-  p {
-    font-size: 0.8rem;
-    font-weight: $text-medium;
-    color: $tertiary-light;
-    margin-bottom: 0.3rem;
+  &__input{
+    border: none;
+    outline: none;
   }
 }

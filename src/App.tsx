@@ -1,13 +1,24 @@
 import React, { Suspense } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 
 import { RouterProvider } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { router } from './helpers/routes';
 
 function App(): JSX.Element {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+      onError: async(error:any) => {
+        toast.error(error.response.data.message);
+      }
+    }),
+    mutationCache: new MutationCache({
+      onError: async(error:any) => {
+        toast.error(error.response.data.message);
+      }
+    })
+  });
   return (
     <Suspense
       fallback={

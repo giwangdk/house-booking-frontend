@@ -1,3 +1,4 @@
+import { SyntheticEvent } from 'react';
 import { IHouse, IHousePhoto } from '../../helpers/types';
 import { InputProps } from '../atoms/interface';
 

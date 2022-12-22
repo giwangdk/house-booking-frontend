@@ -10,7 +10,7 @@ import { IHouseDetailResponse } from '../../helpers/types/response.interface';
 const HouseDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
-  const { data, error } = useQuery<IHouseDetailResponse>(
+  const { data } = useQuery<IHouseDetailResponse>(
     'get-house-by-id',
     () => getHouseById(id as string).then((res) => res.data),
   );
