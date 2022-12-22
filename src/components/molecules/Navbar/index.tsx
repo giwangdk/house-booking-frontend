@@ -25,8 +25,8 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   return (
-    <Container>
-      <div className={style.navbar}>
+    <div className={style.navbar__wrapper}>
+      <Container className={style.navbar}>
         <div className={style.navbar__brand} onClick={() => navigate('/')}>
           <p>DigiHouse</p>
         </div>
@@ -57,8 +57,8 @@ const Navbar = (): JSX.Element => {
             </>
           )}
         </ul>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 };
 

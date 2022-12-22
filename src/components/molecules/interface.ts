@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+import { ReactDatePickerProps } from 'react-datepicker';
 import { IHouse, IHousePhoto } from '../../helpers/types';
 import { InputProps } from '../atoms/interface';
 
@@ -42,4 +43,8 @@ export interface DetailHouseProps {
 
 export interface CarouselProps {
   photos: IHousePhoto[];
+}
+
+export interface InputDateProps extends ReactDatePickerProps {
+  label: string;
 }
