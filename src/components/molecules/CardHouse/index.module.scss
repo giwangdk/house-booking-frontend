@@ -1,0 +1,43 @@
+@import '../../../styles//variables.scss';
+
+.card__house {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &__image img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-bottom: 0.7rem;
+    transition: all 0.3s;
+    &:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    h5 {
+      font-size: 1rem;
+      font-weight: $text-bold;
+    }
+    p {
+      font-size: 1;
+      color: $secondary-text;
+    }
+    &__price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        color: $primary-dark;
+        font-weight: $text-medium;
+      }
+    }
+  }
+}

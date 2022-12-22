@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBar } from '../../components';
+import { Container, ListCardHouse, SearchBar } from '../../components';
 import style from './index.module.scss';
 
 const Home = (): JSX.Element => {
@@ -7,6 +7,9 @@ const Home = (): JSX.Element => {
     <div className={style.home}>
       <div>Home</div>
       <SearchBar />
+      <Container>
+        <ListCardHouse />
+      </Container>
     </div>
   );
 };
