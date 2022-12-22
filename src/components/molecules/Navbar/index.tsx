@@ -25,42 +25,40 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   return (
-    <React.StrictMode>
-      <Container>
-        <div className={style.navbar}>
-          <div className={style.navbar__brand} onClick={() => navigate('/')}>
-            <p>DigiHouse</p>
-          </div>
-          <ul className={style.navbar__menu}>
-            <li>
-              <NavLink to="/" className={classActive}>
-                Home
-              </NavLink>
-            </li>
-            {!isLoggedIn ? (
-              <>
-                <li className={style.navbar__menu__list__item}>
-                  <NavLink to="/login" className={classActive}>
-                    Login
-                  </NavLink>
-                </li>
-                <li className={style.navbar__menu__list__item}>
-                  <NavLink to="/register" className={classActive}>
-                    Register
-                  </NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className={style.list__item}>
-                  <NavProfile />
-                </li>
-              </>
-            )}
-          </ul>
+    <Container>
+      <div className={style.navbar}>
+        <div className={style.navbar__brand} onClick={() => navigate('/')}>
+          <p>DigiHouse</p>
         </div>
-      </Container>
-    </React.StrictMode>
+        <ul className={style.navbar__menu}>
+          <li>
+            <NavLink to="/" className={classActive}>
+              Home
+            </NavLink>
+          </li>
+          {!isLoggedIn ? (
+            <>
+              <li className={style.navbar__menu__list__item}>
+                <NavLink to="/login" className={classActive}>
+                  Login
+                </NavLink>
+              </li>
+              <li className={style.navbar__menu__list__item}>
+                <NavLink to="/register" className={classActive}>
+                  Register
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className={style.list__item}>
+                <NavProfile />
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
+    </Container>
   );
 };
 

@@ -7,12 +7,10 @@ const CardDetailProfileItem: React.FC<CardDetailProfileItemProps> = ({
   item,
 }) => {
   return (
-    <React.StrictMode>
-      <div className={style.card__detail__content__item}>
-        <p>{label}</p>
-        <p>{item}</p>
-      </div>
-    </React.StrictMode>
+    <div className={style.card__detail__content__item}>
+      <p>{label}</p>
+      <p>{item}</p>
+    </div>
   );
 };
 

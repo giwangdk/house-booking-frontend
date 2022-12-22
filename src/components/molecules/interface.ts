@@ -1,3 +1,4 @@
+import { IHouse, IHousePhoto } from '../../helpers/types';
 import { InputProps } from '../atoms/interface';
 
 export interface InputLabelProps extends InputProps {
@@ -32,4 +33,12 @@ export interface CalendarProps {
     endDate: Date;
     key: string;
   }[];
+}
+
+export interface DetailHouseProps {
+  house: IHouse;
+}
+
+export interface CarouselProps {
+  photos: IHousePhoto[];
 }

@@ -2,12 +2,12 @@ import React, { Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 
-import 'react-toastify/dist/ReactToastify.css';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { RouterProvider } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { router } from './helpers/routes';
 
 function App(): JSX.Element {
+  const queryClient = new QueryClient();
   return (
     <Suspense
       fallback={
@@ -23,18 +23,20 @@ function App(): JSX.Element {
         </div>
       }
     >
-    <RouterProvider router={router}/>
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ToastContainer
+          position="top-center"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </QueryClientProvider>
     </Suspense>
   );
 }

@@ -6,6 +6,7 @@ import CardWallet from './CardWallet';
 import CardDetailProfile from './CardDetailProfile';
 import SearchBar from './SearchBar';
 import CardHouse from '../molecules/CardHouse';
+import CardHouseProfile from './CardHouseProfile';
 
 export {
   CardLogin,
@@ -16,4 +17,5 @@ export {
   CardDetailProfile,
   SearchBar,
   CardHouse,
+  CardHouseProfile,
 };

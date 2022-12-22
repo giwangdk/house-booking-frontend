@@ -6,11 +6,7 @@ import style from './index.module.scss';
 const Card: React.FC<CardProps> = ({ children, className }) => {
   const classProps = classNames(style.card, className);
 
-  return (
-    <React.StrictMode>
-      <div className={classProps}>{children}</div>
-    </React.StrictMode>
-  );
+  return <div className={classProps}>{children}</div>;
 };
 
 export default Card;

@@ -24,23 +24,21 @@ const Button: React.FC<ButtonProps> = (props) => {
     loading && style.loading,
   );
   return (
-    <React.StrictMode>
-      <button
-        onClick={onClick}
-        data-testid="button-test-id"
-        className={classProps}
-        type={type}
-        disabled={loading}
-      >
-        {loading ? (
-          <div className={style.button__loading}>
-            <ClipLoader size={20} />
-          </div>
-        ) : (
-          children
-        )}
-      </button>
-    </React.StrictMode>
+    <button
+      onClick={onClick}
+      data-testid="button-test-id"
+      className={classProps}
+      type={type}
+      disabled={loading}
+    >
+      {loading ? (
+        <div className={style.button__loading}>
+          <ClipLoader size={20} />
+        </div>
+      ) : (
+        children
+      )}
+    </button>
   );
 };
 

@@ -6,6 +6,7 @@ const Login = lazy(() => import('../pages/auth/Login'));
 const Register = lazy(() => import('../pages/auth/Register'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Home = lazy(() => import('../pages/Home'));
+const HouseDetail = lazy(() => import('../pages/HouseDetail'));
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
           {
             path: '/',
             element: <Home />,
+          },
+          {
+            path: 'house/:id',
+            element: <HouseDetail />,
           },
         ],
       },

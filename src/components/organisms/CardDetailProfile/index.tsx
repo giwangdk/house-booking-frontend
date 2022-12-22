@@ -39,27 +39,25 @@ const CardDetailProfile: React.FC = () => {
     setIsEdit(false);
   };
   return (
-    <React.StrictMode>
-      <div className={style.card__detail}>
-        <div className={style.card__detail__header}>
-          <h5>More Detail</h5>
-          <p onClick={handleSetEdit}>Edit Profile</p>
-        </div>
-        {!isEdit ? (
-          <div className={style.card__detail__content}>
-            {details.map((detail) => (
-              <CardDetailProfileItem
-                key={detail.item}
-                label={detail.label}
-                item={detail.item}
-              />
-            ))}
-          </div>
-        ) : (
-          <CardEditDetailProfile handleCloseEdit={handleCloseEdit} />
-        )}
+    <div className={style.card__detail}>
+      <div className={style.card__detail__header}>
+        <h5>More Detail</h5>
+        <p onClick={handleSetEdit}>Edit Profile</p>
       </div>
-    </React.StrictMode>
+      {!isEdit ? (
+        <div className={style.card__detail__content}>
+          {details.map((detail) => (
+            <CardDetailProfileItem
+              key={detail.item}
+              label={detail.label}
+              item={detail.item}
+            />
+          ))}
+        </div>
+      ) : (
+        <CardEditDetailProfile handleCloseEdit={handleCloseEdit} />
+      )}
+    </div>
   );
 };
 

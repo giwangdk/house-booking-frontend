@@ -1,26 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { DetailHouseProps } from '../interface';
 import style from './index.module.scss';
 
-const CardHouse = (): JSX.Element => {
+const CardHouse: React.FC<DetailHouseProps> = ({ house }): JSX.Element => {
+  console.log(house);
+
+  const photo = house.photos;
+
   return (
-    <React.StrictMode>
-      <div className={style.card__house}>
+      <Link className={style.card__house} to={`/house/${house.id}`}>
         <div className={style.card__house__image}>
-          <img
-            src="https://a0.muscache.com/im/pictures/e25a9b25-fa98-4160-bfd1-039287bf38b6.jpg?im_w=1200"
-            alt="house"
-          />
+          <img src={photo?.[0].photo} alt="house" />
         </div>
         <div className={style.card__house__info}>
-          <h5>House in the middle of the forest fsjfhsjfhsj</h5>
-          <p>Bali, Indonesia</p>
+          <h5>{house?.name}</h5>
+          <p>
+            {house?.location} {house?.city?.name}, Indonesia
+          </p>
           <div className={style.card__house__info__price}>
-            <p>$ 100</p>
+            <p>Rp. {house?.price}</p>
             <p>per night</p>
           </div>
         </div>
-      </div>
-    </React.StrictMode>
+      </Link>
   );
 };
 

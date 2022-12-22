@@ -20,17 +20,15 @@ const Input: React.FC<InputProps> = (props) => {
     errors ? style.input__error : '',
   );
   return (
-    <React.StrictMode>
-      <input
-        type={type}
-        className={classProps}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-    </React.StrictMode>
+    <input
+      type={type}
+      className={classProps}
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      disabled={disabled}
+    />
   );
 };
 

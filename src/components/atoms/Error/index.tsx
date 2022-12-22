@@ -3,11 +3,7 @@ import { ErrorProps } from '../interface';
 import style from './index.module.scss';
 
 const Error: React.FC<ErrorProps> = ({ message }) => {
-  return (
-    <React.StrictMode>
-      <div className={style.error}>{message}</div>
-    </React.StrictMode>
-  );
+  return <div className={style.error}>{message}</div>;
 };
 
 export default Error;

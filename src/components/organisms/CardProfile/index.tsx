@@ -9,15 +9,13 @@ const CardProfile: React.FC<CardDetailProfileProps> = () => {
   const { user } = useAuth();
 
   return (
-    <React.StrictMode>
-      <Card className={style.card__profile}>
-        <Avatar className={style.card__profile__avatar} />
-        <div className={style.card__profile__profile}>
-          <p>{user?.fullname}</p>
-          <p>{user?.address}</p>
-        </div>
-      </Card>
-    </React.StrictMode>
+    <Card className={style.card__profile}>
+      <Avatar className={style.card__profile__avatar} />
+      <div className={style.card__profile__profile}>
+        <p>{user?.fullname}</p>
+        <p>{user?.address}</p>
+      </div>
+    </Card>
   );
 };
 

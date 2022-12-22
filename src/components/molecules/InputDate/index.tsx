@@ -5,14 +5,12 @@ import Calendar from '../Calendar';
 
 const InputDate = (): JSX.Element => {
   return (
-    <React.StrictMode>
       <div>
         <div className={style.input__date}>
           <label htmlFor="date">Date</label>
           <p className={style.placeholder}>Pick date</p>
         </div>
       </div>
-    </React.StrictMode>
   );
 };
 

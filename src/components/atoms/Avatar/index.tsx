@@ -8,11 +8,9 @@ const Avatar: React.FC<AvatarProps> = ({ src, className }) => {
   const classProps = classNames(style.avatar, className);
 
   return (
-    <React.StrictMode>
       <div className={classProps} style={{ backgroundColor: '#F5F5F5' }}>
         {src ? <img src={src} alt="" /> : <FaUserAlt />}
       </div>
-    </React.StrictMode>
   );
 };
 

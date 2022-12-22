@@ -5,9 +5,12 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  text-decoration: none;
+  color: $primary-dark;
 
   &__image img {
     width: 100%;
+    min-height: 15rem;
     object-fit: cover;
     border-radius: 1rem;
     margin-bottom: 0.7rem;
@@ -23,11 +26,11 @@
     flex-direction: column;
     gap: 0.6rem;
     h5 {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: $text-bold;
     }
     p {
-      font-size: 1;
+      font-size: 0.8rem;
       color: $secondary-text;
     }
     &__price {

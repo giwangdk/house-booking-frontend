@@ -20,18 +20,16 @@ const SearchAndDateBar = (): JSX.Element => {
     console.log(ranges.selection);
   };
   return (
-    <React.StrictMode>
-      <div className={style.search__bar}>
-        <Search />
-        <InputDate />
-        <InputDate />
-        <Button border="pill" className={style.search__bar__button}>
-          <AiOutlineSearch />
-        </Button>
+    <div className={style.search__bar}>
+      <Search />
+      <InputDate />
+      <InputDate />
+      <Button border="pill" className={style.search__bar__button}>
+        <AiOutlineSearch />
+      </Button>
 
-        <Calendar onChange={onChange} state={state} />
-      </div>
-    </React.StrictMode>
+      <Calendar onChange={onChange} state={state} />
+    </div>
   );
 };
 

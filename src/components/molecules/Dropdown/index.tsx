@@ -9,7 +9,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   value,
 }) => {
   return (
-    <React.StrictMode>
       <div className={style.input}>
         <select name={name} value={value} onChange={onChange}>
           {values?.map((value) => {
@@ -21,7 +20,6 @@ const Dropdown: React.FC<DropdownProps> = ({
           })}
         </select>
       </div>
-    </React.StrictMode>
   );
 };
 
