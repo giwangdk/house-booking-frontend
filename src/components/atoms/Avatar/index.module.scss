@@ -1,6 +1,10 @@
-.avatar{
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
+@import '../../../styles//variables.scss';
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  color: $secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

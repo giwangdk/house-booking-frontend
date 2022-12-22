@@ -1,12 +1,16 @@
 import React from 'react';
 import { AvatarProps } from '../interface';
 import style from './index.module.scss';
+import { FaUserAlt } from 'react-icons/fa';
+import classNames from 'classnames';
 
-const Avatar: React.FC<AvatarProps> = ({ src }) => {
+const Avatar: React.FC<AvatarProps> = ({ src, className }) => {
+  const classProps = classNames(style.avatar, className);
+
   return (
     <React.StrictMode>
-      <div className={style.avatar} style={{ backgroundColor: '#F5F5F5' }}>
-        <img src={src} alt="" />
+      <div className={classProps} style={{ backgroundColor: '#F5F5F5' }}>
+        {src ? <img src={src} alt="" /> : <FaUserAlt />}
       </div>
     </React.StrictMode>
   );
