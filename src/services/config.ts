@@ -65,4 +65,13 @@ const post =
       params,
     });
   };
-export { postWithoutHeader, get, getWithSlug, post };
+
+const put =
+  <T>(api: string) =>
+  (data: T, params?: string) => {
+    return AxiosInstance.put(api, data, {
+      method: 'PUT',
+      params,
+    });
+  };
+export { postWithoutHeader, get, getWithSlug, post, put };
