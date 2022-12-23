@@ -17,6 +17,7 @@ import {
 import useAuth from '../../../hooks/useAuth';
 import { EditUser } from '../../../services/service';
 import { useMutation } from 'react-query';
+import { queryClient } from '../../../helpers/queryClient';
 
 function useForm(
   handleCloseEdit: () => void,
@@ -29,7 +30,7 @@ function useForm(
     password: '',
     newPassword: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { mutateAsync, isLoading } = useMutation(EditUser);
 
   const handleChange = (
     e:
@@ -47,19 +48,18 @@ function useForm(
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setIsSubmitting(true);
-
     const dataEdit = {
       fullname: values.fullname,
-      oldPassword: values.password,
-      newPassword: values.password,
+      old_password: values.password,
+      new_password: values.password,
       address: values.address,
     };
 
-    const { isLoading } = useMutation(() => EditUser(dataEdit), {
+    mutateAsync(dataEdit, {
       onSuccess: () => {
-        toast.success('Edit Success');
+        queryClient.invalidateQueries('get-user-detail');
         handleCloseEdit();
+        toast.success('Edit Profile Success');
       },
     });
   };
@@ -69,7 +69,7 @@ function useForm(
     handleSubmit,
     values,
     errors,
-    isLoading: isSubmitting,
+    isLoading,
   };
 }
 export default useForm;

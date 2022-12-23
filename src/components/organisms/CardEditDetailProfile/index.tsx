@@ -10,7 +10,7 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
   handleCloseEdit,
 }) => {
   const { user } = useAuth();
-  const { errors, values, handleChange, handleSubmit } =
+  const { errors, values, handleChange, handleSubmit, isLoading } =
     useForm(handleCloseEdit);
 
   return (
@@ -53,7 +53,7 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
           onChange={handleChange}
           message={errors?.newPassword}
         />
-        <Button variant="secondary" type="submit">
+        <Button variant="secondary" type="submit" loading={isLoading}>
           Submit
         </Button>
       </form>
