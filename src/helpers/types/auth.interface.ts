@@ -1,9 +1,10 @@
 import React from 'react';
-import { IUser, IWallet } from './entity.interface';
+import { IGame, IUser, IWallet } from './entity.interface';
 
 export interface AuthState {
   user: IUser | null;
   wallet: IWallet | null;
+  game: IGame | null;
   isLoggedIn: boolean;
   isLoading: boolean;
   error: string | null;

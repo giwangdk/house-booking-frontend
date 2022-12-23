@@ -16,4 +16,5 @@ export interface FormReturnEditProfile<T> {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
   errors: ErrorEditProfile | undefined;
+  isLoading: boolean;
 }

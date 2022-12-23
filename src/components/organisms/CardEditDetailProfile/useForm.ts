@@ -16,22 +16,20 @@ import {
 } from '../../../helpers/types/profile.interface';
 import useAuth from '../../../hooks/useAuth';
 import { EditUser } from '../../../services/service';
+import { useMutation } from 'react-query';
 
 function useForm(
   handleCloseEdit: () => void,
 ): FormReturnEditProfile<EditProfileProps> {
   const { user } = useAuth();
+  const [errors, setErrors] = useState();
   const [values, setValues] = useState<EditProfileProps>({
     fullname: user?.fullname || '',
     address: user?.address || '',
     password: '',
     newPassword: '',
   });
-  const [errors, setErrors] = useState<ErrorEditProfile>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const handleChange = (
     e:
@@ -51,32 +49,27 @@ function useForm(
 
     setIsSubmitting(true);
 
-    const data = {
+    const dataEdit = {
       fullname: values.fullname,
       oldPassword: values.password,
       newPassword: values.password,
       address: values.address,
     };
 
-    dispatch(setIsLoading(true));
-    EditUser(data)
-      .then((res) => {
-        console.log(res);
-
+    const { isLoading } = useMutation(() => EditUser(dataEdit), {
+      onSuccess: () => {
         toast.success('Edit Success');
         handleCloseEdit();
-      })
-      .catch((err) => {
-        dispatch(setIsError(true));
-        console.log(err);
-
-        toast.error(err.response.data.message);
-      })
-      .finally(() => {
-        dispatch(setIsLoading(false));
-      });
+      },
+    });
   };
 
-  return { handleChange, handleSubmit, values, errors };
+  return {
+    handleChange,
+    handleSubmit,
+    values,
+    errors,
+    isLoading: isSubmitting,
+  };
 }
 export default useForm;
