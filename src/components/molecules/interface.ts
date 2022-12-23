@@ -48,3 +48,8 @@ export interface CarouselProps {
 export interface InputDateProps extends ReactDatePickerProps {
   label: string;
 }
+
+export interface SearchBarProps {
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}
