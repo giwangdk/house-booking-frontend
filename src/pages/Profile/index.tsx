@@ -1,23 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import {
   CardDetailProfile,
   CardProfile,
   CardWallet,
   Container,
 } from '../../components';
-import useAuth from '../../hooks/useAuth';
-import { getUser, getWallet } from '../../redux/authenticationSlice';
 import style from './index.module.scss';
 
 const Profile = (): JSX.Element => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getUser()(dispatch);
-    getWallet()(dispatch);
-  }, [dispatch]);
-
   return (
     <div className={style.profile__page}>
       <Container className={style.profile__page__content}>
