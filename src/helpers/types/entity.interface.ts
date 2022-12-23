@@ -11,6 +11,7 @@ export interface IUser {
   address?: string;
   photo?: string;
   city?: ICity;
+  role?: string;
 }
 
 export interface IWallet {
@@ -21,6 +22,12 @@ export interface IWallet {
 export interface IHousePhoto {
   id?: number;
   photo?: string;
+}
+
+export interface IGame {
+  id?: number;
+  chance?: number;
+  total_games_played?: number;
 }
 
 export interface IHouseDetail {

@@ -10,7 +10,7 @@ import { submitLogin } from '../services/auth.service';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
 import { NavigateFunction } from 'react-router-dom';
-import { AuthState, IUser, IWallet, LoginProps } from '../helpers/types';
+import { AuthState, IGame, IUser, IWallet, LoginProps } from '../helpers/types';
 import { getUserDetails, getWalletUser } from '../services/service';
 
 const cookies = new Cookies();
@@ -18,6 +18,7 @@ const cookies = new Cookies();
 const initialState: AuthState = {
   user: null,
   wallet: null,
+  game: null,
   isLoggedIn: cookies.get('token') ? true : false,
   isLoading: false,
   error: null,
@@ -68,6 +69,13 @@ const setWalletReducer: CaseReducer<
   state.wallet = action.payload;
 };
 
+const setGameReducer: CaseReducer<
+  typeof initialState,
+  PayloadAction<IGame | null>
+> = (state, action) => {
+  state.game = action.payload;
+};
+
 const authenticationSlice = createSlice({
   name: 'authentication',
   initialState,
@@ -78,6 +86,7 @@ const authenticationSlice = createSlice({
     setError: setErrorReducer,
     setUser: setUserReducer,
     setWallet: setWalletReducer,
+    setGame: setGameReducer,
   },
 });
 
@@ -88,6 +97,7 @@ export const {
   setError,
   setUser,
   setWallet,
+  setGame,
 } = authenticationSlice.actions;
 export const authenticationReducer = authenticationSlice.reducer;
 
@@ -140,50 +150,4 @@ export const Logout =
     toast.success('Logout Success');
     dispatch(setIsLoggedIn(false));
     dispatch(setUser(null));
-  };
-
-export const getUser =
-  () =>
-  async (dispatch: Dispatch<AnyAction>): Promise<void> => {
-    dispatch(setIsLoading(true));
-    await getUserDetails()
-      .then((res) => {
-        dispatch(setUser(res.data.data));
-      })
-      .catch((error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        dispatch(setIsError(true));
-        toast.error(message);
-      })
-      .finally(() => {
-        dispatch(setIsLoading(false));
-      });
-  };
-
-export const getWallet =
-  () =>
-  async (dispatch: Dispatch<AnyAction>): Promise<void> => {
-    dispatch(setIsLoading(true));
-    await getWalletUser()
-      .then((res) => {
-        dispatch(setWallet(res.data.data));
-      })
-      .catch((error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        dispatch(setIsError(true));
-        toast.error(message);
-      })
-      .finally(() => {
-        dispatch(setIsLoading(false));
-      });
   };
