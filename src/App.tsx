@@ -11,20 +11,9 @@ import {
 } from 'react-query';
 import { router } from './helpers/routes';
 import { DateProvider } from './context/date-context';
+import { queryClient } from './helpers/queryClient';
 
 function App(): JSX.Element {
-  const queryClient = new QueryClient({
-    queryCache: new QueryCache({
-      onError: async (error: any) => {
-        toast.error(error.response.data.message);
-      },
-    }),
-    mutationCache: new MutationCache({
-      onError: async (error: any) => {
-        toast.error(error.response.data.message);
-      },
-    }),
-  });
   return (
     <Suspense
       fallback={
