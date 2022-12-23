@@ -49,7 +49,7 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
         <p>Total</p>
         <p>Rp.{(house?.price as number) * 3}</p>
       </div>
-      <Button variant="secondary">Reserve</Button>
+      <Button variant="secondary">Book Now</Button>
     </Card>
   );
 };

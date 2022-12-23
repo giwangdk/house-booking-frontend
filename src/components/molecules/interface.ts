@@ -25,7 +25,7 @@ export interface SearchProps {
 
 export interface CardProps {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 
 export interface CalendarProps {

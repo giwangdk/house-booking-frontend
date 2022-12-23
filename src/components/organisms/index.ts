@@ -8,6 +8,8 @@ import SearchBar from './SearchBar';
 import CardHouse from '../molecules/CardHouse';
 import CardHouseProfile from './CardHouseProfile';
 import CardHouseDetail from './CardHouseDetail';
+import CardDetailBooking from './CardDetailBooking';
+import CardFormBooking from './CardFormBooking';
 
 export {
   CardLogin,
@@ -20,4 +22,6 @@ export {
   CardHouse,
   CardHouseProfile,
   CardHouseDetail,
+  CardDetailBooking,
+  CardFormBooking,
 };
