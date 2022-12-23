@@ -4,9 +4,9 @@ import style from './index.module.scss';
 
 const CardHotel: React.FC<DetailHouseProps> = ({ house }) => {
   return (
-    <div className={style.card__detail_booking__detail}>
+    <div className={style.card__detail__booking__house}>
       <img src={house?.photos?.[0]?.photo} alt="" />
-      <ul className={style.card__house__booking__desc}>
+      <ul className={style.card__detail__booking__house__desc}>
         <li>Bedrooms {house?.detail?.bedrooms}</li>
         <li>Bathrooms {house?.detail?.baths}</li>
       </ul>

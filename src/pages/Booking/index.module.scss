@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+.booking {
+  margin-top: 5rem;
+  padding: 1rem 0;
+  min-height: 100vh;
+  background-color: $primary-white;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1rem;
+  }
+}

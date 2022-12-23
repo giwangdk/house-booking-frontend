@@ -13,9 +13,9 @@ const CardFormBooking = (): JSX.Element => {
   const { isLoading } = useSelector((state: RootState) => state.auth);
 
   return (
-    <Card>
-      <h3 className={style.card__form__booking__title}>Your Information</h3>
-      <form className={style.card__form_booking} onSubmit={handleSubmit}>
+    <Card className={style.card__form_booking}>
+      <h3 className={style.card__form_booking__title}>Your Information</h3>
+      <form onSubmit={handleSubmit}>
         <InputLabel
           label="Full Name"
           name="name"

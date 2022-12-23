@@ -1,5 +1,6 @@
 import moment from 'moment';
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DateContext } from '../../../context/date-context';
 import { Button } from '../../atoms';
 import { Card, InputDate } from '../../molecules';
@@ -10,11 +11,16 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
   const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
     useContext(DateContext);
 
+  const navigate = useNavigate();
   const handleChangeStartDate = (date: Date) => {
     setCheckinDate(date);
   };
   const handleChangeEndDate = (date: Date) => {
     setCheckoutDate(date);
+  };
+
+  const handleNavigate = () => {
+    navigate(`/house-book/${house?.id}}`);
   };
 
   return (
@@ -49,7 +55,9 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
         <p>Total</p>
         <p>Rp.{(house?.price as number) * 3}</p>
       </div>
-      <Button variant="secondary">Book Now</Button>
+      <Button variant="secondary" onClick={handleNavigate}>
+        Book Now
+      </Button>
     </Card>
   );
 };
