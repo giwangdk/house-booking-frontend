@@ -1,39 +1,43 @@
-import React, { useState } from 'react';
+import moment from 'moment';
+import React, { useContext, useState } from 'react';
+import { DateContext } from '../../../context/date-context';
 import { Button } from '../../atoms';
 import { Card, InputDate } from '../../molecules';
 import { DetailHouseProps } from '../../molecules/interface';
 import style from './index.module.scss';
 
 const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
-  const [startDate, setStartDate] = useState(new Date('2014/02/08'));
-  const [endDate, setEndDate] = useState(new Date('2014/02/10'));
+  const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
+    useContext(DateContext);
 
   const handleChangeStartDate = (date: Date) => {
-    setStartDate(date);
+    setCheckinDate(date);
   };
   const handleChangeEndDate = (date: Date) => {
-    setEndDate(date);
+    setCheckoutDate(date);
   };
+
   return (
     <Card className={style.card__reservation}>
       <h6>Rp. {house?.price}/ night</h6>
       <div className={style.card__reservation__date}>
         <InputDate
           label="Checkin Date"
-          selected={startDate}
+          selected={checkin_date}
           onChange={handleChangeStartDate}
           selectsStart
-          startDate={startDate}
-          endDate={endDate}
+          minDate={moment(Date.now()).toDate()}
+          startDate={checkin_date}
+          endDate={checkout_date}
         />
         <InputDate
           label="Checkout Date"
-          selected={endDate}
+          selected={checkout_date}
           onChange={handleChangeEndDate}
           selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
+          startDate={checkin_date}
+          endDate={checkout_date}
+          minDate={checkin_date}
         />
       </div>
       <div className={style.card__reservation__total}>

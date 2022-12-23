@@ -1,11 +1,15 @@
 import React from 'react';
 import { SearchAndDateBar } from '../../molecules';
+import { SearchBarProps } from '../../molecules/interface';
 import style from './index.module.scss';
 
-const SearchBar = (): JSX.Element => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  handleSearch,
+  value,
+}): JSX.Element => {
   return (
     <div className={style.search__navbar}>
-      <SearchAndDateBar />
+      <SearchAndDateBar handleSearch={handleSearch} value={value} />
     </div>
   );
 };
