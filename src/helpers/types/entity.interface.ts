@@ -53,3 +53,14 @@ export interface IHouse {
   photos: IHousePhoto[];
   detail: IHouseDetail;
 }
+
+export interface IReservation {
+  id?: number;
+  check_in?: string;
+  check_out?: string;
+  total_price?: number;
+  fullname?: string;
+  email?: string;
+  city_id?: number;
+  house_id?: number;
+}
