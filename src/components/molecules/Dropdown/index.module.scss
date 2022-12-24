@@ -1,16 +1,17 @@
 @import '../../../styles/variables.scss';
 
 .input {
-  background: #f9f9f9;
-  border: 1px solid #dddddd;
-  border-radius: 0.3rem;
+  background: $primary-white;
+  border-radius: 10rem;
   padding-right: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
 
-  select {
-    border: none;
+  .select {
+    border: none !important;
     width: 100%;
     background: transparent;
-    padding: 0.65rem 1rem;
+    padding: 0.2rem 0.5rem;
 
     &:focus {
       outline: none;
@@ -19,6 +20,10 @@
     option {
       background: #f9f9f9;
       font-size: rem;
+    }
+
+    &::placeholder {
+      font-size: 0.6rem;
     }
   }
 }

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DateContext } from '../../../context/date-context';
 import { Button } from '../../atoms';
 import { Card, InputDate } from '../../molecules';
@@ -11,6 +11,14 @@ import CardHotel from './CardHotel';
 const CardDetailBooking: React.FC<DetailHouseProps> = ({ house }) => {
   const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
     useContext(DateContext);
+
+  const [currentPrice, setCurrentPrice] = useState(null);
+
+  useEffect(() => {
+    sessionStorage.setItem('price', JSON.stringify(house?.price));
+    const price = sessionStorage.getItem('price');
+    setCurrentPrice(JSON.parse(price as string));
+  }, []);
 
   return (
     <Card className={style.card__detail_booking}>
@@ -28,7 +36,7 @@ const CardDetailBooking: React.FC<DetailHouseProps> = ({ house }) => {
           <p>{moment(checkout_date).format('DD MMMM YYYY')}</p>
         </div>
       </div>
-      <CardHotel house={house} />
+      <CardHotel house={house} currentPrice={currentPrice} />
     </Card>
   );
 };

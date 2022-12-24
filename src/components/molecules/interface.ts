@@ -1,5 +1,11 @@
 import { SyntheticEvent } from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
+import {
+  ActionMeta,
+  GroupBase,
+  OptionsOrGroups,
+  SingleValue,
+} from 'react-select';
 import { IHouse, IHousePhoto } from '../../helpers/types';
 import { InputProps } from '../atoms/interface';
 
@@ -10,12 +16,12 @@ export interface InputLabelProps extends InputProps {
 
 export interface DropdownProps {
   name?: string;
-  value?: string;
-  values?: {
-    value: string | number;
-    label: string;
-  }[];
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  value?: string | number;
+  values?: OptionsOrGroups<string, GroupBase<string>>;
+  onChange?: (
+    newValue: SingleValue<string | number>,
+    actionMeta: ActionMeta<string | number>,
+  ) => void;
 }
 
 export interface SearchProps {
@@ -39,6 +45,7 @@ export interface CalendarProps {
 
 export interface DetailHouseProps {
   house: IHouse;
+  currentPrice?: number | null;
 }
 
 export interface CarouselProps {

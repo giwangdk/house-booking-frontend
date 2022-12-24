@@ -20,7 +20,7 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
   };
 
   const handleNavigate = () => {
-    navigate(`/house-book/${house?.id}}`);
+    navigate(`/house-book/${house?.id}`);
   };
 
   return (

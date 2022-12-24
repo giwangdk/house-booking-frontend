@@ -1,16 +1,39 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import Select from 'react-select';
+import { ICityResponse } from '../../../helpers/types';
 import { RootState } from '../../../redux/store';
+import { getCities } from '../../../services/service';
 import { Button, Error } from '../../atoms';
-import { InputLabel } from '../../molecules';
+import { Dropdown, InputLabel } from '../../molecules';
 import style from './index.module.scss';
 import useForm from './useForm';
 import validateInfo from './validate';
 
 const CardRegister = (): JSX.Element => {
-  const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
+  const {
+    values,
+    handleChange,
+    handleChangeDropdown,
+    handleSubmit,
+    errors,
+    city,
+  } = useForm(validateInfo);
 
   const { isLoading } = useSelector((state: RootState) => state.auth);
+  const { data } = useQuery<ICityResponse>('get-cities', () =>
+    getCities().then((res) => res.data),
+  );
+
+  const options = data?.data?.map((item) => ({
+    value: item.id,
+    label: item.name,
+  }));
+
+  console.log(data?.data);
+  console.log(options);
 
   return (
     <form className={style.card__register} onSubmit={handleSubmit}>
@@ -51,6 +74,8 @@ const CardRegister = (): JSX.Element => {
         onChange={handleChange}
         message={errors?.password}
       />
+      <label className={style.label}>City</label>
+      <Dropdown values={options as any} onChange={handleChangeDropdown} />
       <Button type="submit" loading={isLoading}>
         Submit
       </Button>

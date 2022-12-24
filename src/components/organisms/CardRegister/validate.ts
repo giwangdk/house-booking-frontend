@@ -1,12 +1,10 @@
-import { ErrorRegister, RegisterProps } from "../../../helpers/types";
+import { ErrorRegister, RegisterProps } from '../../../helpers/types';
 
 export default function validateInfo(values: RegisterProps): RegisterProps {
   const errors: ErrorRegister = {
     name: '',
-    city: '',
     email: '',
     password: '',
-
   };
 
   if (!values.name) {

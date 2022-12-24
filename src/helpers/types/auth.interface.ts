@@ -1,4 +1,5 @@
 import React from 'react';
+import { ActionMeta, SingleValue } from 'react-select';
 import { IGame, IUser, IWallet } from './entity.interface';
 
 export interface AuthState {
@@ -32,24 +33,23 @@ export interface RegisterProps {
   name: string;
   email: string;
   address?: string;
-  city: string;
   password: string;
 }
 
 export interface ErrorRegister {
   name: string;
   email: string;
-  city: string;
   password: string;
 }
 
 export interface FormReturnRegister<T> {
-  handleChange: (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
   errors: ErrorRegister | undefined;
+  handleChangeDropdown: (
+    newValue: SingleValue<string | number>,
+    actionMeta: ActionMeta<string | number>,
+  ) => void;
+  city?: number;
 }

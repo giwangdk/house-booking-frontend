@@ -1,4 +1,4 @@
-import { IHouse } from './entity.interface';
+import { ICity, IHouse } from './entity.interface';
 
 export interface IHouseResponse {
   data: {
@@ -8,6 +8,10 @@ export interface IHouseResponse {
     total: number;
   };
   message: string;
+}
+
+export interface ICityResponse {
+  data: ICity[];
 }
 
 export interface IHouseDetailResponse {
