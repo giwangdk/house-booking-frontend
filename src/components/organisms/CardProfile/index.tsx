@@ -6,14 +6,15 @@ import { CardDetailProfileProps } from '../interface';
 import style from './index.module.scss';
 
 const CardProfile: React.FC<CardDetailProfileProps> = () => {
-  const { user } = useAuth();
+  const { user, game } = useAuth();
 
   return (
     <Card className={style.card__profile}>
       <Avatar className={style.card__profile__avatar} />
       <div className={style.card__profile__profile}>
         <p>{user?.fullname}</p>
-        <p>{user?.address}</p>
+        <p>Total Games Played : {game?.total_games_played}</p>
+        <p>Chance : {game?.chance}</p>
       </div>
     </Card>
   );
