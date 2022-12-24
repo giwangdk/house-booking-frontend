@@ -61,6 +61,6 @@ export interface IReservation {
   total_price?: number;
   fullname?: string;
   email?: string;
-  city_id?: number;
-  house_id?: number;
+  city_id?: number | null;
+  house_id?: number | null;
 }

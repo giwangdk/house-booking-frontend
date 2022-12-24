@@ -12,6 +12,7 @@ export const queryClient = new QueryClient({
         window.location.href = '/login';
         toast.error(error.response.data.message);
       }
+      toast.error(error.response.data.message);
     },
   }),
   mutationCache: new MutationCache({
@@ -21,6 +22,7 @@ export const queryClient = new QueryClient({
         window.location.href = '/login';
         toast.error(error.response.data.message);
       }
+      toast.error(error.response.data.message);
     },
   }),
 });

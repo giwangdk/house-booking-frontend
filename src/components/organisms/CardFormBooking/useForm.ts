@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setIsError, setIsLoading } from '../../../redux/authenticationSlice';
-import { useNavigate } from 'react-router-dom';
-import { submitRegister } from '../../../services/auth.service';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
-  ErrorRegister,
-  FormReturnRegister,
-  RegisterProps,
-} from '../../../helpers/types';
-import { ActionMeta, SingleValue } from 'react-select';
+  BookingProps,
+  ErrorBooking,
+  FormReturnBooking,
+} from '../../../helpers/types/rent.interface';
+import { DateContext } from '../../../context/date-context';
+import moment from 'moment';
+import { submitReservation } from '../../../services/service';
+import { useParams } from 'react-router-dom';
+import { IReservation } from '../../../helpers/types';
+import { useMutation } from 'react-query';
+import useAuth from '../../../hooks/useAuth';
 
 function useForm(
-  validateInfo: (values: RegisterProps) => RegisterProps,
-): FormReturnRegister<RegisterProps> {
-  const [values, setValues] = useState<RegisterProps>({
+  validateInfo: (values: BookingProps) => BookingProps,
+  currentPrice: number,
+): FormReturnBooking<BookingProps> {
+  const [values, setValues] = useState<BookingProps>({
     name: '',
-    address: '',
     email: '',
-    password: '',
   });
-  const [city, setCity] = useState(null);
-  const [errors, setErrors] = useState<ErrorRegister>();
+  const { id } = useParams<{ id: string }>();
+  const [city, setCity] = useState<number | null>(null);
+  const [errors, setErrors] = useState<ErrorBooking>();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const dispatch = useDispatch();
+  const { mutateAsync, isLoading } = useMutation(submitReservation);
 
-  const navigate = useNavigate();
+  const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
+    useContext(DateContext);
 
+  const formattedCheckInDate = moment(checkin_date).format('YYYY-MM-DD');
+  const formattedCheckOutDate = moment(checkout_date).format('YYYY-MM-DD');
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -34,20 +39,15 @@ function useForm(
   ) => {
     const { name, value } = e.target;
 
-    console.log(name, value);
-
     setValues({
       ...values,
       [name]: value,
     });
-    console.log(values);
   };
 
-  const handleChangeDropdown = (
-    newValue: SingleValue<string | number>,
-    actionMeta: ActionMeta<string | number>,
-  ) => {
-    console.log(newValue, actionMeta);
+  const handleChangeDropdown = (e: any) => {
+    setCity(e.value);
+    console.log(city);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -55,43 +55,41 @@ function useForm(
 
     setErrors(validateInfo(values));
     setIsSubmitting(true);
-
-    const data = {
+    const data: IReservation = {
       fullname: values.name,
       email: values.email,
-      password: values.password,
-      address: values.address,
+      city_id: city,
+      check_in: formattedCheckInDate,
+      check_out: formattedCheckOutDate,
+      total_price:
+        currentPrice * moment(checkout_date).diff(checkin_date, 'days'),
+      house_id: parseInt(id as string),
     };
 
     if (
       Object.keys(errors?.name || {}).length === 0 &&
       Object.keys(errors?.email || {}).length === 0 &&
-      Object.keys(errors?.password || {}).length === 0 &&
       isSubmitting
     ) {
-      console.log(data);
-
-      dispatch(setIsLoading(true));
-      submitRegister(data)
-        .then((res) => {
-          console.log(res);
-
-          toast.success('Register Success');
-          navigate('/login');
-        })
-        .catch((err) => {
-          dispatch(setIsError(true));
-          console.log(err);
-
-          toast.error(err.response.data.message);
-        })
-        .finally(() => {
-          dispatch(setIsLoading(false));
-        });
+      mutateAsync(data, {
+        onSuccess: () => {
+          toast.success('Success');
+          setCheckinDate(moment(Date.now()).toDate());
+          setCheckoutDate(moment().add(1, 'days').toDate());
+        },
+      });
     }
   };
 
-  return { handleChange, handleChangeDropdown, handleSubmit, values, errors };
+  return {
+    handleChange,
+    handleChangeDropdown,
+    handleSubmit,
+    values,
+    errors,
+    setValues,
+    setCity,
+  };
 }
 
 export default useForm;

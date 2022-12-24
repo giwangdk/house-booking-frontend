@@ -17,6 +17,7 @@ export function DateProvider({
   const [checkout_date, setCheckoutDate] = useState(
     moment().add(1, 'days').toDate(),
   );
+  
 
   return (
     <DateContext.Provider

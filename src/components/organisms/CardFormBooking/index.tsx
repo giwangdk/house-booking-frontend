@@ -1,16 +1,54 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useEffect } from 'react';
+import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import { ICityResponse } from '../../../helpers/types';
+import useAuth from '../../../hooks/useAuth';
 import { RootState } from '../../../redux/store';
+import { getCities } from '../../../services/service';
 import { Button, Error } from '../../atoms';
-import { Card, InputLabel } from '../../molecules';
+import { Card, Dropdown, InputLabel } from '../../molecules';
 import style from './index.module.scss';
 import useForm from './useForm';
 import validateInfo from './validate';
 
-const CardFormBooking = (): JSX.Element => {
-  const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
+const CardFormBooking = ({
+  currentPrice,
+}: {
+  currentPrice: number | null;
+}): JSX.Element => {
+  const {
+    values,
+    handleChange,
+    handleChangeDropdown,
+    handleSubmit,
+    errors,
+    setValues,
+    setCity,
+    city,
+  } = useForm(validateInfo, currentPrice as number);
 
   const { isLoading } = useSelector((state: RootState) => state.auth);
+  const { data } = useQuery<ICityResponse>('get-cities', () =>
+    getCities().then((res) => res.data),
+  );
+  const options = data?.data?.map((item) => ({
+    value: item.id,
+    label: item.name,
+  }));
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      setValues({
+        ...values,
+        name: user.fullname as string,
+        email: user.email as string,
+      });
+      setCity(user?.city?.id as number);
+    }
+  }, []);
 
   return (
     <Card className={style.card__form_booking}>
@@ -35,6 +73,12 @@ const CardFormBooking = (): JSX.Element => {
           value={values.email}
           onChange={handleChange}
           message={errors?.email}
+        />
+        <label className={style.label}>City</label>
+        <Dropdown
+          values={options as any}
+          value={city}
+          onChange={handleChangeDropdown}
         />
         <Button type="submit" loading={isLoading}>
           Submit

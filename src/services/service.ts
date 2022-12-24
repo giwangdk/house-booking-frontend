@@ -1,4 +1,5 @@
-import { get, put, getWithSlug } from './config';
+import { IReservation } from '../helpers/types';
+import { get, put, getWithSlug, post } from './config';
 
 const API_ACCOUNT = process.env.REACT_APP_ACCOUNT_SERVICES_URL;
 
@@ -10,3 +11,7 @@ export const EditUser = put(`${API_ACCOUNT}/user`);
 export const getHouses = getWithSlug(`${API_ACCOUNT}/houses`);
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
+
+export const submitReservation = post<IReservation>(
+  `${API_ACCOUNT}/reservation`,
+);

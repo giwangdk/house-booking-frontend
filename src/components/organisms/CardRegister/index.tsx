@@ -32,9 +32,6 @@ const CardRegister = (): JSX.Element => {
     label: item.name,
   }));
 
-  console.log(data?.data);
-  console.log(options);
-
   return (
     <form className={style.card__register} onSubmit={handleSubmit}>
       <InputLabel

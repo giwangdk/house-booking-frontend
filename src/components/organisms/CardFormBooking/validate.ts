@@ -1,10 +1,13 @@
 import { ErrorRegister, RegisterProps } from '../../../helpers/types';
+import {
+  BookingProps,
+  ErrorBooking,
+} from '../../../helpers/types/rent.interface';
 
-export default function validateInfo(values: RegisterProps): RegisterProps {
-  const errors: ErrorRegister = {
+export default function validateInfo(values: BookingProps): BookingProps {
+  const errors: ErrorBooking = {
     name: '',
-    email: '',
-    password: '',
+    email: ''
   };
 
   if (!values.name) {
@@ -15,10 +18,6 @@ export default function validateInfo(values: RegisterProps): RegisterProps {
     errors.email = 'Email required';
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = 'Email address is invalid';
-  }
-
-  if (!values.password) {
-    errors.password = 'Password is required';
   }
 
   return errors;
