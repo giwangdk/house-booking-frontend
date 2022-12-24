@@ -3,13 +3,6 @@ import { DetailHouseProps } from '../../molecules/interface';
 import style from './index.module.scss';
 
 const CardHotel: React.FC<DetailHouseProps> = ({ house, currentPrice }) => {
-  useEffect(() => {
-    const currentPrice = sessionStorage.getItem('price');
-    if (JSON.parse(currentPrice as string) !== house?.price) {
-      alert('Price has been changed');
-    }
-  }, [house?.price]);
-
   return (
     <div className={style.card__detail__booking__house}>
       <img src={house?.photos?.[0]?.photo} alt="" />

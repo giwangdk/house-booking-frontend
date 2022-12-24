@@ -8,17 +8,12 @@ import style from './index.module.scss';
 import { GiFamilyHouse } from 'react-icons/gi';
 import CardHotel from './CardHotel';
 
-const CardDetailBooking: React.FC<DetailHouseProps> = ({ house }) => {
+const CardDetailBooking: React.FC<DetailHouseProps> = ({
+  house,
+  currentPrice,
+}) => {
   const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
     useContext(DateContext);
-
-  const [currentPrice, setCurrentPrice] = useState(null);
-
-  useEffect(() => {
-    sessionStorage.setItem('price', JSON.stringify(house?.price));
-    const price = sessionStorage.getItem('price');
-    setCurrentPrice(JSON.parse(price as string));
-  }, []);
 
   return (
     <Card className={style.card__detail_booking}>
