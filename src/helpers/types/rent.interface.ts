@@ -21,5 +21,5 @@ export interface FormReturnBooking<T> {
   ) => void;
   city?: number;
   setValues: React.Dispatch<React.SetStateAction<T>>;
-  setCity: React.Dispatch<React.SetStateAction<number | null>>;
+  setCity: React.Dispatch<React.SetStateAction<number | undefined>>;
 }

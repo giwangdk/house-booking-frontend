@@ -7,24 +7,38 @@ import {
 } from '../../../helpers/types/rent.interface';
 import { DateContext } from '../../../context/date-context';
 import moment from 'moment';
-import { submitReservation } from '../../../services/service';
+import { getUserDetails, submitReservation } from '../../../services/service';
 import { useParams } from 'react-router-dom';
 import { IReservation } from '../../../helpers/types';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
+import { setUser } from '../../../redux/authenticationSlice';
+import { useDispatch } from 'react-redux';
 
 function useForm(
   validateInfo: (values: BookingProps) => BookingProps,
   totalPrice: number,
+  isReqPickup: boolean
 ): FormReturnBooking<BookingProps> {
+  const {user, isLoggedIn} = useAuth();
+
+  const dispatch = useDispatch();
+  if(isLoggedIn){
+    useQuery('get-user-detail', async () => {
+      await getUserDetails().then((res) => {
+        dispatch(setUser(res.data.data));
+      });
+    });
+  }
+
   const [values, setValues] = useState<BookingProps>({
-    name: '',
-    email: '',
+    name: user?.fullname as string |'',
+    email: user?.email as string | '',
   });
   const { id } = useParams<{ id: string }>();
-  const [city, setCity] = useState<number | null>(null);
+  const [city, setCity] = useState<number | undefined>(user?.city?.id as number | undefined);
   const [errors, setErrors] = useState<ErrorBooking>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const { mutateAsync, isLoading } = useMutation(submitReservation);
 
   const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
@@ -62,6 +76,7 @@ function useForm(
       check_out: formattedCheckOutDate,
       total_price: totalPrice,
       house_id: parseInt(id as string),
+      is_request_pickup: isReqPickup
     };
 
     if (
@@ -85,6 +100,7 @@ function useForm(
     handleSubmit,
     values,
     errors,
+    city,
     setValues,
     setCity,
   };

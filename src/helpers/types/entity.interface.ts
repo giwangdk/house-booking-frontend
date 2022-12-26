@@ -63,4 +63,5 @@ export interface IReservation {
   email?: string;
   city_id?: number | null;
   house_id?: number | null;
+  is_request_pickup?: boolean;
 }

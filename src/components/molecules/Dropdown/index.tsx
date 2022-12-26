@@ -15,15 +15,15 @@ const Dropdown: React.FC<DropdownProps> = ({
         options={values}
         className={style.select}
         styles={{
-          control: (baseStyles, state) => ({
+          control: (baseStyles) => ({
             ...baseStyles,
             border: 'none',
             backgroundColor: 'transparent',
           }),
         }}
+        defaultValue={value}
         name={name}
         onChange={onChange}
-        value={value}
       />
     </div>
   );

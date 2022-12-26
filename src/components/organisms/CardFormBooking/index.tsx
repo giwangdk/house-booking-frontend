@@ -30,13 +30,8 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
     setValues,
     setCity,
     city,
-  } = useForm(validateInfo, totalPrice as number);
-  const [selectedDrink, setSelectedDrink] = useState<string>();
+  } = useForm(validateInfo, totalPrice as number, isReqPickup);
 
-  // This function will be triggered when a radio button is selected
-  const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedDrink(event.target.value);
-  };
   const { isLoading } = useSelector((state: RootState) => state.auth);
   const { data } = useQuery<ICityResponse>('get-cities', () =>
     getCities().then((res) => res.data),
@@ -47,6 +42,8 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
   }));
 
   const { user } = useAuth();
+  console.log("city", city);
+  
 
   useEffect(() => {
     if (user) {
@@ -86,7 +83,7 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
         <label className={style.label}>City</label>
         <Dropdown
           values={options as any}
-          value={city}
+          value={options?.find((item) => item.value === city) as any}
           onChange={handleChangeDropdown}
         />
         <InputPickup
