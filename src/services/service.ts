@@ -1,5 +1,6 @@
-import { IReservation } from '../helpers/types';
-import { get, put, getWithSlug, post } from './config';
+import { AxiosResponse } from 'axios';
+import { IReservation, ITransaction } from '../helpers/types';
+import { get, put, getWithSlug, post, getWithoutHeader } from './config';
 
 const API_ACCOUNT = process.env.REACT_APP_ACCOUNT_SERVICES_URL;
 
@@ -11,7 +12,13 @@ export const EditUser = put(`${API_ACCOUNT}/user`);
 export const getHouses = getWithSlug(`${API_ACCOUNT}/houses`);
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
+export const getReservationByBookingCode = (bookingCode: string): any => {
+  return getWithoutHeader(`${API_ACCOUNT}/reservation/${bookingCode}`);
+};
 
 export const submitReservation = post<IReservation>(
   `${API_ACCOUNT}/reservation`,
+);
+export const submitTransaction = post<ITransaction>(
+  `${API_ACCOUNT}/transaction`,
 );
