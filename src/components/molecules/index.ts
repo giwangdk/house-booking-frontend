@@ -9,6 +9,7 @@ import InputDate from './InputDate';
 import SearchAndDateBar from './SearchAndDateBar';
 import CarouselPhoto from './CarouselPhoto';
 import InputPickup from './InputPickup';
+import InputUpload from './InputUpload';
 
 export {
   Dropdown,
@@ -22,4 +23,5 @@ export {
   SearchAndDateBar,
   CarouselPhoto,
   InputPickup,
+  InputUpload,
 };

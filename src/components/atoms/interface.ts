@@ -36,3 +36,8 @@ export interface AvatarProps {
   src?: string;
   className?: string;
 }
+
+export interface HeaderProps{
+  className?: string;
+  children: React.ReactNode;
+}

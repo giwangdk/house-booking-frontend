@@ -10,6 +10,8 @@ import CardHouseProfile from './CardHouseProfile';
 import CardHouseDetail from './CardHouseDetail';
 import CardDetailBooking from './CardDetailBooking';
 import CardFormBooking from './CardFormBooking';
+import CardPayment from './CardPayment';
+import CardHowToPay from './CardHowToPay';
 
 export {
   CardLogin,
@@ -24,4 +26,6 @@ export {
   CardHouseDetail,
   CardDetailBooking,
   CardFormBooking,
+  CardPayment,
+  CardHowToPay,
 };

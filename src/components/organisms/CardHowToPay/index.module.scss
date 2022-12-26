@@ -1,0 +1,26 @@
+@import '../../../styles/variables.scss';
+.card__how {
+  h6 {
+    font-size: 1.1rem;
+    font-weight: $text-bold;
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      p {
+        &:first-child {
+          font-size: 0.9rem;
+          font-weight: $text-medium;
+        }
+      }
+    }
+  }
+}
