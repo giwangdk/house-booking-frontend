@@ -17,15 +17,24 @@ const Home = (): JSX.Element => {
     page: 1,
   });
   const val = useDebounce(value.searchBy, 500);
-  const checkinDate = useDebounce(moment(checkin_date).toString(), 1000);
-  const checkoutDate = useDebounce(checkout_date, 1000);
+  const checkinDate = useDebounce(
+    moment(checkin_date).format('YYYY-MM-DD'),
+    1000,
+  );
+  const checkoutDate = useDebounce(
+    moment(checkout_date).format('YYYY-MM-DD'),
+    1000,
+  );
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });
   };
   const { data, isLoading } = useQuery<IHouseResponse>(
     ['getHouses', val, checkinDate, checkoutDate],
-    () => getHouses(`searchBy=${val}`).then((res) => res.data),
+    () =>
+      getHouses(
+        `searchBy=${val}&checkin_date=${checkinDate}&checkout_date=${checkoutDate}`,
+      ).then((res) => res.data),
     {
       enabled: Boolean([val, checkinDate, checkoutDate]),
     },

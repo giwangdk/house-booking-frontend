@@ -7,13 +7,18 @@ import { DetailHouseProps } from '../../molecules/interface';
 import style from './index.module.scss';
 import { GiFamilyHouse } from 'react-icons/gi';
 import CardHotel from './CardHotel';
+import useAuth from '../../../hooks/useAuth';
+import useForm from '../CardFormBooking/useForm';
 
 const CardDetailBooking: React.FC<DetailHouseProps> = ({
   house,
   currentPrice,
+  totalPrice,
+  isReqPickup,
+  pickupPrice,
 }) => {
-  const { checkin_date, checkout_date, setCheckinDate, setCheckoutDate } =
-    useContext(DateContext);
+  const { checkin_date, checkout_date } = useContext(DateContext);
+  const { user } = useAuth();
 
   return (
     <Card className={style.card__detail_booking}>
@@ -31,7 +36,37 @@ const CardDetailBooking: React.FC<DetailHouseProps> = ({
           <p>{moment(checkout_date).format('DD MMMM YYYY')}</p>
         </div>
       </div>
-      <CardHotel house={house} currentPrice={currentPrice} />
+      <CardHotel house={house} isReqPickup={isReqPickup} />
+      <div className={style.card__detail__booking__price}>
+        <p>
+          Rp. {currentPrice as number} x
+          <span> {moment(checkout_date).diff(checkin_date, 'days')} Night</span>
+        </p>
+        <p>
+          Rp.
+          {(currentPrice as number) *
+            moment(checkout_date).diff(checkin_date, 'days')}
+        </p>
+      </div>
+
+      {isReqPickup && (
+        <div className={style.card__detail__booking__price}>
+          <p>Pickup price </p>
+          <p>
+            Rp.
+            {pickupPrice}
+          </p>
+        </div>
+      )}
+
+      <div className={style.card__detail__booking__price}>
+        <p>Total Price</p>
+        <p>
+          Rp.{' '}
+          {(totalPrice as number) *
+            moment(checkout_date).diff(checkin_date, 'days')}
+        </p>
+      </div>
     </Card>
   );
 };

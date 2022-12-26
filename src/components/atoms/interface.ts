@@ -23,11 +23,11 @@ export interface ErrorProps {
 }
 
 export interface InputProps {
-  type: 'text' | 'number' | 'email' | 'password';
+  type: 'text' | 'number' | 'email' | 'password' | 'radio';
   name: string;
   errors?: string | null;
   placeholder?: string;
-  value: string | number | undefined;
+  value?: string | number | undefined;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }

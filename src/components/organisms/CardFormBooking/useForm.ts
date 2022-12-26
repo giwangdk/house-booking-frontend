@@ -15,7 +15,7 @@ import useAuth from '../../../hooks/useAuth';
 
 function useForm(
   validateInfo: (values: BookingProps) => BookingProps,
-  currentPrice: number,
+  totalPrice: number,
 ): FormReturnBooking<BookingProps> {
   const [values, setValues] = useState<BookingProps>({
     name: '',
@@ -47,7 +47,6 @@ function useForm(
 
   const handleChangeDropdown = (e: any) => {
     setCity(e.value);
-    console.log(city);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -61,8 +60,7 @@ function useForm(
       city_id: city,
       check_in: formattedCheckInDate,
       check_out: formattedCheckOutDate,
-      total_price:
-        currentPrice * moment(checkout_date).diff(checkin_date, 'days'),
+      total_price: totalPrice,
       house_id: parseInt(id as string),
     };
 

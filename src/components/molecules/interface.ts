@@ -46,6 +46,18 @@ export interface CalendarProps {
 export interface DetailHouseProps {
   house: IHouse;
   currentPrice?: number | null;
+  totalPrice?: number | null;
+  isReqPickup?: boolean;
+  pickupPrice?: number | null;
+}
+
+export interface FormBookingProps {
+  currentPrice?: number | null;
+  house?: IHouse;
+  totalPrice?: number | null;
+  isReqPickup: boolean;
+  pickupPrice?: number | null;
+  handlePickupPrice?: (val: number, isPickup: boolean) => void;
 }
 
 export interface CarouselProps {
@@ -59,4 +71,19 @@ export interface InputDateProps extends ReactDatePickerProps {
 export interface SearchBarProps {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
+}
+
+export interface InputRadioProps {
+  isPickup?: boolean;
+  handlePickup?: (e: SyntheticEvent) => void;
+  label?: string;
+  onClick?: () => void;
+}
+
+export interface InputPickupProps {
+  house?: IHouse;
+  city?: number;
+  pickupPrice?: number | null;
+  isReqPickup?: boolean;
+  handlePickupPrice: (val: number, isPickup: boolean) => void;
 }

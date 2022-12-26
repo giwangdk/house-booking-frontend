@@ -13,15 +13,31 @@ import style from './index.module.scss';
 const Booking = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
-  const [currentPrice, setCurrentPrice] = useState(null);
+  const [currentPrice, setCurrentPrice] = useState<number | undefined>();
+  const [isReqPickup, setIsReqPickup] = useState<boolean>(false);
+  const [pickupPrice, setPickupPrice] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(
+    (currentPrice as number) + pickupPrice,
+  );
 
   const { data } = useQuery<IHouseDetailResponse>('get-house-by-id', () =>
     getHouseById(id as string).then((res) => res.data),
   );
+
+  const handlePickupPrice = (value: number, isPickup: boolean) => {
+    setIsReqPickup(isPickup);
+    setPickupPrice(value);
+    setTotalPrice((currentPrice as number) + value);
+  };
+
   useEffect(() => {
     sessionStorage.setItem('price', JSON.stringify(data?.data?.price));
     const price = sessionStorage.getItem('price');
-    setCurrentPrice(JSON.parse(price as string));
+    if (price !== undefined) {
+      setCurrentPrice(JSON.parse(price as string));
+      setTotalPrice(JSON.parse(price as string));
+    }
+    setCurrentPrice(data?.data?.price as number);
   }, []);
 
   useEffect(() => {
@@ -38,10 +54,19 @@ const Booking = (): JSX.Element => {
   return (
     <div className={style.booking}>
       <Container className={style.booking__container}>
-        <CardFormBooking currentPrice={currentPrice} />
+        <CardFormBooking
+          currentPrice={currentPrice as number}
+          totalPrice={totalPrice}
+          isReqPickup={isReqPickup}
+          handlePickupPrice={handlePickupPrice}
+          pickupPrice={pickupPrice}
+        />
         <CardDetailBooking
           house={data?.data as IHouse}
+          pickupPrice={pickupPrice}
           currentPrice={currentPrice}
+          totalPrice={totalPrice}
+          isReqPickup={isReqPickup}
         />
       </Container>
     </div>

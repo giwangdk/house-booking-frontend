@@ -1,0 +1,32 @@
+@import '../../../styles//variables.scss';
+.input__pickup {
+  background-color: $secondary-light;
+  padding: 0.8rem 1rem;
+  h5 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  margin: 1rem 0;
+  &__wrapper {
+    display: flex;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    background-color: $tertiary-light;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: $tertiary;
+      color: white;
+    }
+
+    &__active {
+      background-color: $tertiary;
+      color: white;
+    }
+  }
+}

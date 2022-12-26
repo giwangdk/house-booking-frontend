@@ -8,6 +8,7 @@ import NavProfile from './NavProfile';
 import InputDate from './InputDate';
 import SearchAndDateBar from './SearchAndDateBar';
 import CarouselPhoto from './CarouselPhoto';
+import InputPickup from './InputPickup';
 
 export {
   Dropdown,
@@ -20,4 +21,5 @@ export {
   InputDate,
   SearchAndDateBar,
   CarouselPhoto,
+  InputPickup,
 };

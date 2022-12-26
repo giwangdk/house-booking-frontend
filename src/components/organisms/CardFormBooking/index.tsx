@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { ICityResponse } from '../../../helpers/types';
@@ -7,15 +7,19 @@ import useAuth from '../../../hooks/useAuth';
 import { RootState } from '../../../redux/store';
 import { getCities } from '../../../services/service';
 import { Button, Error } from '../../atoms';
-import { Card, Dropdown, InputLabel } from '../../molecules';
+import { Card, Dropdown, InputLabel, InputPickup } from '../../molecules';
+import { DetailHouseProps, FormBookingProps } from '../../molecules/interface';
 import style from './index.module.scss';
 import useForm from './useForm';
 import validateInfo from './validate';
 
-const CardFormBooking = ({
+const CardFormBooking: React.FC<FormBookingProps> = ({
+  house,
   currentPrice,
-}: {
-  currentPrice: number | null;
+  totalPrice,
+  pickupPrice,
+  isReqPickup,
+  handlePickupPrice,
 }): JSX.Element => {
   const {
     values,
@@ -26,8 +30,13 @@ const CardFormBooking = ({
     setValues,
     setCity,
     city,
-  } = useForm(validateInfo, currentPrice as number);
+  } = useForm(validateInfo, totalPrice as number);
+  const [selectedDrink, setSelectedDrink] = useState<string>();
 
+  // This function will be triggered when a radio button is selected
+  const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedDrink(event.target.value);
+  };
   const { isLoading } = useSelector((state: RootState) => state.auth);
   const { data } = useQuery<ICityResponse>('get-cities', () =>
     getCities().then((res) => res.data),
@@ -79,6 +88,15 @@ const CardFormBooking = ({
           values={options as any}
           value={city}
           onChange={handleChangeDropdown}
+        />
+        <InputPickup
+          pickupPrice={pickupPrice}
+          handlePickupPrice={
+            handlePickupPrice as (val: number, isPickup: boolean) => void
+          }
+          isReqPickup={isReqPickup}
+          house={house}
+          city={city}
         />
         <Button type="submit" loading={isLoading}>
           Submit

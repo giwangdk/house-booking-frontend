@@ -22,23 +22,23 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: 'house/:id',
+        element: <HouseDetail />,
+      },
+      {
+        path: 'house-book/:id',
+        element: <Booking />,
+      },
+      {
         element: <ProtectedPage />,
         children: [
           {
             path: '/profile',
             element: <Profile />,
-          },
-          {
-            path: '/',
-            element: <Home />,
-          },
-          {
-            path: 'house/:id',
-            element: <HouseDetail />,
-          },
-          {
-            path: 'house-book/:id',
-            element: <Booking />,
           },
         ],
       },
