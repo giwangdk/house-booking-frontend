@@ -1,0 +1,75 @@
+@import '../../../styles/variables.scss';
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.modal,
+.show {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  transition: background-color 0.5s ease-in;
+  animation: fadein 0.5s;
+
+  &__main {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background: #ffffff;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    width: 488px;
+    height: 597px;
+    margin: 10rem 0;
+    padding: 2.5rem;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .button {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+
+      button {
+        max-width: min-content;
+      }
+    }
+
+    &__success {
+      text-align: center;
+      font-size: 4rem;
+      color: #2dc071;
+
+      p {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        font-weight: $montserrat-bold;
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+  animation: fadeout 0.5s;
+}

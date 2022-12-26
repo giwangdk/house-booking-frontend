@@ -87,3 +87,11 @@ export interface InputPickupProps {
   isReqPickup?: boolean;
   handlePickupPrice: (val: number, isPickup: boolean) => void;
 }
+
+export interface ModalProps {
+  children?: React.ReactNode;
+  handleClose: () => void;
+  show: boolean;
+  type?: string;
+  ComponentToPrint: JSX.Element;
+}
