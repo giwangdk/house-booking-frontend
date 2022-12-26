@@ -43,6 +43,13 @@ const postWithoutHeader =
     });
   };
 
+const getWithoutHeader = (api: string) => (params?: string) => {
+  return axios(api, {
+    method: 'GET',
+    params,
+  });
+};
+
 const get = (api: string) => (params?: string) => {
   return AxiosInstance(api, {
     method: 'GET',
@@ -74,4 +81,4 @@ const put =
       params,
     });
   };
-export { postWithoutHeader, get, getWithSlug, post, put };
+export { postWithoutHeader, get, getWithSlug, post, put, getWithoutHeader };
