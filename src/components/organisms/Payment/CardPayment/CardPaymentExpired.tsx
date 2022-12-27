@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { CardPaymentProps } from '../../pages/interface';
+import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 
 const CardPaymentExpired: React.FC<CardPaymentProps> = ({

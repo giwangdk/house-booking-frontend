@@ -7,11 +7,11 @@ import CardHouse from '../molecules/CardHouse';
 import CardHouseProfile from './CardHouseProfile';
 import CardHouseDetail from './CardHouseDetail';
 import CardDetailBooking from './Booking/CardDetailBooking';
-import CardPayment from './CardPayment';
-import CardPaymentDetail from './CardPaymentDetail';
+import CardPayment from './Payment/CardPayment';
 
 export * from './Profile';
 export * from './Booking';
+export * from './Payment';
 
 export {
   CardLogin,
@@ -24,5 +24,4 @@ export {
   CardHouseDetail,
   CardDetailBooking,
   CardPayment,
-  CardPaymentDetail,
 };

@@ -1,8 +1,6 @@
 import React from 'react';
-import useAuth from '../../../hooks/useAuth';
-import { Button } from '../../atoms';
-import { Card, InputUpload } from '../../molecules';
-import { CardPaymentProps } from '../../pages/interface';
+import useAuth from '../../../../hooks/useAuth';
+import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 
 const CardHowToPay: React.FC<CardPaymentProps> = () => {

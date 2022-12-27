@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React from 'react';
-import { Card } from '../../molecules';
-import { CardPaymentProps } from '../../pages/interface';
+import { Card } from '../../../molecules';
+import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 
 const CardPaymentDetail: React.FC<CardPaymentProps> = ({

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import useAuth from '../../../hooks/useAuth';
-import { submitTransaction } from '../../../services/service';
-import { Button } from '../../atoms';
-import { InputUpload } from '../../molecules';
-import { CardPaymentProps } from '../../pages/interface';
+import useAuth from '../../../../hooks/useAuth';
+import { submitTransaction } from '../../../../services/service';
+import { Button } from '../../../atoms';
+import { InputUpload } from '../../../molecules';
+import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 import ModalSuccessPayment from './ModalSuccessPayment';
 

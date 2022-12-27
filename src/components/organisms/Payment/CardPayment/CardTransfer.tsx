@@ -1,6 +1,6 @@
 import React from 'react';
-import useAuth from '../../../hooks/useAuth';
-import { CardPaymentProps } from '../../pages/interface';
+import useAuth from '../../../../hooks/useAuth';
+import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 
 const CardTransfer: React.FC<CardPaymentProps> = ({

@@ -1,8 +1,6 @@
 import React from 'react';
-import { IReservation } from '../../../helpers/types';
-import useAuth from '../../../hooks/useAuth';
-import { Card } from '../../molecules';
-import { CardPaymentProps } from '../../pages/interface';
+import { Card } from '../../../molecules';
+import { CardPaymentProps } from '../../../pages/interface';
 import CardHowToPay from './CardHowToPay';
 import CardPay from './CardPay';
 import CardPaymentExpired from './CardPaymentExpired';
