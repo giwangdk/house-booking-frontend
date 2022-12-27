@@ -2,13 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { ICityResponse } from '../../../helpers/types';
-import useAuth from '../../../hooks/useAuth';
-import { RootState } from '../../../redux/store';
-import { getCities } from '../../../services/service';
-import { Button, Error } from '../../atoms';
-import { Card, Dropdown, InputLabel, InputPickup } from '../../molecules';
-import { DetailHouseProps, FormBookingProps } from '../../molecules/interface';
+import { ICityResponse } from '../../../../helpers/types';
+import useAuth from '../../../../hooks/useAuth';
+import { RootState } from '../../../../redux/store';
+import { getCities } from '../../../../services/service';
+import { Button, Error } from '../../../atoms';
+import { Card, Dropdown, InputLabel, InputPickup } from '../../../molecules';
+import {
+  DetailHouseProps,
+  FormBookingProps,
+} from '../../../molecules/interface';
 import style from './index.module.scss';
 import useForm from './useForm';
 import validateInfo from './validate';
@@ -42,8 +45,7 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
   }));
 
   const { user } = useAuth();
-  console.log("city", city);
-  
+  console.log('city', city);
 
   useEffect(() => {
     if (user) {

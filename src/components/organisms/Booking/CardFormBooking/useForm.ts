@@ -4,15 +4,18 @@ import {
   BookingProps,
   ErrorBooking,
   FormReturnBooking,
-} from '../../../helpers/types/rent.interface';
-import { DateContext } from '../../../context/date-context';
+} from '../../../../helpers/types/rent.interface';
+import { DateContext } from '../../../../context/date-context';
 import moment from 'moment';
-import { getUserDetails, submitReservation } from '../../../services/service';
+import {
+  getUserDetails,
+  submitReservation,
+} from '../../../../services/service';
 import { useNavigate, useParams } from 'react-router-dom';
-import { IReservation } from '../../../helpers/types';
+import { IReservation } from '../../../../helpers/types';
 import { useMutation, useQuery } from 'react-query';
-import useAuth from '../../../hooks/useAuth';
-import { setUser } from '../../../redux/authenticationSlice';
+import useAuth from '../../../../hooks/useAuth';
+import { setUser } from '../../../../redux/authenticationSlice';
 import { useDispatch } from 'react-redux';
 
 function useForm(

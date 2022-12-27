@@ -1,9 +1,9 @@
 import moment from 'moment';
 import React, { useContext, useEffect, useState } from 'react';
-import { DateContext } from '../../../context/date-context';
-import { Button } from '../../atoms';
-import { Card, InputDate } from '../../molecules';
-import { DetailHouseProps } from '../../molecules/interface';
+import { DateContext } from '../../../../context/date-context';
+import { Button } from '../../../atoms';
+import { Card, InputDate } from '../../../molecules';
+import { DetailHouseProps } from '../../../molecules/interface';
 import style from './index.module.scss';
 import { GiFamilyHouse } from 'react-icons/gi';
 import CardHotel from './CardHotel';

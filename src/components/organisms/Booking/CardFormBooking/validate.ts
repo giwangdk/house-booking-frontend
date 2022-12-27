@@ -1,13 +1,12 @@
-import { ErrorRegister, RegisterProps } from '../../../helpers/types';
 import {
   BookingProps,
   ErrorBooking,
-} from '../../../helpers/types/rent.interface';
+} from '../../../../helpers/types/rent.interface';
 
 export default function validateInfo(values: BookingProps): BookingProps {
   const errors: ErrorBooking = {
     name: '',
-    email: ''
+    email: '',
   };
 
   if (!values.name) {

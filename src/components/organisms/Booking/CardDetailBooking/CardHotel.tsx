@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DetailHouseProps } from '../../molecules/interface';
+import { DetailHouseProps } from '../../../molecules/interface';
 import style from './index.module.scss';
 
 const CardHotel: React.FC<DetailHouseProps> = ({ house }) => {
