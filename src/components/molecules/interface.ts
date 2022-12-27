@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react';
+import React, { SyntheticEvent } from 'react';
 import { ReactDatePickerProps } from 'react-datepicker';
 import {
   ActionMeta,
@@ -104,4 +104,15 @@ export interface MenuProfileProps {
   show: boolean;
   handleCloseMenu?: () => void;
   className?: string;
+}
+
+export interface MenuItemProps {
+  icon?: React.ReactNode;
+  path: string;
+  label: string;
+}
+export interface PaginationProps {
+  nPages: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
 }

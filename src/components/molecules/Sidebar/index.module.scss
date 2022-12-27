@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+.sidebar {
+  height: 100vh;
+  background-color: $primary-white;
+  max-width: 15vw;
+  padding: 2rem;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    p {
+      font-size: 1.5rem;
+      font-weight: $text-bold;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+}

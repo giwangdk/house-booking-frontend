@@ -12,6 +12,7 @@ import InputPickup from './InputPickup';
 import InputUpload from './InputUpload';
 import Modal from './Modal';
 import MenuProfile from './MenuProfile';
+import Sidebar from './Sidebar';
 
 export {
   Dropdown,
@@ -28,4 +29,5 @@ export {
   Modal,
   InputUpload,
   MenuProfile,
+  Sidebar,
 };

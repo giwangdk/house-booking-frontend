@@ -1,4 +1,4 @@
-import { ICity, IReservation } from '../../helpers/types';
+import { ICity, IHouse, IReservation, ITransaction } from '../../helpers/types';
 
 export interface AuthHeroProps {
   image?: string;
@@ -11,7 +11,8 @@ export interface ContainerProps {
 
 export interface TableProps {
   headers: string[];
-  isLoading: boolean;
+  isLoading?: boolean;
+  children: React.ReactNode;
 }
 export interface CardProfileProps {
   src?: string;
@@ -60,4 +61,9 @@ export interface ModalPaymentProps {
 export interface BecomeHostProps {
   handleCloseModal: () => void;
   show: boolean;
+}
+
+export interface TableHousesProps {
+  houses: IHouse[];
+  isLoading: boolean;
 }
