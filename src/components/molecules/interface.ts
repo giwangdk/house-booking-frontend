@@ -91,10 +91,17 @@ export interface InputPickupProps {
 export interface ModalProps {
   children?: React.ReactNode;
   show: boolean;
+  className?: string;
 }
 
 export interface InputUploadProps {
   name?: string;
   value?: string | Blob;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface MenuProfileProps {
+  show: boolean;
+  handleCloseMenu?: () => void;
+  className?: string;
 }

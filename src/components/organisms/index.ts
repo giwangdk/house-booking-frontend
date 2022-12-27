@@ -8,6 +8,7 @@ import CardHouseProfile from './CardHouseProfile';
 import CardHouseDetail from './CardHouseDetail';
 import CardDetailBooking from './Booking/CardDetailBooking';
 import CardPayment from './Payment/CardPayment';
+import BecomeHost from './BecomeHost';
 
 export * from './Profile';
 export * from './Booking';
@@ -24,4 +25,5 @@ export {
   CardHouseDetail,
   CardDetailBooking,
   CardPayment,
+  BecomeHost,
 };

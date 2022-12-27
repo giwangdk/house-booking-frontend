@@ -1,22 +1,24 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Logout } from '../../../redux/authenticationSlice';
 import { Button } from '../../atoms';
 import { Container } from '../../organisms';
+import MenuProfile from '../MenuProfile';
 import NavProfile from '../NavProfile';
 import style from './index.module.scss';
 
 const Navbar = (): JSX.Element => {
   const { isLoggedIn } = useAuth();
+  const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    Logout()(dispatch);
+  const handleShowMenu = () => {
+    setShowMenu(!showMenu);
   };
 
   const classActive = ({ isActive }: { isActive: boolean }) =>
@@ -52,7 +54,11 @@ const Navbar = (): JSX.Element => {
           ) : (
             <>
               <li className={style.list__item}>
-                <NavProfile />
+                <NavProfile onClick={handleShowMenu} />
+                <MenuProfile
+                  show={showMenu}
+                  className={style.list__item__menu}
+                />
               </li>
             </>
           )}

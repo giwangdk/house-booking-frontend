@@ -11,6 +11,7 @@ import CarouselPhoto from './CarouselPhoto';
 import InputPickup from './InputPickup';
 import InputUpload from './InputUpload';
 import Modal from './Modal';
+import MenuProfile from './MenuProfile';
 
 export {
   Dropdown,
@@ -26,4 +27,5 @@ export {
   InputPickup,
   Modal,
   InputUpload,
+  MenuProfile,
 };

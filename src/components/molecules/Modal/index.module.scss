@@ -39,15 +39,12 @@
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
     width: 488px;
-    height: 330px;
+    height: fit-content;
     margin: 10rem 0;
     padding: 2.5rem;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    
-
   }
 }
 

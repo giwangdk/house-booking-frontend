@@ -56,3 +56,8 @@ export interface ModalPaymentProps {
   show: boolean;
   reservation: IReservation;
 }
+
+export interface BecomeHostProps {
+  handleCloseModal: () => void;
+  show: boolean;
+}
