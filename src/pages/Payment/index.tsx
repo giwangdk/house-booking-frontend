@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
@@ -22,21 +23,21 @@ const Payment = (): JSX.Element => {
     getReservation().then((res: { data: any }) => res.data.data),
   );
 
-  console.log(data);
+  const timeout = moment(data?.expired).diff(moment(), 'minutes');
 
   return (
     <div className={style.payment}>
       <Header className={style.payment__header}>
-        <p>Selesaikan Pemesanan dalam : </p>
+        <p>Selesaikan Pemesanan dalam : {timeout} </p>
       </Header>
       <Container>
         <h4>Payment</h4>
         <div className={style.payment__wrapper}>
           <div className={style.payment__wrapper__left}>
-            <CardPayment />
+            <CardPayment reservation={data} />
           </div>
           <div className={style.payment__wrapper__right}>
-            <CardPaymentDetail />
+            <CardPaymentDetail reservation={data} />
           </div>
         </div>
       </Container>

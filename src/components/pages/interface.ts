@@ -1,4 +1,4 @@
-import { IHouse } from '../../helpers/types';
+import { IHouse, IReservation } from '../../helpers/types';
 
 export interface ListCardProps {
   data: IHouse[];
@@ -13,4 +13,8 @@ export interface ErrorTopup {
 
 export interface ModalTopupProps {
   show: boolean;
+}
+
+export interface CardPaymentProps {
+  reservation: IReservation;
 }

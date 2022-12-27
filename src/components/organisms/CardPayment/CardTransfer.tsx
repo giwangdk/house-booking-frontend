@@ -1,14 +1,17 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
+import { CardPaymentProps } from '../../pages/interface';
 import style from './index.module.scss';
 
-const CardTransfer = (): JSX.Element => {
+const CardTransfer: React.FC<CardPaymentProps> = ({
+  reservation,
+}): JSX.Element => {
   const { isLoggedIn } = useAuth();
   return (
     <div className={style.card__payment__transfer}>
       <h6>Please pay your transaction</h6>
       <div className={style.card__payment__content}>
-        {isLoggedIn && (
+        {!isLoggedIn && (
           <>
             <div className={style.card__payment__content__item}>
               <p>No Virtual Account</p>
@@ -20,7 +23,7 @@ const CardTransfer = (): JSX.Element => {
 
         <div className={style.card__payment__content__item}>
           <p>Total Price</p>
-          <p> Rp. 4453367558587574</p>
+          <p> Rp. {reservation?.total_price}</p>
         </div>
       </div>
     </div>

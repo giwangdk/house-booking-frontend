@@ -1,20 +1,21 @@
 import React from 'react';
+import { IReservation } from '../../../helpers/types';
 import useAuth from '../../../hooks/useAuth';
 import { Card } from '../../molecules';
+import { CardPaymentProps } from '../../pages/interface';
 import CardHowToPay from './CardHowToPay';
 import CardPay from './CardPay';
 import CardPaymentExpired from './CardPaymentExpired';
 import CardTransfer from './CardTransfer';
 import style from './index.module.scss';
 
-const CardPayment: React.FC = () => {
-  const { isLoggedIn } = useAuth();
+const CardPayment: React.FC<CardPaymentProps> = ({ reservation }) => {
   return (
     <Card className={style.card__payment}>
-      <CardPaymentExpired />
-      <CardTransfer />
-      <CardHowToPay />
-      <CardPay />
+      <CardPaymentExpired reservation={reservation} />
+      <CardTransfer reservation={reservation} />
+      <CardHowToPay reservation={reservation} />
+      <CardPay reservation={reservation} />
     </Card>
   );
 };

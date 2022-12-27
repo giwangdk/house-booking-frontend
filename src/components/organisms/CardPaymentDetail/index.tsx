@@ -1,24 +1,42 @@
+import moment from 'moment';
 import React from 'react';
 import { Card } from '../../molecules';
+import { CardPaymentProps } from '../../pages/interface';
 import style from './index.module.scss';
 
-const CardPaymentDetail = (): JSX.Element => {
+const CardPaymentDetail: React.FC<CardPaymentProps> = ({
+  reservation,
+}): JSX.Element => {
+  const formattedCheckin = moment(
+    moment(reservation?.check_in).toDate(),
+  ).format('DD MMM YYYY');
+  const formattedCheckout = moment(
+    moment(reservation?.check_out).toDate(),
+  ).format('DD MMM YYYY');
+
+  const nights = moment(reservation?.check_out).diff(
+    moment(reservation?.check_in),
+    'days',
+  );
+
+  console.log(formattedCheckin);
+
   return (
     <Card className={style.card__payment__detail}>
       <div className={style.card__payment__detail__item}>
         <h6>Booking ID</h6>
-        <p>123456789</p>
+        <p>{reservation?.booking_code}</p>
       </div>
       <div className={style.card__payment__detail__item}>
-        <h6>Hotel ALLLuUU</h6>
+        <h6>{reservation?.house?.name}</h6>
         <ul>
-          <li>Tuesdat, 12 Jan 2021</li>
-          <li>1 nights</li>
+          <li>{formattedCheckin}</li>
+          <li>{nights} nights</li>
         </ul>
       </div>
       <div className={style.card__payment__detail__item}>
         <h6>Guest</h6>
-        <p>Giwang</p>
+        <p>{reservation?.user?.fullname}</p>
       </div>
     </Card>
   );

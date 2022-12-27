@@ -62,8 +62,12 @@ export interface IReservation {
   fullname?: string;
   email?: string;
   city_id?: number | null;
+  expired?: string;
+  house?: IHouse;
   house_id?: number | null;
+  booking_code?: string;
   is_request_pickup?: boolean;
+  user?: IUser;
 }
 
 export interface ITransaction {

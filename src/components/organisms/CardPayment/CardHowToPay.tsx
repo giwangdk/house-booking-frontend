@@ -2,9 +2,10 @@ import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { Button } from '../../atoms';
 import { Card, InputUpload } from '../../molecules';
+import { CardPaymentProps } from '../../pages/interface';
 import style from './index.module.scss';
 
-const CardHowToPay: React.FC = () => {
+const CardHowToPay: React.FC<CardPaymentProps> = () => {
   const { isLoggedIn } = useAuth();
   return (
     <div className={style.card__payment__how}>
@@ -23,12 +24,6 @@ const CardHowToPay: React.FC = () => {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit.
         </li>
       </ul>
-      {!isLoggedIn && (
-        <div className={style.card__how__input}>
-          <h6>Upload your</h6>
-          <InputUpload />
-        </div>
-      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { ICity } from '../../helpers/types';
+import { ICity, IReservation } from '../../helpers/types';
 
 export interface AuthHeroProps {
   image?: string;
@@ -49,4 +49,10 @@ export interface FormTopupReturn<T, T2> {
   errors: T2 | undefined;
   errorsMsg: string | undefined;
   handleShowModal: () => void;
+}
+
+export interface ModalPaymentProps {
+  handleCloseModal: () => void;
+  show: boolean;
+  reservation: IReservation;
 }
