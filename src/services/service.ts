@@ -22,6 +22,7 @@ export const getHouseById = (id: string): Promise<any> =>
 export const getReservationByBookingCode = (bookingCode: string): any => {
   return getWithoutHeader(`${API_ACCOUNT}/reservation/${bookingCode}`);
 };
+export const getHousesHost = getWithSlug(`${API_ACCOUNT}/host/houses`);
 
 export const submitReservation = postWithoutHeader<IReservation>(
   `${API_ACCOUNT}/reservation`,

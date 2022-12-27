@@ -17,3 +17,13 @@ export interface ICityResponse {
 export interface IHouseDetailResponse {
   data: IHouse;
 }
+
+export interface IHousesHostResponse {
+  data: {
+    houses: IHouse[];
+    page: number;
+    limit: number;
+    total: number;
+  };
+  message: string;
+}
