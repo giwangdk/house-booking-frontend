@@ -1,6 +1,6 @@
 import React from 'react';
-import { CarouselPhoto } from '../../molecules';
-import { DetailHouseProps } from '../../molecules/interface';
+import { CarouselPhoto } from '../../../molecules';
+import { DetailHouseProps } from '../../../molecules/interface';
 import CardProfileRight from './CardProfileRight';
 import style from './index.module.scss';
 

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { Button } from '../../atoms';
-import { TableHousesProps } from '../interface';
+import { Link } from 'react-router-dom';
+import { Button } from '../../../atoms';
+import { TableHousesProps } from '../../interface';
 import style from './index.module.scss';
 
 const TableHouses: React.FC<TableHousesProps> = (props) => {
@@ -77,7 +78,9 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
           return (
             <tr key={datum?.id}>
               <td>{index + 1}</td>
-              <td>{datum?.name}</td>
+              <td>
+                <Link to={`/host/house/${datum?.id}`}>{datum?.name}</Link>
+              </td>
               <td>Rp. {datum?.price}</td>
               <td>{datum?.description}</td>
               <td>{datum?.location}</td>

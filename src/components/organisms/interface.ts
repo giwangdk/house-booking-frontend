@@ -1,4 +1,10 @@
-import { ICity, IHouse, IReservation, ITransaction } from '../../helpers/types';
+import {
+  ICity,
+  IHouse,
+  IHousePhoto,
+  IReservation,
+  ITransaction,
+} from '../../helpers/types';
 
 export interface AuthHeroProps {
   image?: string;
@@ -65,5 +71,10 @@ export interface BecomeHostProps {
 
 export interface TableHousesProps {
   houses: IHouse[];
+  isLoading: boolean;
+}
+
+export interface TableHousePhotos {
+  photos: IHousePhoto[];
   isLoading: boolean;
 }

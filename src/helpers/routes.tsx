@@ -12,6 +12,7 @@ const HouseDetail = lazy(() => import('../pages/HouseDetail'));
 const Booking = lazy(() => import('../pages/Booking'));
 const Payment = lazy(() => import('../pages/Payment'));
 const Houses = lazy(() => import('../pages/host/Houses'));
+const HouseDetailHost = lazy(() => import('../pages/host/Houses/Detail'));
 
 export const router = createBrowserRouter([
   {
@@ -63,8 +64,12 @@ export const router = createBrowserRouter([
             element: <AppHostLayout />,
             children: [
               {
-                path: '/host',
+                path: '/host/houses',
                 element: <Houses />,
+              },
+              {
+                path: '/host/house/:id',
+                element: <HouseDetailHost />,
               },
             ],
           },

@@ -23,8 +23,8 @@ export interface ErrorProps {
 }
 
 export interface InputProps {
-  type: 'text' | 'number' | 'email' | 'password' | 'radio' | 'file';
-  name: string;
+  type?: 'text' | 'number' | 'email' | 'password' | 'radio' | 'file';
+  name?: string;
   errors?: string | null;
   placeholder?: string;
   value?: string | number | undefined;
