@@ -1,9 +1,7 @@
 import CardLogin from './CardLogin';
 import CardRegister from './CardRegister';
 import Container from './Container';
-import CardProfile from './CardProfile';
-import CardWallet from './CardWallet';
-import CardDetailProfile from './CardDetailProfile';
+import CardWallet from './Profile/CardWallet';
 import SearchBar from './SearchBar';
 import CardHouse from '../molecules/CardHouse';
 import CardHouseProfile from './CardHouseProfile';
@@ -13,13 +11,13 @@ import CardFormBooking from './CardFormBooking';
 import CardPayment from './CardPayment';
 import CardPaymentDetail from './CardPaymentDetail';
 
+export * from './Profile';
+
 export {
   CardLogin,
   CardRegister,
   Container,
-  CardProfile,
   CardWallet,
-  CardDetailProfile,
   SearchBar,
   CardHouse,
   CardHouseProfile,

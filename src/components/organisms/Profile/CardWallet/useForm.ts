@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import { FormTopupReturn } from '../interface';
-import { ErrorTopup, TopupProps } from '../../pages/interface';
-import { submitTopup } from '../../../services/service';
+import { FormTopupReturn } from '../../interface';
+import { ErrorTopup, TopupProps } from '../../../pages/interface';
+import { submitTopup } from '../../../../services/service';
 import { useMutation } from 'react-query';
-import { queryClient } from '../../../helpers/queryClient';
+import { queryClient } from '../../../../helpers/queryClient';
 
 function useForm(
   validateInfo: (values: TopupProps) => ErrorTopup,
@@ -36,15 +36,14 @@ function useForm(
   };
 
   const handleCloseModal = () => {
-    console.log("wawwww",show);
-    
+    console.log('wawwww', show);
+
     setShow(false);
   };
 
   const handleShowModal = () => {
     setShow(true);
   };
-
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,13 +55,16 @@ function useForm(
     };
 
     if (Object.keys(errors?.amount || {}).length === 0 && isSubmitting) {
-      mutateAsync({amount: data.amount}, {
-        onSuccess: () => {
-          queryClient.invalidateQueries('get-user-wallet');
-          handleCloseModal();
-          toast.success('Topup Success');
+      mutateAsync(
+        { amount: data.amount },
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries('get-user-wallet');
+            handleCloseModal();
+            toast.success('Topup Success');
+          },
         },
-      });
+      );
     }
   };
 

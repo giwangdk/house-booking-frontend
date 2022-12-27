@@ -1,8 +1,8 @@
 import React from 'react';
-import useAuth from '../../../hooks/useAuth';
-import { Button } from '../../atoms';
-import { InputLabel } from '../../molecules';
-import { CardEditDetailProfileProps } from '../interface';
+import useAuth from '../../../../hooks/useAuth';
+import { Button } from '../../../atoms';
+import { InputLabel } from '../../../molecules';
+import { CardEditDetailProfileProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
 

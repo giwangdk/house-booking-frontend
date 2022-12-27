@@ -1,8 +1,8 @@
 import React from 'react';
-import useAuth from '../../../hooks/useAuth';
-import { Avatar } from '../../atoms';
-import { Card } from '../../molecules';
-import { CardDetailProfileProps } from '../interface';
+import useAuth from '../../../../hooks/useAuth';
+import { Avatar } from '../../../atoms';
+import { Card } from '../../../molecules';
+import { CardDetailProfileProps } from '../../interface';
 import style from './index.module.scss';
 
 const CardProfile: React.FC<CardDetailProfileProps> = () => {

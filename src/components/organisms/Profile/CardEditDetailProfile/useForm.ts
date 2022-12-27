@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setIsError, setIsLoading } from '../../../redux/authenticationSlice';
-import { useNavigate } from 'react-router-dom';
-import { submitRegister } from '../../../services/auth.service';
 import { toast } from 'react-toastify';
-import {
-  ErrorRegister,
-  FormReturnRegister,
-  RegisterProps,
-} from '../../../helpers/types';
+
 import {
   EditProfileProps,
-  ErrorEditProfile,
   FormReturnEditProfile,
-} from '../../../helpers/types/profile.interface';
-import useAuth from '../../../hooks/useAuth';
-import { EditUser } from '../../../services/service';
+} from '../../../../helpers/types/profile.interface';
+import useAuth from '../../../../hooks/useAuth';
+import { EditUser } from '../../../../services/service';
 import { useMutation } from 'react-query';
-import { queryClient } from '../../../helpers/queryClient';
+import { queryClient } from '../../../../helpers/queryClient';
 
 function useForm(
   handleCloseEdit: () => void,

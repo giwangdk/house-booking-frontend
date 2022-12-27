@@ -126,7 +126,7 @@ export const Login =
       .then((data) => {
         dispatch(setUser(data.data.data));
         toast.success('Login Successful');
-        navigate('/profile');
+        navigate(from);
       })
       .catch((error) => {
         const message =

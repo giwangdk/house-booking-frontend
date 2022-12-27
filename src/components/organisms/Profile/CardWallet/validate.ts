@@ -1,4 +1,4 @@
-import { ErrorTopup, TopupProps } from '../../pages/interface';
+import { ErrorTopup, TopupProps } from '../../../pages/interface';
 
 export default function validateInfo(values: TopupProps): ErrorTopup {
   const errors: ErrorTopup = {

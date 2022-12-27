@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardDetailProfileItemProps } from '../interface';
+import { CardDetailProfileItemProps } from '../../interface';
 import style from './index.module.scss';
 
 const CardDetailProfileItem: React.FC<CardDetailProfileItemProps> = ({

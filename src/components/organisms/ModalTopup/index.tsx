@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from '../../atoms';
 import { InputLabel, Modal } from '../../molecules';
 import { ModalTopupProps } from '../../pages/interface';
-import useForm from '../CardWallet/useForm';
-import validateInfo from '../CardWallet/validate';
+import useForm from '../Profile/CardWallet/useForm';
+import validateInfo from '../Profile/CardWallet/validate';
 import style from './index.module.scss';
 
 const ModalTopup: React.FC<ModalTopupProps> = ({ show }): JSX.Element => {

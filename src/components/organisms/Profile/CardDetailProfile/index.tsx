@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../../hooks/useAuth';
 import CardEditDetailProfile from '../CardEditDetailProfile';
 import CardDetailProfileItem from './CardDetailProfileItem';
 import style from './index.module.scss';
