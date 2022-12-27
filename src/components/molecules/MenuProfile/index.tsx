@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import { Logout } from '../../../redux/authenticationSlice';
 import { Button } from '../../atoms';
 import { BecomeHost } from '../../organisms';
@@ -15,6 +16,7 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
   show,
   className,
 }): JSX.Element => {
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
@@ -42,7 +44,9 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
         <li>
           <Link to="/profile"> MyProfile</Link>
         </li>
-        <li onClick={handleShowModal}>Become Host</li>
+        {user?.role !== 'host' && (
+          <li onClick={handleShowModal}>Become Host</li>
+        )}
         <li>
           <Button onClick={handleLogout}> Logout</Button>
         </li>

@@ -17,8 +17,8 @@ const BecomeHost: React.FC<BecomeHostProps> = ({
   const handleBecomeHost = () => {
     mutateAsync({
       onSuccess: () => {
-        handleCloseModal();
         toast.success('You are now a host! Upload your property now!');
+        handleCloseModal();
         queryClient.invalidateQueries('get-user-detail');
       },
     });
