@@ -38,3 +38,15 @@ export interface CardDetailProfileItemProps {
 export interface CardEditDetailProfileProps {
   handleCloseEdit: () => void;
 }
+
+export interface FormTopupReturn<T, T2> {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleCloseModal: () => void;
+  show: boolean;
+  isLoading: boolean;
+  values: T;
+  errors: T2 | undefined;
+  errorsMsg: string | undefined;
+  handleShowModal: () => void;
+}

@@ -65,3 +65,11 @@ export interface IReservation {
   house_id?: number | null;
   is_request_pickup?: boolean;
 }
+
+export interface ITransaction {
+  booking_code?: string;
+}
+
+export interface ITopup {
+  amount: number;
+}

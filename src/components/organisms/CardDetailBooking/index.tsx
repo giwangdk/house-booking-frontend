@@ -7,8 +7,6 @@ import { DetailHouseProps } from '../../molecules/interface';
 import style from './index.module.scss';
 import { GiFamilyHouse } from 'react-icons/gi';
 import CardHotel from './CardHotel';
-import useAuth from '../../../hooks/useAuth';
-import useForm from '../CardFormBooking/useForm';
 
 const CardDetailBooking: React.FC<DetailHouseProps> = ({
   house,
@@ -18,8 +16,6 @@ const CardDetailBooking: React.FC<DetailHouseProps> = ({
   pickupPrice,
 }) => {
   const { checkin_date, checkout_date } = useContext(DateContext);
-  const { user } = useAuth();
-
   return (
     <Card className={style.card__detail_booking}>
       <div className={style.card__detail__booking__header}>

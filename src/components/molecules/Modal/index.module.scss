@@ -28,44 +28,26 @@
   background: rgba(0, 0, 0, 0.6);
   transition: background-color 0.5s ease-in;
   animation: fadein 0.5s;
+  z-index: 100;
 
   &__main {
     position: fixed;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     background: #ffffff;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
     width: 488px;
-    height: 597px;
+    height: 330px;
     margin: 10rem 0;
     padding: 2.5rem;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    .button {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
+    
 
-      button {
-        max-width: min-content;
-      }
-    }
-
-    &__success {
-      text-align: center;
-      font-size: 4rem;
-      color: #2dc071;
-
-      p {
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        font-weight: $montserrat-bold;
-      }
-    }
   }
 }
 

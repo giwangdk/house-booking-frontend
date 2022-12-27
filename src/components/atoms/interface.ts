@@ -23,7 +23,7 @@ export interface ErrorProps {
 }
 
 export interface InputProps {
-  type: 'text' | 'number' | 'email' | 'password' | 'radio';
+  type: 'text' | 'number' | 'email' | 'password' | 'radio' | 'file';
   name: string;
   errors?: string | null;
   placeholder?: string;
@@ -37,7 +37,7 @@ export interface AvatarProps {
   className?: string;
 }
 
-export interface HeaderProps{
+export interface HeaderProps {
   className?: string;
   children: React.ReactNode;
 }

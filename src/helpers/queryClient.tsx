@@ -16,13 +16,13 @@ export const queryClient = new QueryClient({
     },
   }),
   mutationCache: new MutationCache({
-    onError: async (error: any) => {
-      if (error.response.status === 401) {
-        cookie.remove('token');
-        window.location.href = '/login';
-        toast.error(error.response.data.message);
-      }
-      toast.error(error.response.data.message);
-    },
+    // onError: async (error: any) => {
+    //   if (error.response.status === 401) {
+    //     cookie.remove('token');
+    //     window.location.href = '/login';
+    //     toast.error(error.response.data.message);
+    //   }
+    //   toast.error(error.response.data.message);
+    // },
   }),
 });

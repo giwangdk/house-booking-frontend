@@ -1,0 +1,18 @@
+@import "../../../styles/variables.scss";
+.modal__header{
+    h6{
+        font-weight: $text-bold;
+        font-size: 0.9rem;
+    }
+    display: grid;
+    grid-template-columns: 4fr 0.2fr;
+    border-bottom: 1px solid $primary-dark;
+    padding-bottom: 1rem;
+
+    &__button{
+        padding: 0.5rem 0.8rem;
+        display: block;
+        border-radius: 100%;
+        font-weight: $text-bold;
+    }
+}

@@ -20,20 +20,20 @@ AxiosInstance.interceptors.request.use(
   },
 );
 
-AxiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response?.status === 401) {
-      if (token) {
-        cookies.remove('token');
-        window.location.href = '/login';
-      }
-    }
-    return Promise.reject(error);
-  },
-);
+// AxiosInstance.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       if (token) {
+//         cookies.remove('token');
+//         window.location.href = '/login';
+//       }
+//     }
+//     return Promise.reject(error);
+//   },
+// );
 
 const postWithoutHeader =
   <T>(api: string) =>

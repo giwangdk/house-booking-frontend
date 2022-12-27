@@ -90,8 +90,5 @@ export interface InputPickupProps {
 
 export interface ModalProps {
   children?: React.ReactNode;
-  handleClose: () => void;
   show: boolean;
-  type?: string;
-  ComponentToPrint: JSX.Element;
 }
