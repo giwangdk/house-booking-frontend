@@ -11,7 +11,7 @@ import CardHouseDetail from './CardHouseDetail';
 import CardDetailBooking from './CardDetailBooking';
 import CardFormBooking from './CardFormBooking';
 import CardPayment from './CardPayment';
-import CardHowToPay from './CardHowToPay';
+import CardPaymentDetail from './CardPaymentDetail';
 
 export {
   CardLogin,
@@ -27,5 +27,5 @@ export {
   CardDetailBooking,
   CardFormBooking,
   CardPayment,
-  CardHowToPay,
+  CardPaymentDetail,
 };

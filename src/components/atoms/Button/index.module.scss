@@ -59,3 +59,22 @@
     }
   }
 }
+
+.tertiary {
+  background-color: $tertiary;
+
+  &:hover {
+    background-color: #0f3f5a;
+  }
+
+  &__outline {
+    background-color: transparent;
+    border: 1px solid $tertiary;
+    color: $tertiary;
+
+    &:hover {
+      background-color: $tertiary;
+      color: white;
+    }
+  }
+}
