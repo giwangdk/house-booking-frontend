@@ -1,10 +1,10 @@
 import moment from 'moment';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DateContext } from '../../../context/date-context';
-import { Button } from '../../atoms';
-import { Card, InputDate } from '../../molecules';
-import { DetailHouseProps } from '../../molecules/interface';
+import { DateContext } from '../../../../context/date-context';
+import { Button } from '../../../atoms';
+import { Card, InputDate } from '../../../molecules';
+import { DetailHouseProps } from '../../../molecules/interface';
 import style from './index.module.scss';
 
 const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {

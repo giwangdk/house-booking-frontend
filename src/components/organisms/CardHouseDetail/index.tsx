@@ -1,6 +1,6 @@
 import React from 'react';
 import { DetailHouseProps } from '../../molecules/interface';
-import CardReservation from '../CardResevation';
+import CardReservation from '../Booking/CardResevation';
 import style from './index.module.scss';
 
 const CardHouseDetail: React.FC<DetailHouseProps> = ({
