@@ -20,7 +20,6 @@ const EditHouseHostDetail: React.FC<ModalEditProps> = ({
     handleChangeDropdown,
     handleSubmit,
     values,
-    errors,
     city,
     setValues,
     setCity,

@@ -38,7 +38,9 @@ const HouseHostDetail: React.FC<DetailHouseProps> = ({ house }) => {
           <InputLabel label="Bathroom" value={house?.detail?.baths} disabled />
         </div>
       </div>
-      <Button onClick={handleShowModal}>Edit</Button>
+      <Button onClick={handleShowModal}>
+        {house?.detail?.id === 0 ? 'Add House Detail' : 'Edit House Detail'}
+      </Button>
       <EditHouseHostDetail
         show={show}
         house={house}

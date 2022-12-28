@@ -7,16 +7,10 @@ export interface EditHouseProfileProps {
   location?: string;
   city_id?: number;
 }
-export interface ErrorEditHouseProfile {
-  name: string;
-  price: string;
-  city: string;
-}
 export interface FormReturnEditHouseProfile<T> {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
-  errors: ErrorEditHouseProfile | undefined;
   setValues: React.Dispatch<React.SetStateAction<T>>;
   handleChangeDropdown: (
     newValue: SingleValue<string | number>,
@@ -25,4 +19,23 @@ export interface FormReturnEditHouseProfile<T> {
   setCity: React.Dispatch<React.SetStateAction<number | undefined>>;
   isLoading: boolean;
   city?: number;
+}
+
+export interface EditHouseDetailProps {
+  max_guest: number;
+  bedrooms: number;
+  baths: number;
+  beds: number;
+}
+export interface ErrorEditHouseDetail {
+  name: string;
+  price: string;
+  city: string;
+}
+export interface FormReturnEditHouseDetail<T> {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  values: T;
+  setValues: React.Dispatch<React.SetStateAction<T>>;
+  isLoading: boolean;
 }

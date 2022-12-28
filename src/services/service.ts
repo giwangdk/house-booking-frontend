@@ -34,9 +34,13 @@ export const submitTransaction = postWithoutHeader<ITransaction>(
 
 export const submitBecomeHost = post(`${API_ACCOUNT}/host`);
 export const submitAddHouse = post(`${API_ACCOUNT}/house`);
-export const submitAddHouseDetail = post(`${API_ACCOUNT}/house-detail/:id`);
+export const submitAddHouseDetail = (id: number): any => {
+  return post(`${API_ACCOUNT}/house-detail/${id}`);
+};
 export const submitEditHouse = (id: number): any => {
   return put(`${API_ACCOUNT}/house/${id}`);
 };
-export const submitEditHouseDetail = put(`${API_ACCOUNT}/house-detail/:id`);
+export const submitEditHouseDetail = (id: number): any => {
+  return put(`${API_ACCOUNT}/house-detail/${id}`);
+};
 export const submitAddHousePhoto = post(`${API_ACCOUNT}/house-photo/:id`);

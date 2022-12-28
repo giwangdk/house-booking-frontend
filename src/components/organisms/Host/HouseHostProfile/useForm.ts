@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
-import useAuth from '../../../../hooks/useAuth';
-import { EditUser, submitEditHouse } from '../../../../services/service';
+import { submitEditHouse } from '../../../../services/service';
 import { useMutation } from 'react-query';
 import { queryClient } from '../../../../helpers/queryClient';
 import {
@@ -15,7 +13,6 @@ function useForm(
   handleCloseEdit: () => void,
   house: IHouse,
 ): FormReturnEditHouseProfile<EditHouseProfileProps> {
-  const [errors, setErrors] = useState();
   const [city, setCity] = useState<number | undefined>(
     house?.city?.id as number | 0,
   );
@@ -70,7 +67,6 @@ function useForm(
     handleSubmit,
     setValues,
     values,
-    errors,
     city,
     isLoading,
     setCity,
