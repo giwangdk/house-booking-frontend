@@ -3,6 +3,7 @@
   &__header {
     display: flex;
     align-items: center;
+
     &__button {
       font-size: 2rem;
       color: $primary-light;
@@ -18,6 +19,10 @@
   &__content {
     display: flex;
     gap: 2rem;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   &__table {
     display: grid;
@@ -26,5 +31,9 @@
     font-size: 1.5rem;
     font-weight: $text-bold;
     margin: 2rem 0;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1.5fr 1fr;
+    }
   }
 }

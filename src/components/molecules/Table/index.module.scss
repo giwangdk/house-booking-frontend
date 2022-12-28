@@ -1,6 +1,7 @@
 @import '../../../styles//variables.scss';
 .table__container {
   border: 1px solid #ededed;
+  overflow: scroll;
   .table {
     width: 100%;
     border-spacing: 0;

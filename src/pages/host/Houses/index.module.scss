@@ -5,6 +5,10 @@
     display: grid;
     grid-template-columns: 5fr 1fr;
     align-items: center;
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
     h3 {
       font-size: 2.5rem;
       font-weight: $text-bold;
