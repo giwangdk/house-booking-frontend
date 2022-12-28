@@ -17,10 +17,10 @@ function useForm(
     house?.city?.id as number | 0,
   );
   const [values, setValues] = useState<EditHouseProfileProps>({
-    name: '',
-    price: 0,
-    description: '',
-    location: '',
+    name: house?.name as string | '',
+    price: house?.price as number | 0,
+    description: house?.description as string | '',
+    location: house?.location as string | '',
   });
   const dataEdit = {
     name: values.name,

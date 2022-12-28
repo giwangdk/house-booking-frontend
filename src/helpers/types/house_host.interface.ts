@@ -1,5 +1,33 @@
 import { ActionMeta, SingleValue } from 'react-select';
 
+export interface AddHouseProps {
+  name: string;
+  price: number | string;
+  description?: string;
+  location?: string;
+  city_id?: number | string;
+}
+export interface FormReturnAddHouseProfile<T> {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  values: T;
+  setValues: React.Dispatch<React.SetStateAction<T>>;
+  handleChangeDropdown: (
+    newValue: SingleValue<string | number>,
+    actionMeta: ActionMeta<string | number>,
+  ) => void;
+  setCity: React.Dispatch<React.SetStateAction<number | undefined>>;
+  isLoading: boolean;
+  city?: number;
+  errors: ErrorAddHouseProfile | undefined;
+}
+
+export interface ErrorAddHouseProfile {
+  name: string;
+  price: string;
+  city: string;
+}
+
 export interface EditHouseProfileProps {
   name: string;
   price: number;

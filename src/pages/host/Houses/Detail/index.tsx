@@ -8,6 +8,7 @@ import {
   HouseHostProfile,
   TableHousePhotos,
 } from '../../../../components/organisms/Host';
+import useForm from '../../../../components/organisms/Host/HouseHostDetail/useForm';
 
 import {
   IHouse,
@@ -22,7 +23,10 @@ const HostDetailHouse = (): JSX.Element => {
 
   const { data, isLoading } = useQuery<IHouseDetailResponse>(
     'get-house-by-id',
-    () => getHouseById(id as string).then((res) => res.data),
+    () =>
+      getHouseById(id as string).then((res) => {
+        return res.data;
+      }),
   );
   return (
     <div className={style.detail_page}>

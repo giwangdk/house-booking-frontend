@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 import useAuth from '../../../../hooks/useAuth';
 import {
-  EditUser,
   submitEditHouse,
   submitEditHouseDetail,
 } from '../../../../services/service';
@@ -17,13 +16,13 @@ import { IHouse } from '../../../../helpers/types';
 
 function useForm(
   handleCloseEdit: () => void,
-  house: IHouse,
+  house: IHouse | undefined,
 ): FormReturnEditHouseDetail<EditHouseDetailProps> {
   const [values, setValues] = useState<EditHouseDetailProps>({
-    max_guest: 0,
-    bedrooms: 0,
-    beds: 0,
-    baths: 0,
+    max_guest: (house?.detail?.max_guest as number) | 0,
+    bedrooms: (house?.detail?.bedrooms as number) | 0,
+    beds: (house?.detail?.beds as number) | 0,
+    baths: (house?.detail?.baths as number) | 0,
   });
   const dataEdit = {
     max_guest: values.max_guest,
@@ -31,6 +30,7 @@ function useForm(
     beds: values.beds,
     baths: values.baths,
   };
+
   const editHouse = submitEditHouseDetail(house?.detail?.id as number);
   const addHouseDetail = submitEditHouse(house?.id as number);
 

@@ -79,8 +79,12 @@ export interface TableHousePhotos {
   isLoading: boolean;
 }
 
-export interface ModalEditProps {
+export interface CardEditHouseProps {
+  handleClose: () => void;
+  house?: IHouse;
+}
+
+export interface ModalAddProps {
   handleCloseModal: () => void;
   show: boolean;
-  house: IHouse;
 }
