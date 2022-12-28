@@ -49,10 +49,8 @@
 }
 
 .host__layout {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-
   &__content {
+    margin-left: 15vw;
     padding: 2rem;
   }
 }

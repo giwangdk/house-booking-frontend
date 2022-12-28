@@ -25,13 +25,16 @@ const HostDetailHouse = (): JSX.Element => {
   );
   return (
     <div className={style.detail_page}>
-      <div className={style.detail_page__header}>
-        <h3 className={style.detail_page__header__title}>My House Detail</h3>
+      <div className={style.detail__page__header}>
+        <h3 className={style.detail__page__header__title}>
+          {data?.data?.name}
+        </h3>
       </div>
-      <div className={style.detail_page__content}>
+      <div className={style.detail__page__content}>
         <HouseHostProfile house={data?.data as IHouse} />
         <HouseHostDetail house={data?.data as IHouse} />
       </div>
+      <h5 className={style.detail__page__table}>House Photos</h5>
       <Table headers={['ID', 'Photo', 'Action']}>
         <TableHousePhotos
           photos={data?.data?.photos as IHousePhoto[]}

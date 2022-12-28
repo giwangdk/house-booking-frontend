@@ -1,9 +1,11 @@
 @import '../../../styles/variables.scss';
 .sidebar {
   height: 100vh;
-  background-color: $primary-white;
+  background-color: $secondary-light;
+  width: 100%;
   max-width: 15vw;
   padding: 2rem;
+  position: fixed;
 
   &__brand {
     display: flex;

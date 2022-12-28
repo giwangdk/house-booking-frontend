@@ -1,0 +1,19 @@
+@import '../../../../styles/variables.scss';
+.card__house__profile {
+  h5 {
+    font-size: 1.5rem;
+    font-weight: $text-bold;
+  }
+  hr {
+    margin: 2rem 0;
+  }
+
+  &__content {
+    &__item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 2.5rem;
+    }
+  }
+}

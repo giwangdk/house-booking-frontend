@@ -77,9 +77,10 @@ const TableHouseHostProfile: React.FC<TableHousePhotos> = (props) => {
           return (
             <tr key={datum?.id}>
               <td>{index + 1}</td>
-              <td>{datum?.photo}</td>
               <td>
-                <Button>Detail</Button>
+                <img src={datum?.photo} alt="" />
+              </td>
+              <td>
                 <Button>Delete</Button>
               </td>
             </tr>

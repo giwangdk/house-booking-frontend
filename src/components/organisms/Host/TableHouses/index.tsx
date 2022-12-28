@@ -86,7 +86,6 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
               <td>{datum?.location}</td>
               <td>{datum?.city.name}</td>
               <td>
-                <Button>Detail</Button>
                 <Button>Delete</Button>
               </td>
             </tr>
