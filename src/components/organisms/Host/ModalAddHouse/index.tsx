@@ -75,7 +75,9 @@ const ModalAddHouse: React.FC<ModalAddProps> = ({ show, handleCloseModal }) => {
           value={city}
           onChange={handleChangeDropdown}
         />
-        <Button loading={isLoading}>Submit</Button>
+        <Button loading={isLoading} type="submit">
+          Submit
+        </Button>
       </form>
     </Modal>
   );
