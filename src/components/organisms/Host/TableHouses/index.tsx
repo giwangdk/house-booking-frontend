@@ -1,13 +1,35 @@
 import moment from 'moment';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useMutation } from 'react-query';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { queryClient } from '../../../../helpers/queryClient';
+import { submitDeleteHouse } from '../../../../services/service';
 import { Button } from '../../../atoms';
 import { TableHousesProps } from '../../interface';
 import style from './index.module.scss';
 
 const TableHouses: React.FC<TableHousesProps> = (props) => {
   const { isLoading, houses } = props;
+
+  const deleteHouse = async (id: number) => {
+    console.log('hit me!');
+
+    submitDeleteHouse(id);
+  };
+
+  const { mutateAsync, isLoading: loadingDelete } = useMutation(deleteHouse);
+
+  const handleDeleteHouse = (id: number) => {
+    mutateAsync(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries('getHousesHost');
+        toast.success('Delete house success');
+      },
+    });
+  };
+
   return (
     <tbody className={style.table__body}>
       {isLoading && (
@@ -86,7 +108,14 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
               <td>{datum?.location}</td>
               <td>{datum?.city.name}</td>
               <td>
-                <Button>Delete</Button>
+                <Button
+                  onClick={() => {
+                    handleDeleteHouse(datum.id as number);
+                  }}
+                  loading={loadingDelete}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           );

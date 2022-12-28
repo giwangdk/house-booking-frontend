@@ -81,4 +81,18 @@ const put =
       params,
     });
   };
-export { postWithoutHeader, get, getWithSlug, post, put, getWithoutHeader };
+
+const deleteItem = (api: string) => {
+  return AxiosInstance.delete(api, {
+    method: 'DELETE',
+  });
+};
+export {
+  postWithoutHeader,
+  get,
+  getWithSlug,
+  post,
+  put,
+  getWithoutHeader,
+  deleteItem,
+};

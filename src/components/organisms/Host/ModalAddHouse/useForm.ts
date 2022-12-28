@@ -17,6 +17,7 @@ function useForm(
 ): FormReturnAddHouseProfile<AddHouseProps> {
   const [city, setCity] = useState<number | undefined>(1);
   const [errors, setErrors] = useState<ErrorAddHouseProfile>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState<AddHouseProps>({
     name: '',
@@ -53,20 +54,25 @@ function useForm(
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors(validateInfo(values));
-    if (
-      Object.keys(errors?.name || {}).length === 0 &&
-      Object.keys(errors?.price || {}).length === 0 &&
-      Object.keys(errors?.city || {}).length === 0
-    ) {
-      mutateAsync(data, {
-        onSuccess: (res) => {
-          queryClient.invalidateQueries('getHousesHost');
-          handleCloseEdit();
-          navigate(`/host/house/${res?.data?.data?.id}`);
-          toast.success('Add House Success');
-        },
-      });
-    }
+    setIsSubmitting(true);
+    mutateAsync(data, {
+      onSuccess: (res) => {
+        queryClient.invalidateQueries('getHousesHost');
+        handleCloseEdit();
+        navigate(`/host/house/${res?.data?.data?.id}`);
+        toast.success('Add House Success');
+        setValues({
+          name: '',
+          price: 0,
+          description: '',
+          location: '',
+        });
+        setCity(1);
+      },
+      onError: (err) => {
+        toast.error(err as string);
+      },
+    });
   };
 
   return {

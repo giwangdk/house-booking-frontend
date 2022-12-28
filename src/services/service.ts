@@ -7,6 +7,7 @@ import {
   post,
   getWithoutHeader,
   postWithoutHeader,
+  deleteItem,
 } from './config';
 
 const API_ACCOUNT = process.env.REACT_APP_ACCOUNT_SERVICES_URL;
@@ -39,6 +40,11 @@ export const submitAddHouseDetail = (id: number): any => {
 };
 export const submitEditHouse = (id: number): any => {
   return put(`${API_ACCOUNT}/house/${id}`);
+};
+export const submitDeleteHouse = (id: number): any => {
+  console.log('hahah');
+
+  return deleteItem(`${API_ACCOUNT}/house/${id}`);
 };
 export const submitEditHouseDetail = (id: number): any => {
   return put(`${API_ACCOUNT}/house-detail/${id}`);
