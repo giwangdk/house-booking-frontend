@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../../atoms';
 import { Card, InputLabel } from '../../../molecules';
 import { DetailHouseProps } from '../../../molecules/interface';
+import EditHouseHostDetail from './EditHouseHostDetail';
 import style from './index.module.scss';
 
 const HouseHostDetail: React.FC<DetailHouseProps> = ({ house }) => {
+  const [show, setShow] = useState(false);
+
+  const handleCloseModal = () => {
+    setShow(false);
+  };
+
+  const handleShowModal = () => {
+    setShow(true);
+  };
+
   return (
     <Card className={style.card__house__profile}>
       <h5>House Detail</h5>
@@ -27,7 +38,12 @@ const HouseHostDetail: React.FC<DetailHouseProps> = ({ house }) => {
           <InputLabel label="Bathroom" value={house?.detail?.baths} disabled />
         </div>
       </div>
-      <Button>Edit</Button>
+      <Button onClick={handleShowModal}>Edit</Button>
+      <EditHouseHostDetail
+        show={show}
+        house={house}
+        handleCloseModal={handleCloseModal}
+      />
     </Card>
   );
 };

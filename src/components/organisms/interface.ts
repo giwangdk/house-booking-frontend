@@ -78,3 +78,9 @@ export interface TableHousePhotos {
   photos: IHousePhoto[];
   isLoading: boolean;
 }
+
+export interface ModalEditProps {
+  handleCloseModal: () => void;
+  show: boolean;
+  house: IHouse;
+}

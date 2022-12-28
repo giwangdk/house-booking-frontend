@@ -1,7 +1,8 @@
 import React from 'react';
+import { FaArrowCircleLeft } from 'react-icons/fa';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
-import { Table } from '../../../../components';
+import { Link, useParams } from 'react-router-dom';
+import { Button, Table } from '../../../../components';
 import {
   HouseHostDetail,
   HouseHostProfile,
@@ -26,6 +27,9 @@ const HostDetailHouse = (): JSX.Element => {
   return (
     <div className={style.detail_page}>
       <div className={style.detail__page__header}>
+        <Link className={style.detail__page__header__button} to="/host/houses">
+          <FaArrowCircleLeft />
+        </Link>
         <h3 className={style.detail__page__header__title}>
           {data?.data?.name}
         </h3>
@@ -34,7 +38,10 @@ const HostDetailHouse = (): JSX.Element => {
         <HouseHostProfile house={data?.data as IHouse} />
         <HouseHostDetail house={data?.data as IHouse} />
       </div>
-      <h5 className={style.detail__page__table}>House Photos</h5>
+      <div className={style.detail__page__table}>
+        <h5>House Photos</h5>
+        <Button>Add Photo</Button>
+      </div>
       <Table headers={['ID', 'Photo', 'Action']}>
         <TableHousePhotos
           photos={data?.data?.photos as IHousePhoto[]}

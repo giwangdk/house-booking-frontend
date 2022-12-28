@@ -1,7 +1,15 @@
 @import '../../../../styles/variables.scss';
 .detail__page {
   &__header {
+    display: flex;
+    align-items: center;
+    &__button {
+      font-size: 2rem;
+      color: $primary-light;
+      padding: 0;
+    }
     h3 {
+      margin-left: 1rem;
       font-size: 2rem;
       font-weight: $text-bold;
     }
@@ -12,6 +20,9 @@
     gap: 2rem;
   }
   &__table {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    align-items: center;
     font-size: 1.5rem;
     font-weight: $text-bold;
     margin: 2rem 0;
