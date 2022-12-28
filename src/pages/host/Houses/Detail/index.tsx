@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { Link, useParams } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Button, Table } from '../../../../components';
 import {
   HouseHostDetail,
   HouseHostProfile,
+  ModalAddPhoto,
   TableHousePhotos,
 } from '../../../../components/organisms/Host';
 import useForm from '../../../../components/organisms/Host/HouseHostDetail/useForm';
@@ -28,6 +29,15 @@ const HostDetailHouse = (): JSX.Element => {
         return res.data;
       }),
   );
+  const [show, setShow] = useState(false);
+
+  const handleCloseModal = () => {
+    setShow(false);
+  };
+
+  const handleShowModal = () => {
+    setShow(true);
+  };
   return (
     <div className={style.detail_page}>
       <div className={style.detail__page__header}>
@@ -44,7 +54,7 @@ const HostDetailHouse = (): JSX.Element => {
       </div>
       <div className={style.detail__page__table}>
         <h5>House Photos</h5>
-        <Button>Add Photo</Button>
+        <Button onClick={handleShowModal}>Add Photo</Button>
       </div>
       <Table headers={['ID', 'Photo', 'Action']}>
         <TableHousePhotos
@@ -52,6 +62,11 @@ const HostDetailHouse = (): JSX.Element => {
           isLoading={isLoading}
         />
       </Table>
+      <ModalAddPhoto
+        show={show}
+        handleCloseModal={handleCloseModal}
+        house={data?.data as IHouse}
+      />
     </div>
   );
 };

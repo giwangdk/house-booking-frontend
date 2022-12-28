@@ -49,4 +49,6 @@ export const submitDeleteHouse = (id: number): any => {
 export const submitEditHouseDetail = (id: number): any => {
   return put(`${API_ACCOUNT}/house-detail/${id}`);
 };
-export const submitAddHousePhoto = post(`${API_ACCOUNT}/house-photo/:id`);
+export const submitAddHousePhoto = (id: number): any => {
+  return post(`${API_ACCOUNT}/house-photo/${id}`);
+};

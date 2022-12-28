@@ -3,6 +3,7 @@ import HouseHostDetail from './HouseHostDetail';
 import TableHousePhotos from './TableHouseHostPhotos';
 import TableHouses from './TableHouses';
 import ModalAddHouse from './ModalAddHouse';
+import ModalAddPhoto from './ModalAddPhoto';
 
 export {
   HouseHostProfile,
@@ -10,4 +11,5 @@ export {
   TableHouses,
   TableHousePhotos,
   ModalAddHouse,
+  ModalAddPhoto,
 };

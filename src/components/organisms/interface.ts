@@ -87,4 +87,5 @@ export interface CardEditHouseProps {
 export interface ModalAddProps {
   handleCloseModal: () => void;
   show: boolean;
+  house?: IHouse;
 }

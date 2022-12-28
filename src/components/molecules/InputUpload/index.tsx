@@ -6,7 +6,7 @@ import { InputUploadProps } from '../interface';
 const InputUpload: React.FC<InputUploadProps> = ({ onChange, value }) => {
   return (
     <div className="file-uploader">
-      <input type="file" onChange={onChange} value={value as string} />
+      <input type="file" onChange={onChange} value={value as string} required />
     </div>
   );
 };
