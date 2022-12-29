@@ -40,7 +40,7 @@ const HostDetailHouse = (): JSX.Element => {
     setShow(true);
   };
   return (
-    <div className={style.detail_page}>
+    <div className={style.detail__page}>
       <div className={style.detail__page__header}>
         <Link className={style.detail__page__header__button} to="/host/houses">
           <FaArrowCircleLeft />

@@ -30,7 +30,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
 
     submitPhoto.mutate(formData, {
       onSuccess: async () => {
-        await queryClient.invalidateQueries('getHousesHost');
+        await queryClient.invalidateQueries('get-house-by-id');
         toast.success('Add Photo Success');
         handleCloseModal();
       },

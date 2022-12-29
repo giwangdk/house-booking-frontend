@@ -1,5 +1,8 @@
 @import '../../../styles/variables.scss';
 .houses__page {
+  @media screen and (max-width: 768px) {
+    margin-top: 5rem;
+  }
   &__header {
     margin-bottom: 2.5rem;
     display: grid;

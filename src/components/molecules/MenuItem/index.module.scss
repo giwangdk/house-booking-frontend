@@ -1,7 +1,5 @@
 @import '../../../styles/variables.scss';
 .menu__item {
-  display: flex;
-  align-items: center;
   margin-bottom: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -13,9 +11,25 @@
   }
 
   a {
+    display: flex;
+    align-items: center;
     color: $primary-dark;
     margin-left: 1rem;
     font-weight: $text-bold;
     text-decoration: none;
+
+    @media screen {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    a {
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiFillHome } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import MenuItem from '../MenuItem';
 import style from './index.module.scss';
 
@@ -9,16 +10,15 @@ const menu = [
     label: 'My Houses',
     icon: <AiFillHome />,
   },
-  {},
 ];
 
 const Sidebar = (): JSX.Element => {
   return (
     <div className={style.sidebar}>
-      <div className={style.sidebar__brand}>
+      <Link to="/" className={style.sidebar__brand}>
         <p>DigiHouse</p>
-      </div>
-      <ul>
+      </Link>
+      <ul className={style.sidebar__menu}>
         {menu.map((item) => (
           <MenuItem
             key={item.path}
