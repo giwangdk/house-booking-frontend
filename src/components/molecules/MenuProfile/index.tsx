@@ -18,19 +18,12 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
 }): JSX.Element => {
   const { user } = useAuth();
   const dispatch = useDispatch();
-  const [showModal, setShowModal] = useState(false);
-
+  
   const handleLogout = () => {
     Logout()(dispatch);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
 
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
 
   if (!show) {
     return <></>;
@@ -44,14 +37,11 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
         <li>
           <Link to="/profile"> MyProfile</Link>
         </li>
-        {user?.role !== 'host' && user?.role !== 'admin' && (
-          <li onClick={handleShowModal}>Become Host</li>
-        )}
+
         <li>
           <Button onClick={handleLogout}> Logout</Button>
         </li>
       </ul>
-      <BecomeHost show={showModal} handleCloseModal={handleCloseModal} />
     </Card>
   );
 };

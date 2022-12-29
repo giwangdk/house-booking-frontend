@@ -2,13 +2,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
+import { Button } from '../../../atoms';
 import CardEditDetailProfile from '../CardEditDetailProfile';
+import CardEditPassword from '../CardEditPassword';
 import CardDetailProfileItem from './CardDetailProfileItem';
 import style from './index.module.scss';
 
 const CardDetailProfile: React.FC = () => {
   const { user } = useAuth();
   const [isEdit, setIsEdit] = useState(false);
+  const [isEditPassword, setIsEditPassword] = useState(false);
 
   console.log(user?.city);
 
@@ -38,6 +41,15 @@ const CardDetailProfile: React.FC = () => {
   const handleCloseEdit = () => {
     setIsEdit(false);
   };
+
+  const handleSetEditPassword = () => {
+    setIsEditPassword(true);
+  };
+
+  const handleCloseEditPassword = () => {
+    setIsEditPassword(false);
+  };
+
   return (
     <div className={style.card__detail}>
       <div className={style.card__detail__header}>
@@ -56,6 +68,13 @@ const CardDetailProfile: React.FC = () => {
         </div>
       ) : (
         <CardEditDetailProfile handleCloseEdit={handleCloseEdit} />
+      )}
+      {!isEditPassword ? (
+        <Button className={style.button} onClick={handleSetEditPassword}>
+          Change Password
+        </Button>
+      ) : (
+        <CardEditPassword handleCloseEdit={handleCloseEditPassword} />
       )}
     </div>
   );

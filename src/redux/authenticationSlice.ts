@@ -9,7 +9,7 @@ import { Dispatch } from 'react';
 import { submitLogin } from '../services/auth.service';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
-import { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AuthState, IGame, IUser, IWallet, LoginProps } from '../helpers/types';
 import { getUserDetails, getWalletUser } from '../services/service';
 
@@ -146,7 +146,6 @@ export const Logout =
   () =>
   (dispatch: Dispatch<AnyAction>): void => {
     cookies.remove('token', { path: '/' });
-
     toast.success('Logout Success');
     dispatch(setIsLoggedIn(false));
     dispatch(setUser(null));

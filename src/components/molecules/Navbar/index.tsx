@@ -1,13 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
-import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import { Logout, setUser } from '../../../redux/authenticationSlice';
-import { getUserDetails } from '../../../services/service';
-import { Button } from '../../atoms';
 import { Container } from '../../organisms';
 import MenuProfile from '../MenuProfile';
 import NavProfile from '../NavProfile';
@@ -16,16 +11,7 @@ import style from './index.module.scss';
 const Navbar = (): JSX.Element => {
   const { isLoggedIn } = useAuth();
   const [showMenu, setShowMenu] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  if (isLoggedIn) {
-    useQuery('get-user-detail', async () => {
-      await getUserDetails().then((res) => {
-        dispatch(setUser(res.data.data));
-      });
-    });
-  }
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);

@@ -60,17 +60,23 @@ const CardGame = (): JSX.Element => {
         <Button
           onClick={() => handleGuess('head')}
           variant={guess == 'head' ? 'secondary' : 'primary'}
+          disabled={chance == 0}
         >
           Head
         </Button>
         <Button
           onClick={() => handleGuess('hand')}
           variant={guess == 'hand' ? 'secondary' : 'primary'}
+          disabled={chance == 0}
         >
           Hand
         </Button>
       </div>
-      <Button onClick={handleStartGame} loading={isLoading}>
+      <Button
+        onClick={handleStartGame}
+        loading={isLoading}
+        disabled={chance == 0}
+      >
         Toss Coin
       </Button>
       <ModalCoin

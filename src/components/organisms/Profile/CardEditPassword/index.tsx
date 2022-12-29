@@ -6,7 +6,7 @@ import { CardEditDetailProfileProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
 
-const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
+const CardEditPassword: React.FC<CardEditDetailProfileProps> = ({
   handleCloseEdit,
 }) => {
   const { user } = useAuth();
@@ -15,25 +15,25 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
 
   return (
     <div className={style.card__detail}>
+      <h5>Edit Password</h5>
       <form className={style.card__register} onSubmit={handleSubmit}>
         <InputLabel
-          label="Full Name"
-          name="name"
-          type="text"
-          placeholder="Enter your Fullname"
-          value={values.fullname}
-          errors={errors?.fullname}
+          label="Password"
+          name="password"
+          type="password"
+          placeholder="Enter your old password"
+          value={values.password}
           onChange={handleChange}
-          message={errors?.fullname}
+          message={errors?.password}
         />
         <InputLabel
-          label="Address"
-          name="address"
-          type="text"
-          placeholder="Enter your Address"
-          value={values?.address}
+          label="New Password"
+          name="newPassword"
+          type="password"
+          placeholder="Enter your New password"
+          value={values.newPassword}
           onChange={handleChange}
-          message={errors?.address}
+          message={errors?.newPassword}
         />
         <Button variant="secondary" type="submit" loading={isLoading}>
           Submit
@@ -51,4 +51,4 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
   );
 };
 
-export default CardEditDetailProfile;
+export default CardEditPassword;

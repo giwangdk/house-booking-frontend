@@ -2,24 +2,29 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import {
+  ChangePasswordProps,
   EditProfileProps,
+  FormReturnChangePassword,
   FormReturnEditProfile,
 } from '../../../../helpers/types/profile.interface';
 import useAuth from '../../../../hooks/useAuth';
-import { EditUser } from '../../../../services/service';
+import { ChangePassword, EditUser } from '../../../../services/service';
 import { useMutation } from 'react-query';
 import { queryClient } from '../../../../helpers/queryClient';
+import { useDispatch } from 'react-redux';
+import { Logout } from '../../../../redux/authenticationSlice';
 
 function useForm(
   handleCloseEdit: () => void,
-): FormReturnEditProfile<EditProfileProps> {
+): FormReturnChangePassword<ChangePasswordProps> {
   const { user } = useAuth();
   const [errors, setErrors] = useState();
-  const [values, setValues] = useState<EditProfileProps>({
-    fullname: user?.fullname || '',
-    address: user?.address || '',
+  const [values, setValues] = useState<ChangePasswordProps>({
+    password: '',
+    newPassword: '',
   });
-  const { mutateAsync, isLoading } = useMutation(EditUser);
+  const dispatch = useDispatch();
+  const { mutateAsync, isLoading } = useMutation(ChangePassword);
 
   const handleChange = (
     e:
@@ -38,15 +43,16 @@ function useForm(
     e.preventDefault();
 
     const dataEdit = {
-      fullname: values.fullname,
-      address: values.address,
+      old_password: values.password,
+      new_password: values.password,
     };
 
     mutateAsync(dataEdit, {
       onSuccess: () => {
         queryClient.invalidateQueries('get-user-detail');
         handleCloseEdit();
-        toast.success('Edit Profile Success');
+        toast.success('Edit Password Success');
+        Logout()(dispatch);
       },
     });
   };

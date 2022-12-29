@@ -17,6 +17,7 @@ export const getWalletUser = get(`${API_ACCOUNT}/wallet`);
 export const getGameUser = get(`${API_ACCOUNT}/game`);
 export const getCities = get(`${API_ACCOUNT}/cities`);
 export const EditUser = put(`${API_ACCOUNT}/user`);
+export const ChangePassword = put(`${API_ACCOUNT}/change-password`);
 export const getHouses = getWithSlug(`${API_ACCOUNT}/houses`);
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
