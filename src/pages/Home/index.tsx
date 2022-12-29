@@ -1,5 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Container, ListCardHouse, SearchBar } from '../../components';
+import {
+  Container,
+  ListCardHouse,
+  Pagination,
+  SearchBar,
+} from '../../components';
 import style from './index.module.scss';
 import { useQuery } from 'react-query';
 import { IHouse } from '../../helpers/types';
@@ -12,10 +17,12 @@ import moment from 'moment';
 
 const Home = (): JSX.Element => {
   const { checkin_date, checkout_date } = useContext(DateContext);
+  const [page, setPage] = useState<number>(1);
   const [value, setValue] = useState({
     searchBy: '',
     page: 1,
   });
+  const [houses, setHouses] = useState<IHouse[]>([]);
   const val = useDebounce(value.searchBy, 500);
   const checkinDate = useDebounce(
     moment(checkin_date).format('YYYY-MM-DD'),
@@ -29,18 +36,26 @@ const Home = (): JSX.Element => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });
   };
+  const handlePagination = (page: number) => {
+    setPage(page);
+  };
   const { data, isLoading } = useQuery<IHouseResponse>(
-    ['getHouses', val, checkinDate, checkoutDate],
+    ['getHouses', val, checkinDate, checkoutDate, page],
     () =>
       getHouses(
-        `searchBy=${val}&checkin_date=${checkinDate}&checkout_date=${checkoutDate}`,
-      ).then((res) => res.data),
+        `searchBy=${val}&checkin_date=${checkinDate}&checkout_date=${checkoutDate}&page=${page}`,
+      ).then((res) => {
+        setHouses(res.data.houses);
+        return res.data;
+      }),
     {
       enabled: Boolean([val, checkinDate, checkoutDate]),
     },
   );
 
-  console.log(data);
+  const nPages = Math.ceil(
+    (data?.data.total as number) / (data?.data?.limit as number),
+  );
 
   return (
     <div className={style.home}>
@@ -48,6 +63,11 @@ const Home = (): JSX.Element => {
       <Container>
         {isLoading && <div>Loading...</div>}
         {<ListCardHouse data={data?.data?.houses as IHouse[]} />}
+        <Pagination
+          nPages={nPages}
+          currentPage={page as number}
+          setCurrentPage={handlePagination}
+        />
       </Container>
     </div>
   );

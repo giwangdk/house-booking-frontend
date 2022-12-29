@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 import CardHouse from '../molecules/CardHouse';
 import CardDetailBooking from '../pages/Booking/CardDetailBooking';
 import CardGame from './CardGame';
+import Pagination from './Pagination';
 
 export {
   CardLogin,
@@ -14,4 +15,5 @@ export {
   CardHouse,
   CardDetailBooking,
   CardGame,
+  Pagination,
 };
