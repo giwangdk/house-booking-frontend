@@ -1,0 +1,28 @@
+@import '../../../styles/variables.scss';
+.navbar__wrapper {
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  background-color: $primary-lighter;
+  border-spacing: 0;
+  margin: auto;
+  position: fixed;
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      font-size: 2rem;
+      height: 100%;
+      padding: 1.125rem 2rem;
+      &__link {
+        color: $secondary;
+      }
+    }
+  }
+}

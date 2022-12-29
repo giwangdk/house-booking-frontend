@@ -4,6 +4,12 @@
   padding: 2rem;
   justify-content: space-between;
   align-items: center;
-  height: 6rem;
+  height: auto;
   background-color: $primary-white;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+    flex-direction: column;
+    padding: 1rem;
+  }
 }

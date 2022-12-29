@@ -109,7 +109,7 @@ export interface MenuProfileProps {
 export interface MenuItemProps {
   icon?: React.ReactNode;
   path: string;
-  label: string;
+  label?: string;
 }
 export interface PaginationProps {
   nPages: number;

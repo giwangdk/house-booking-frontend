@@ -1,17 +1,14 @@
 .profile__page {
-  // background: rgb(255, 255, 255);
-  // background: linear-gradient(
-  //   0deg,
-  //   rgba(255, 255, 255, 0.6923144257703081) 0%,
-  //   rgba(255, 255, 255, 0.6923144257703081) 0%,
-  //   rgba(217, 213, 235, 1) 100%
-  // );
-
   &__content {
     padding-top: 5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    @media screen and (max-width: 768px) {
+      padding-top: 1rem;
+      margin-bottom: 5rem;
+    }
 
     &__left,
     &__right {

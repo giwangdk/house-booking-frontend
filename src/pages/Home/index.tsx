@@ -44,7 +44,6 @@ const Home = (): JSX.Element => {
 
   return (
     <div className={style.home}>
-      <div>Home</div>
       <SearchBar handleSearch={handleSearch} value={value.searchBy} />
       <Container>
         {isLoading && <div>Loading...</div>}

@@ -13,6 +13,7 @@ import InputUpload from './InputUpload';
 import Modal from './Modal';
 import MenuProfile from './MenuProfile';
 import Sidebar from './Sidebar';
+import NavbarMobile from './NavbarMobile';
 
 export {
   Dropdown,
@@ -30,4 +31,5 @@ export {
   InputUpload,
   MenuProfile,
   Sidebar,
+  NavbarMobile,
 };

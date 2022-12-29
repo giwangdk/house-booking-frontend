@@ -9,12 +9,16 @@
   align-items: center;
   background-color: #ffffff;
   margin: 0 auto;
-  width: 40vw;
+  min-width: 40vw;
 
   &__input {
     display: flex;
     gap: 1rem;
     width: 100%;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   &__button {
@@ -23,5 +27,11 @@
     padding: 0.5rem;
     font-size: 1.3rem;
     font-weight: $text-bold;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    border-radius: 1rem;
+    flex-direction: column;
   }
 }
