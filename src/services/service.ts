@@ -55,3 +55,5 @@ export const submitAddHousePhoto = (id: number): any => {
 export const submitDeleteHousePhoto = (id: number): any => {
   return deleteItem(`${API_ACCOUNT}/house-photo/${id}`);
 };
+
+export const submitGame = put(`${API_ACCOUNT}/game`);

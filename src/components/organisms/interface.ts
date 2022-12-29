@@ -94,3 +94,9 @@ export interface CoinProps {
   result: string;
   isLoading: boolean;
 }
+
+export interface ModalCoinProps {
+  handleCloseModal: () => void;
+  show: boolean;
+  isWin: boolean;
+}

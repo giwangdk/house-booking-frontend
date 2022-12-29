@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import { Logout } from '../../../redux/authenticationSlice';
+import { Logout, setUser } from '../../../redux/authenticationSlice';
+import { getUserDetails } from '../../../services/service';
 import { Button } from '../../atoms';
 import { Container } from '../../organisms';
 import MenuProfile from '../MenuProfile';
@@ -16,6 +18,14 @@ const Navbar = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  if (isLoggedIn) {
+    useQuery('get-user-detail', async () => {
+      await getUserDetails().then((res) => {
+        dispatch(setUser(res.data.data));
+      });
+    });
+  }
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -53,6 +63,12 @@ const Navbar = (): JSX.Element => {
             </>
           ) : (
             <>
+              <li className={style.list__item}>
+                <NavLink to="/game" className={classActive}>
+                  Games
+                </NavLink>
+              </li>
+
               <li className={style.list__item}>
                 <NavProfile onClick={handleShowMenu} />
                 <MenuProfile

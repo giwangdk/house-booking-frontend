@@ -13,6 +13,7 @@
   &__header {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
     gap: 1rem;
     h5 {
       font-size: 2rem;
@@ -53,6 +54,40 @@
   }
 
   &__play {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.modal__coin {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    h5 {
+      font-size: 2.5rem;
+      font-weight: $text-bold;
+    }
+
+    .win {
+      color: $success-secondary;
+    }
+    .lose {
+      color: $danger;
+    }
+    p {
+      font-size: 1.2rem;
+      font-weight: $text-medium;
+    }
+  }
+
+  &__button {
+    margin-top: 3rem;
     display: flex;
     gap: 1rem;
     width: 100%;

@@ -1,11 +1,19 @@
+import { totalmem } from 'os';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import useAuth from '../../../hooks/useAuth';
 import { Button } from '../../atoms';
 import { Card } from '../../molecules';
 import Coin from './Coin';
 import style from './index.module.scss';
+import ModalCoin from './ModalCoin';
 
 const CardGame = (): JSX.Element => {
+  const { game } = useAuth();
+
+  const [show, setShow] = useState(false);
   const [guess, setGuess] = useState<'head' | 'hand'>('head');
+  const [chance, setChance] = useState(game?.chance as number);
   const [result, setResult] = useState('head');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,18 +25,26 @@ const CardGame = (): JSX.Element => {
 
   const handleStartGame = () => {
     const random = Math.random() >= 0.5 ? 1 : 0;
-    console.log(res[random]);
+
+    if (chance == 0) {
+      toast.error('You have no chance left');
+      return;
+    }
 
     setIsLoading(true);
     setTimeout(() => {
       setResult(res[random]);
       setIsLoading(false);
       if (guess === result) {
-        console.log('You win');
+        setShow(true);
       } else {
-        console.log('You lose');
+        setShow(true);
       }
     }, 1000);
+  };
+
+  const handleCloseModal = () => {
+    setShow(false);
   };
 
   return (
@@ -37,6 +53,7 @@ const CardGame = (): JSX.Element => {
         <h5>Coin Toss Game</h5>
         <p>Head (or) Hand</p>
       </div>
+      <p>Your Chance : {chance}</p>
       <Coin result={result} isLoading={isLoading} />
       <div className={style.card__game__play}>
         <h6>Your guess:</h6>
@@ -56,6 +73,11 @@ const CardGame = (): JSX.Element => {
       <Button onClick={handleStartGame} loading={isLoading}>
         Toss Coin
       </Button>
+      <ModalCoin
+        show={show}
+        isWin={guess == result}
+        handleCloseModal={handleCloseModal}
+      />
     </Card>
   );
 };

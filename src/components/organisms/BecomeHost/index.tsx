@@ -1,7 +1,9 @@
 import React from 'react';
 import { useMutation } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { queryClient } from '../../../helpers/queryClient';
+import { Logout } from '../../../redux/authenticationSlice';
 import { submitBecomeHost } from '../../../services/service';
 import { Button } from '../../atoms';
 import { Modal } from '../../molecules';
@@ -13,13 +15,14 @@ const BecomeHost: React.FC<BecomeHostProps> = ({
   handleCloseModal,
 }): JSX.Element => {
   const { mutateAsync, isLoading } = useMutation(submitBecomeHost);
-
+  const dispatch = useDispatch();
   const handleBecomeHost = () => {
     mutateAsync({
       onSuccess: () => {
         toast.success('You are now a host! Upload your property now!');
         handleCloseModal();
         queryClient.invalidateQueries('get-user-detail');
+        Logout()(dispatch);
       },
     });
   };

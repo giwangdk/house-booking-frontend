@@ -44,7 +44,7 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
         <li>
           <Link to="/profile"> MyProfile</Link>
         </li>
-        {user?.role !== 'host' && (
+        {user?.role !== 'host' && user?.role !== 'admin' && (
           <li onClick={handleShowModal}>Become Host</li>
         )}
         <li>
