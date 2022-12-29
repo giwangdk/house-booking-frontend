@@ -6,9 +6,11 @@ import useForm from '../CardWallet/useForm';
 import validateInfo from '../CardWallet/validate';
 import style from './index.module.scss';
 
-const ModalTopup: React.FC<ModalTopupProps> = ({ show }): JSX.Element => {
-  const { values, handleChange, handleSubmit, errors, handleCloseModal } =
-    useForm(validateInfo);
+const ModalTopup: React.FC<ModalTopupProps> = ({
+  show,
+  handleCloseModal,
+}): JSX.Element => {
+  const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
   return (
     <Modal show={show}>
       <div className={style.modal__header}>

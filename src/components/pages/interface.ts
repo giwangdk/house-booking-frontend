@@ -13,6 +13,7 @@ export interface ErrorTopup {
 
 export interface ModalTopupProps {
   show: boolean;
+  handleCloseModal: () => void;
 }
 
 export interface CardPaymentProps {
@@ -88,4 +89,3 @@ export interface ModalAddProps {
   show: boolean;
   house?: IHouse;
 }
-

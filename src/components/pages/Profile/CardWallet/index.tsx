@@ -11,7 +11,7 @@ import useForm from './useForm';
 
 const CardWallet: React.FC<CardWalletProps> = () => {
   const { wallet } = useAuth();
-  const { handleShowModal, show } = useForm(validateInfo);
+  const { handleShowModal, show, handleCloseModal } = useForm(validateInfo);
 
   return (
     <Card className={style.card__wallet}>
@@ -35,7 +35,7 @@ const CardWallet: React.FC<CardWalletProps> = () => {
           <p>{wallet?.balance}</p>
         </div>
       </div>
-      <ModalTopup show={show} />
+      <ModalTopup show={show} handleCloseModal={handleCloseModal} />
     </Card>
   );
 };

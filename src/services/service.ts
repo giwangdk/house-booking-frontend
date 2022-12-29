@@ -33,6 +33,9 @@ export const submitTopup = post<ITopup>(`${API_ACCOUNT}/topup`);
 export const submitTransaction = postWithoutHeader<ITransaction>(
   `${API_ACCOUNT}/transaction`,
 );
+export const submitTransactionGuest = (bookingCode: string): any => {
+  return post(`${API_ACCOUNT}/guest/transaction/${bookingCode}`);
+};
 
 export const submitBecomeHost = post(`${API_ACCOUNT}/host`);
 export const submitAddHouse = post(`${API_ACCOUNT}/house`);

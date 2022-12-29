@@ -36,8 +36,6 @@ function useForm(
   };
 
   const handleCloseModal = () => {
-    console.log('wawwww', show);
-
     setShow(false);
   };
 

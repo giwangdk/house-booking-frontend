@@ -3,7 +3,10 @@ import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAuth from '../../../../hooks/useAuth';
-import { submitTransaction } from '../../../../services/service';
+import {
+  submitTransaction,
+  submitTransactionGuest,
+} from '../../../../services/service';
 import { Button } from '../../../atoms';
 import { InputUpload } from '../../../molecules';
 import { CardPaymentProps } from '../../../pages/interface';
@@ -17,6 +20,13 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
   const { mutateAsync, isLoading } = useMutation(submitTransaction);
   const navigate = useNavigate();
 
+  const submitTxGuest = submitTransactionGuest(
+    reservation?.booking_code as string,
+  );
+
+  const submitReqConfirmation = useMutation((data: FormData) =>
+    submitTxGuest(data),
+  );
   const data = {
     booking_code: reservation?.booking_code,
   };
@@ -36,18 +46,23 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
   };
 
   const handleSubmit = () => {
-    {
-      isLoggedIn &&
-        mutateAsync(data, {
-          onSuccess: () => {
-            toast.success('Payment Success');
-            handleShowModal();
-          },
-        });
-    }
-
     const formData = new FormData();
     formData.append('transfer_slip', image);
+    {
+      isLoggedIn
+        ? mutateAsync(data, {
+            onSuccess: () => {
+              toast.success('Payment Success');
+              handleShowModal();
+            },
+          })
+        : submitReqConfirmation.mutate(formData, {
+            onSuccess: () => {
+              toast.success('Your Payment is waiting for confirmation');
+              navigate('/');
+            },
+          });
+    }
   };
 
   return (
@@ -61,7 +76,7 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
         {!isLoggedIn && (
           <div className={style.card__payment__pay__input}>
             <p>Upload your</p>
-            <InputUpload value={image} onChange={handleChange} />
+            <InputUpload onChange={handleChange} />
           </div>
         )}
         <Button
