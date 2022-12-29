@@ -89,3 +89,8 @@ export interface ModalAddProps {
   show: boolean;
   house?: IHouse;
 }
+
+export interface CoinProps {
+  result: string;
+  isLoading: boolean;
+}

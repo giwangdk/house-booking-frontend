@@ -21,11 +21,13 @@ import style from './index.module.scss';
 
 const HostDetailHouse = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
+  const [house, setHouse] = useState<IHouse>({} as IHouse);
 
   const { data, isLoading } = useQuery<IHouseDetailResponse>(
     'get-house-by-id',
     () =>
       getHouseById(id as string).then((res) => {
+        setHouse(res.data.data);
         return res.data;
       }),
   );
@@ -49,8 +51,8 @@ const HostDetailHouse = (): JSX.Element => {
         </h3>
       </div>
       <div className={style.detail__page__content}>
-        <HouseHostProfile house={data?.data as IHouse} />
-        <HouseHostDetail house={data?.data as IHouse} />
+        <HouseHostProfile house={house} />
+        <HouseHostDetail house={house} />
       </div>
       <div className={style.detail__page__table}>
         <h5>House Photos</h5>
@@ -65,7 +67,7 @@ const HostDetailHouse = (): JSX.Element => {
       <ModalAddPhoto
         show={show}
         handleCloseModal={handleCloseModal}
-        house={data?.data as IHouse}
+        house={house}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import useAuth from '../../../../hooks/useAuth';
 import {
-  submitEditHouse,
+  submitAddHouseDetail,
   submitEditHouseDetail,
 } from '../../../../services/service';
 import { useMutation } from 'react-query';
@@ -32,10 +32,14 @@ function useForm(
   };
 
   const editHouse = submitEditHouseDetail(house?.detail?.id as number);
-  const addHouseDetail = submitEditHouse(house?.id as number);
+  const addHouseDetail = submitAddHouseDetail(house?.id as number);
 
-  const { mutate, isLoading } = useMutation(editHouse);
-  const { mutate: mutateAddHouseDetail } = useMutation(addHouseDetail);
+  const submitEditHouse = useMutation((data: EditHouseDetailProps) =>
+    editHouse(data),
+  );
+  const submitAddHouse = useMutation((data: EditHouseDetailProps) =>
+    addHouseDetail(data),
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -48,15 +52,15 @@ function useForm(
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (house?.detail?.id === 0) {
-      mutateAddHouseDetail(addHouseDetail(dataEdit), {
+      submitAddHouse.mutate(dataEdit, {
         onSuccess: () => {
-          handleCloseEdit();
           queryClient.invalidateQueries('get-house-by-id');
-          toast.success('Add House Detail Success');
+          handleCloseEdit();
+          toast.success('Add House Success');
         },
       });
     } else {
-      mutate(editHouse(dataEdit), {
+      submitEditHouse.mutate(dataEdit, {
         onSuccess: () => {
           queryClient.invalidateQueries('get-house-by-id');
           handleCloseEdit();
@@ -71,7 +75,7 @@ function useForm(
     handleSubmit,
     setValues,
     values,
-    isLoading,
+    isLoading: submitAddHouse.isLoading || submitEditHouse.isLoading,
   };
 }
 export default useForm;

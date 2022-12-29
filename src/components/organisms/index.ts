@@ -15,6 +15,7 @@ import CardDetailBooking from './Booking/CardDetailBooking';
 import CardPayment from './Payment/CardPayment';
 import BecomeHost from './BecomeHost';
 import TableHouses from './Host/TableHouses';
+import CardGame from './CardGame';
 
 export {
   CardLogin,
@@ -28,4 +29,5 @@ export {
   CardPayment,
   BecomeHost,
   TableHouses,
+  CardGame,
 };

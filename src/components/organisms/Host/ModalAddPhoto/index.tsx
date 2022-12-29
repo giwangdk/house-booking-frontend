@@ -15,8 +15,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
 }) => {
   const [photos, setPhotos] = useState<Blob | string>();
   const addPhoto = submitAddHousePhoto(house?.id as number);
-
-  const { mutateAsync, isLoading } = useMutation(addPhoto);
+  const submitPhoto = useMutation((data: FormData) => addPhoto(data));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -29,14 +28,11 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
     const formData = new FormData();
     formData.append('photo', photos as Blob);
 
-    mutateAsync(addPhoto(formData), {
-      onSuccess: () => {
+    submitPhoto.mutate(formData, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries('getHousesHost');
         toast.success('Add Photo Success');
-        queryClient.invalidateQueries('getHousesHost');
         handleCloseModal();
-      },
-      onError: () => {
-        toast.error('Add Photo Failed');
       },
     });
   };
@@ -58,7 +54,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
         onSubmit={handleSubmit}
       >
         <InputUpload onChange={handleChange} />
-        <Button loading={isLoading} type="submit">
+        <Button loading={submitPhoto.isLoading} type="submit">
           Submit
         </Button>
       </form>

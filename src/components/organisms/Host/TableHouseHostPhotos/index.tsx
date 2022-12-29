@@ -1,12 +1,31 @@
 import moment from 'moment';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import { queryClient } from '../../../../helpers/queryClient';
+import {
+  submitDeleteHouse,
+  submitDeleteHousePhoto,
+} from '../../../../services/service';
 import { Button } from '../../../atoms';
 import { TableHousePhotos, TableHousesProps } from '../../interface';
 import style from './index.module.scss';
 
 const TableHouseHostProfile: React.FC<TableHousePhotos> = (props) => {
   const { isLoading, photos } = props;
+
+  const submitDelete = useMutation(submitDeleteHousePhoto);
+
+  const handleDelete = (id: number) => {
+    submitDelete.mutate(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries('get-house-by-id');
+        toast.success('Success delete photo');
+      },
+    });
+  };
+
   return (
     <tbody className={style.table__body}>
       {isLoading && (
@@ -81,7 +100,12 @@ const TableHouseHostProfile: React.FC<TableHousePhotos> = (props) => {
                 <img src={datum?.photo} alt="" />
               </td>
               <td>
-                <Button>Delete</Button>
+                <Button
+                  onClick={() => handleDelete(datum?.id as number)}
+                  loading={submitDelete.isLoading}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           );

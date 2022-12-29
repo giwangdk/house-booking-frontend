@@ -25,7 +25,7 @@ const HouseHostProfile: React.FC<DetailHouseProps> = ({ house }) => {
             <InputLabel label="Name" value={house?.name} disabled />
             <InputLabel label="Price" value={house?.price} disabled />
             <InputLabel label="Location" value={house?.location} disabled />
-            <InputLabel label="City" value={house?.city.name} disabled />
+            <InputLabel label="City" value={house?.city?.name} disabled />
           </div>
           <Button onClick={handleisOnEdit}>Edit</Button>
         </>
