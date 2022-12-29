@@ -8,8 +8,7 @@ import {
   HouseHostProfile,
   ModalAddPhoto,
   TableHousePhotos,
-} from '../../../../components/organisms/Host';
-import useForm from '../../../../components/organisms/Host/HouseHostDetail/useForm';
+} from '../../../../components';
 
 import {
   IHouse,

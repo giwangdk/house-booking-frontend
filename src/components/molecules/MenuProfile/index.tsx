@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Logout } from '../../../redux/authenticationSlice';
 import { Button } from '../../atoms';
-import { BecomeHost } from '../../organisms';
 import Card from '../Card';
 import { MenuProfileProps } from '../interface';
 import style from './index.module.scss';
@@ -18,12 +17,10 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
 }): JSX.Element => {
   const { user } = useAuth();
   const dispatch = useDispatch();
-  
+
   const handleLogout = () => {
     Logout()(dispatch);
   };
-
-
 
   if (!show) {
     return <></>;

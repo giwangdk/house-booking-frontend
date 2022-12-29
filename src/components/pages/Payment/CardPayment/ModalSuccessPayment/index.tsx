@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from '../../../../atoms';
 import { Modal } from '../../../../molecules';
-import { ModalPaymentProps } from '../../../interface';
 import style from './index.module.scss';
 import QRCode from 'react-qr-code';
 import useMediaQuery from '../../../../../hooks/useMediaQuery';
+import { ModalPaymentProps } from '../../../interface';
 
 const ModalSuccessPayment: React.FC<ModalPaymentProps> = ({
   show,

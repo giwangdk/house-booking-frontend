@@ -1,0 +1,57 @@
+@import '../../../styles/variables.scss';
+.pagination__container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+
+  .pagination {
+    list-style: none;
+    background: #ffffff;
+    border: 1.34552px solid #bdbdbd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6.72761px;
+    border-spacing: 0;
+
+    .pagination__item {
+      display: inline-block;
+      border: 1px #ccc;
+      padding: 10px 15px;
+      border-spacing: 0;
+
+      cursor: pointer;
+      text-decoration: none;
+
+      &.active {
+        background-color: $primary;
+
+        a {
+          color: #fff;
+        }
+      }
+      &:hover {
+        background-color: $primary;
+
+        a {
+          color: #fff;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: $secondary-text;
+        font-weight: $montserrat-bold;
+      }
+
+      &:first-child {
+        border-right: 1.34552px solid #bdbdbd;
+      }
+      &:last-child {
+        border-left: 1.34552px solid #bdbdbd;
+      }
+
+      &:nth-child(n + 2) {
+        border-left: 1.34552px solid #bdbdbd;
+      }
+    }
+  }
+}
