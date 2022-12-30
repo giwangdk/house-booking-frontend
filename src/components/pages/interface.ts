@@ -1,4 +1,10 @@
-import { ICity, IHouse, IHousePhoto, IReservation } from '../../helpers/types';
+import {
+  ICity,
+  IHouse,
+  IHousePhoto,
+  IPickup,
+  IReservation,
+} from '../../helpers/types';
 
 export interface ListCardProps {
   data: IHouse[];
@@ -74,6 +80,10 @@ export interface TableHousesProps {
   isLoading: boolean;
 }
 
+export interface TablePickupsProps {
+  pickups: IPickup[];
+  isLoading: boolean;
+}
 export interface TableHousePhotos {
   photos: IHousePhoto[];
   isLoading: boolean;

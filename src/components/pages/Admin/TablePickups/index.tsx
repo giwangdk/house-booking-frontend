@@ -7,28 +7,11 @@ import { toast } from 'react-toastify';
 import { queryClient } from '../../../../helpers/queryClient';
 import { submitDeleteHouse } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { TableHousesProps } from '../../interface';
+import { TablePickupsProps } from '../../interface';
 import style from './index.module.scss';
 
-const TableHouses: React.FC<TableHousesProps> = (props) => {
-  const { isLoading, houses } = props;
-
-  const deleteHouse = async (id: number) => {
-    console.log('hit me!');
-
-    submitDeleteHouse(id);
-  };
-
-  const { mutateAsync, isLoading: loadingDelete } = useMutation(deleteHouse);
-
-  const handleDeleteHouse = (id: number) => {
-    mutateAsync(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries('getHousesHost');
-        toast.success('Delete house success');
-      },
-    });
-  };
+const TablePickups: React.FC<TablePickupsProps> = (props) => {
+  const { isLoading, pickups } = props;
 
   return (
     <tbody className={style.table__body}>
@@ -95,25 +78,16 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
           </td>
         </tr>
       )}
-      {houses ? (
-        houses?.map((datum, index) => {
+      {pickups ? (
+        pickups?.map((datum, index) => {
           return (
             <tr key={datum?.id}>
               <td>{index + 1}</td>
-              <td>{datum?.name}</td>
-              <td>Rp. {datum?.price}</td>
-              <td>{datum?.description}</td>
-              <td>{datum?.location}</td>
-              <td>{datum?.city.name}</td>
+              <td>{datum?.reservation_id}</td>
+              <td>{datum?.user_id}</td>
+              <td>{datum?.pickup_status?.status}</td>
               <td>
-                <Button
-                  onClick={() => {
-                    handleDeleteHouse(datum.id as number);
-                  }}
-                  loading={loadingDelete}
-                >
-                  Delete
-                </Button>
+                <Button>Edit Status</Button>
               </td>
             </tr>
           );
@@ -125,4 +99,4 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
   );
 };
 
-export default TableHouses;
+export default TablePickups;

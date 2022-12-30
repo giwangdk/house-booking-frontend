@@ -49,7 +49,7 @@ const Home = (): JSX.Element => {
         return res.data;
       }),
     {
-      enabled: Boolean([val, checkinDate, checkoutDate]),
+      enabled: Boolean([val, checkinDate, checkoutDate, page]),
     },
   );
 

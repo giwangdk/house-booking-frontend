@@ -77,3 +77,16 @@ export interface ITransaction {
 export interface ITopup {
   amount: number;
 }
+
+export interface IPickupStatus {
+  id?: number;
+  status?: string;
+}
+
+export interface IPickup {
+  id?: number;
+  reservation_id?: number;
+  user_id?: number;
+  pickup_status_id?: IPickupStatus;
+  pickup_status?: IPickupStatus;
+}

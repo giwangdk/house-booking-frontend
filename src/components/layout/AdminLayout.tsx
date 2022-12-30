@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import jwt_decode from 'jwt-decode';
 import Cookies from 'universal-cookie';
 
-const HostLayout = (): JSX.Element => {
+const AdminLayout = (): JSX.Element => {
   const location = useLocation();
 
   const cookie = new Cookies();
@@ -24,4 +24,4 @@ const HostLayout = (): JSX.Element => {
   return <Outlet />;
 };
 
-export default HostLayout;
+export default AdminLayout;

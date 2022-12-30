@@ -6,4 +6,5 @@ export * from './Payment';
 export * from './Booking';
 export * from './Host';
 export * from './House';
+export * from './Admin';
 export { ListCardHouse, BecomeHost };

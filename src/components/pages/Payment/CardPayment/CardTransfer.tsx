@@ -6,6 +6,8 @@ import style from './index.module.scss';
 const CardTransfer: React.FC<CardPaymentProps> = ({
   reservation,
 }): JSX.Element => {
+  console.log(reservation, 'hihi');
+
   const { isLoggedIn } = useAuth();
   return (
     <div className={style.card__payment__transfer}>

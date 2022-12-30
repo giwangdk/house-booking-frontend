@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout, ProtectedPage } from '../components';
+import AdminLayout from '../components/layout/AdminLayout';
+import AppAdminLayout from '../components/layout/AppAdminLayout';
 import AppHostLayout from '../components/layout/AppHostLayout';
 import HostLayout from '../components/layout/HostLayout';
 
@@ -12,6 +14,8 @@ const HouseDetail = lazy(() => import('../pages/HouseDetail'));
 const Booking = lazy(() => import('../pages/Booking'));
 const Payment = lazy(() => import('../pages/Payment'));
 const Houses = lazy(() => import('../pages/host/Houses'));
+const HousesAdmin = lazy(() => import('../pages/admin/Houses'));
+const PickupsAdmin = lazy(() => import('../pages/admin/Pickups'));
 const HouseDetailHost = lazy(() => import('../pages/host/Houses/Detail'));
 const Games = lazy(() => import('../pages/Games'));
 
@@ -75,6 +79,29 @@ export const router = createBrowserRouter([
               {
                 path: '/host/house/:id',
                 element: <HouseDetailHost />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    element: <ProtectedPage />,
+    children: [
+      {
+        element: <AdminLayout />,
+        children: [
+          {
+            element: <AppAdminLayout />,
+            children: [
+              {
+                path: '/admin/houses',
+                element: <HousesAdmin />,
+              },
+              {
+                path: '/admin/pickups',
+                element: <PickupsAdmin />,
               },
             ],
           },

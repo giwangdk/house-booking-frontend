@@ -116,3 +116,11 @@ export interface PaginationProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
+
+export interface SidebarProps {
+  menu: {
+    icon: React.ReactNode;
+    path: string;
+    label: string;
+  }[];
+}

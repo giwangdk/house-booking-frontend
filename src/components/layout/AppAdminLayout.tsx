@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { AiFillCar, AiFillHome } from 'react-icons/ai';
 import { Outlet } from 'react-router-dom';
 import { Navbar, Sidebar } from '../molecules';
 import { Container } from '../organisms';
@@ -10,10 +11,24 @@ interface AppAdminLayoutProps {
   layout: string;
 }
 
+const menu = [
+  {
+    path: '/admin/houses',
+    label: 'List Houses',
+    icon: <AiFillHome />,
+  },
+
+  {
+    path: '/admin/pickups',
+    label: 'List Pickup',
+    icon: <AiFillCar />,
+  },
+];
+
 const AppAdminLayout: React.FC = (): JSX.Element => {
   return (
     <div className={style.host__layout}>
-      <Sidebar />
+      <Sidebar menu={menu} />
       <div className={style.host__layout__content}>
         <Outlet />
       </div>

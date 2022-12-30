@@ -19,13 +19,13 @@ export const getCities = get(`${API_ACCOUNT}/cities`);
 export const EditUser = put(`${API_ACCOUNT}/user`);
 export const ChangePassword = put(`${API_ACCOUNT}/change-password`);
 export const getHouses = getWithSlug(`${API_ACCOUNT}/houses`);
+export const getPickups = getWithSlug(`${API_ACCOUNT}/pickups`);
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
 export const getReservationByBookingCode = (bookingCode: string): any => {
   return getWithoutHeader(`${API_ACCOUNT}/reservation/${bookingCode}`);
 };
 export const getHousesHost = getWithSlug(`${API_ACCOUNT}/host/houses`);
-
 export const submitReservation = postWithoutHeader<IReservation>(
   `${API_ACCOUNT}/reservation`,
 );
@@ -36,7 +36,6 @@ export const submitTransaction = postWithoutHeader<ITransaction>(
 export const submitTransactionGuest = (bookingCode: string): any => {
   return post(`${API_ACCOUNT}/guest/transaction/${bookingCode}`);
 };
-
 export const submitBecomeHost = post(`${API_ACCOUNT}/host`);
 export const submitAddHouse = post(`${API_ACCOUNT}/house`);
 export const submitAddHouseDetail = (id: number): any => {
@@ -46,8 +45,6 @@ export const submitEditHouse = (id: number): any => {
   return put(`${API_ACCOUNT}/house/${id}`);
 };
 export const submitDeleteHouse = (id: number): any => {
-  console.log('hahah');
-
   return deleteItem(`${API_ACCOUNT}/house/${id}`);
 };
 export const submitEditHouseDetail = (id: number): any => {
