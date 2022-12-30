@@ -34,6 +34,17 @@ const MenuProfile: React.FC<MenuProfileProps> = ({
         <li>
           <Link to="/profile"> MyProfile</Link>
         </li>
+        {user?.role === 'host' && (
+          <li>
+            <Link to="/host/houses"> Dashboard</Link>
+          </li>
+        )}
+
+        {user?.role === 'admin' && (
+          <li>
+            <Link to="/admin/houses"> Dashboard</Link>
+          </li>
+        )}
 
         <li>
           <Button onClick={handleLogout}> Logout</Button>
