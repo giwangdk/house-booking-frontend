@@ -13,7 +13,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
   handleCloseModal,
   house,
 }) => {
-  const [photos, setPhotos] = useState<Blob | string>();
+  const [photos, setPhotos] = useState<Blob | undefined>();
   const addPhoto = submitAddHousePhoto(house?.id as number);
   const submitPhoto = useMutation((data: FormData) => addPhoto(data));
 

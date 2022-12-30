@@ -1,7 +1,12 @@
 import moment from 'moment';
 import React, { useContext, useState } from 'react';
 import { useQuery } from 'react-query';
-import { Pagination, Table, TablePickups } from '../../../components';
+import {
+  ModalEditStatus,
+  Pagination,
+  Table,
+  TablePickups,
+} from '../../../components';
 import { DateContext } from '../../../context/date-context';
 import { IHouse, IPickupResponse, IPickup } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
@@ -24,7 +29,7 @@ const Pickups = (): JSX.Element => {
     setPage(page);
   };
   const { data, isLoading } = useQuery<IPickupResponse>(
-    ['getPickups', val, page],
+    ['get-pickups', val, page],
     () =>
       getPickups(`searchBy=${val}&page=${page}`).then((res) => {
         setPickups(res.data.Pickups);
@@ -39,7 +44,6 @@ const Pickups = (): JSX.Element => {
     (data?.data.total as number) / (data?.data?.limit as number),
   );
 
-  console.log(data);
 
   return (
     <div className={style.pickups__page}>

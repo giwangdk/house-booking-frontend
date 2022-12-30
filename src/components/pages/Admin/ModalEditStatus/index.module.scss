@@ -1,0 +1,28 @@
+@import '../../../../styles/variables.scss';
+.form {
+  h5 {
+    font-size: 1.5rem;
+    font-weight: $text-bold;
+  }
+  hr {
+    margin: 2rem 0;
+  }
+}
+
+.modal__header {
+  h6 {
+    font-weight: $text-bold;
+    font-size: 1.3rem;
+  }
+  display: grid;
+  grid-template-columns: 4fr 0.2fr;
+  border-bottom: 1px solid $primary-dark;
+  padding-bottom: 1rem;
+
+  &__button {
+    padding: 0.5rem 0.8rem;
+    display: block;
+    border-radius: 100%;
+    font-weight: $text-bold;
+  }
+}

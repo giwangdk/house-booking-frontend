@@ -1,3 +1,4 @@
 import TablePickups from './TablePickups';
+import ModalEditStatus from './ModalEditStatus';
 
-export { TablePickups };
+export { TablePickups, ModalEditStatus };

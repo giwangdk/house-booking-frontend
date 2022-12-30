@@ -1,4 +1,4 @@
-import { ICity, IHouse, IPickup } from './entity.interface';
+import { ICity, IHouse, IPickup, IPickupStatus } from './entity.interface';
 
 export interface IHouseResponse {
   data: {
@@ -21,6 +21,10 @@ export interface IPickupResponse {
 
 export interface ICityResponse {
   data: ICity[];
+}
+
+export interface IPickupStatusResponse {
+  data: IPickupStatus[];
 }
 
 export interface IHouseDetailResponse {

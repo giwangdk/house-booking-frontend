@@ -1,17 +1,16 @@
-import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { useMutation } from 'react-query';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { queryClient } from '../../../../helpers/queryClient';
-import { submitDeleteHouse } from '../../../../services/service';
 import { Button } from '../../../atoms';
 import { TablePickupsProps } from '../../interface';
+import ModalEditStatus from '../ModalEditStatus';
 import style from './index.module.scss';
 
 const TablePickups: React.FC<TablePickupsProps> = (props) => {
   const { isLoading, pickups } = props;
+  const [show, setShow] = useState<boolean>(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <tbody className={style.table__body}>
@@ -87,8 +86,13 @@ const TablePickups: React.FC<TablePickupsProps> = (props) => {
               <td>{datum?.user_id}</td>
               <td>{datum?.pickup_status?.status}</td>
               <td>
-                <Button>Edit Status</Button>
+                <Button onClick={handleShow}>Edit Status</Button>
               </td>
+              <ModalEditStatus
+                show={show}
+                handleCloseModal={handleClose}
+                id={datum.id}
+              />
             </tr>
           );
         })

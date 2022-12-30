@@ -16,10 +16,14 @@ export const getUserDetails = get(`${API_ACCOUNT}/user`);
 export const getWalletUser = get(`${API_ACCOUNT}/wallet`);
 export const getGameUser = get(`${API_ACCOUNT}/game`);
 export const getCities = get(`${API_ACCOUNT}/cities`);
+export const getPickupStatus = get(`${API_ACCOUNT}/pickup-status`);
 export const EditUser = put(`${API_ACCOUNT}/user`);
 export const ChangePassword = put(`${API_ACCOUNT}/change-password`);
 export const getHouses = getWithSlug(`${API_ACCOUNT}/houses`);
 export const getPickups = getWithSlug(`${API_ACCOUNT}/pickups`);
+export const submitUpdatePickupStatus = (id: number): any => {
+  return put(`${API_ACCOUNT}/pickup/${id}`);
+};
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
 export const getReservationByBookingCode = (bookingCode: string): any => {

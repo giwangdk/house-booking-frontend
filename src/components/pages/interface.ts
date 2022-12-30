@@ -99,3 +99,10 @@ export interface ModalAddProps {
   show: boolean;
   house?: IHouse;
 }
+
+export interface ModalEditProps {
+  handleCloseModal: () => void;
+  show: boolean;
+  pickup?: IPickup;
+  id?: number;
+}
