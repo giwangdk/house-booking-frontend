@@ -73,6 +73,19 @@ export interface SearchBarProps {
   value: string;
 }
 
+export interface SortAndFilterBarProps {
+  handleSort?: (
+    newValue: SingleValue<string | number>,
+    actionMeta: ActionMeta<string | number>,
+  ) => void;
+  handleSortBy?: (
+    newValue: SingleValue<string | number>,
+    actionMeta: ActionMeta<string | number>,
+  ) => void;
+  valueSort?: string;
+  valueSortBy?: string;
+}
+
 export interface InputRadioProps {
   isPickup?: boolean;
   handlePickup?: (e: SyntheticEvent) => void;

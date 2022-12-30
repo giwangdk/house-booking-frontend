@@ -1,6 +1,6 @@
 @import '../../../styles//variables.scss';
 .input__pickup {
-  background-color: $secondary-light;
+  background-color: $primary-white;
   padding: 0.8rem 1rem;
   h5 {
     font-size: 0.9rem;
@@ -11,21 +11,25 @@
   &__wrapper {
     display: flex;
   }
+  &__price {
+    margin-top: 1rem;
+  }
 
   &__radio {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    background-color: $tertiary-light;
+    background-color: $primary-dark;
+    color: white;
     padding: 0.5rem 1rem;
 
     &:hover {
-      background-color: $tertiary;
+      background-color: $primary-light;
       color: white;
     }
 
     &__active {
-      background-color: $tertiary;
+      background-color: $primary-light;
       color: white;
     }
   }

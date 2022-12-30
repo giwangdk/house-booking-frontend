@@ -100,7 +100,9 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
           return (
             <tr key={datum?.id}>
               <td>{index + 1}</td>
-              <td>{datum?.name}</td>
+              <td>
+                <Link to={`/host/house/${datum?.id}`}>{datum?.name}</Link>
+              </td>
               <td>Rp. {datum?.price}</td>
               <td>{datum?.description}</td>
               <td>{datum?.location}</td>

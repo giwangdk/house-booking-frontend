@@ -13,7 +13,7 @@ import style from './index.module.scss';
 const Booking = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
 
-  const [currentPrice, setCurrentPrice] = useState<number | undefined>();
+  const [currentPrice, setCurrentPrice] = useState<number>(0);
   const [isReqPickup, setIsReqPickup] = useState<boolean>(false);
   const [pickupPrice, setPickupPrice] = useState<number>(0);
   const [totalPrice, setTotalPrice] = useState<number>(
@@ -27,7 +27,12 @@ const Booking = (): JSX.Element => {
   const handlePickupPrice = (value: number, isPickup: boolean) => {
     setIsReqPickup(isPickup);
     setPickupPrice(value);
-    setTotalPrice((currentPrice as number) + value);
+
+    if (currentPrice !== undefined) {
+      setTotalPrice(currentPrice + value);
+    }
+
+    setTotalPrice(0 + value);
   };
 
   useEffect(() => {

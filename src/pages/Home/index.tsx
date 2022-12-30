@@ -4,6 +4,7 @@ import {
   ListCardHouse,
   Pagination,
   SearchBar,
+  SortAndFilter,
 } from '../../components';
 import style from './index.module.scss';
 import { useQuery } from 'react-query';
@@ -22,7 +23,8 @@ const Home = (): JSX.Element => {
     searchBy: '',
     page: 1,
   });
-  const [houses, setHouses] = useState<IHouse[]>([]);
+  const [sortBy, setSortBy] = useState<string>('name');
+  const [sort, setSort] = useState<string>('asc');
   const val = useDebounce(value.searchBy, 500);
   const checkinDate = useDebounce(
     moment(checkin_date).format('YYYY-MM-DD'),
@@ -32,6 +34,8 @@ const Home = (): JSX.Element => {
     moment(checkout_date).format('YYYY-MM-DD'),
     1000,
   );
+  const sortByVal = useDebounce(sortBy, 500);
+  const sortVal = useDebounce(sort, 500);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });
@@ -39,13 +43,19 @@ const Home = (): JSX.Element => {
   const handlePagination = (page: number) => {
     setPage(page);
   };
+  const handleSortVal = (e: any) => {
+    setSort(e.value);
+  };
+  const handleSortByVal = (e: any) => {
+    setSortBy(e.value);
+  };
+
   const { data, isLoading } = useQuery<IHouseResponse>(
-    ['getHouses', val, checkinDate, checkoutDate, page],
+    ['getHouses', val, checkinDate, checkoutDate, page, sortByVal, sortVal],
     () =>
       getHouses(
-        `searchBy=${val}&checkin_date=${checkinDate}&checkout_date=${checkoutDate}&page=${page}`,
+        `searchBy=${val}&sort=${sortVal}&sortBy=${sortByVal}&checkin_date=${checkinDate}&checkout_date=${checkoutDate}&page=${page}`,
       ).then((res) => {
-        setHouses(res.data.houses);
         return res.data;
       }),
     {
@@ -62,6 +72,12 @@ const Home = (): JSX.Element => {
       <SearchBar handleSearch={handleSearch} value={value.searchBy} />
       <Container>
         {isLoading && <div>Loading...</div>}
+        <SortAndFilter
+          valueSort={sort}
+          valueSortBy={sortBy}
+          handleSort={handleSortVal}
+          handleSortBy={handleSortByVal}
+        />
         {<ListCardHouse data={data?.data?.houses as IHouse[]} />}
         <Pagination
           nPages={nPages}

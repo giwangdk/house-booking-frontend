@@ -14,6 +14,7 @@ import Modal from './Modal';
 import MenuProfile from './MenuProfile';
 import Sidebar from './Sidebar';
 import NavbarMobile from './NavbarMobile';
+import SortAndFilter from './SortAndFilter';
 
 export {
   Dropdown,
@@ -32,4 +33,5 @@ export {
   MenuProfile,
   Sidebar,
   NavbarMobile,
+  SortAndFilter,
 };

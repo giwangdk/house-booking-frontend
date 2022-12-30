@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+.bar {
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 0 auto;
+  min-width: 40vw;
+
+  &__input {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    border-radius: 1rem;
+    flex-direction: column;
+  }
+}
