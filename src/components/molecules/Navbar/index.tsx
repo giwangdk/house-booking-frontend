@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Container } from '../../organisms';
@@ -22,8 +22,22 @@ const Navbar = (): JSX.Element => {
       ? style.navbar__menu__list__item__isActive
       : style.navbar__menu__list__item__link;
 
+  useEffect(() => {
+    window.onscroll = () => {
+      if (window.pageYOffset > 0) {
+        document
+          .getElementById('navbar')!
+          .classList.add(style.navbar__scrolled);
+      } else {
+        document
+          .getElementById('navbar')!
+          .classList.remove(style.navbar__scrolled);
+      }
+    };
+  }, []);
+
   return (
-    <div className={style.navbar__wrapper}>
+    <div className={style.navbar__wrapper} id="navbar">
       <Container className={style.navbar}>
         <div className={style.navbar__brand} onClick={() => navigate('/')}>
           <p>DigiHouse</p>

@@ -4,6 +4,7 @@ import {
   ActionMeta,
   GroupBase,
   OptionsOrGroups,
+  PropsValue,
   SingleValue,
 } from 'react-select';
 import { IHouse, IHousePhoto } from '../../helpers/types';
@@ -16,7 +17,7 @@ export interface InputLabelProps extends InputProps {
 
 export interface DropdownProps {
   name?: string;
-  value?: string | number;
+  value?: PropsValue<string | number> | undefined;
   values?: OptionsOrGroups<string, GroupBase<string>>;
   onChange?: (
     newValue: SingleValue<string | number>,

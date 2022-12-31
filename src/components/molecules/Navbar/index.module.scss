@@ -2,7 +2,7 @@
 .navbar__wrapper {
   z-index: 1;
   width: 100%;
-  padding: 1.125rem 0;
+  padding: 1.8rem 0;
   top: 0;
   margin: auto;
   position: fixed;
@@ -53,4 +53,9 @@
       position: absolute;
     }
   }
+}
+
+.navbar__scrolled {
+  background-color: $primary-lighter;
+  transition: background-color 0.5s ease-in-out;
 }

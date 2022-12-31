@@ -44,15 +44,6 @@ const SortAndFilter: React.FC<SortAndFilterBarProps> = ({
     },
   ];
 
-  const { data } = useQuery<ICityResponse>('get-cities', () =>
-    getCities().then((res) => res.data),
-  );
-
-  const optionsCities = data?.data?.map((item) => ({
-    value: item.id,
-    label: item.name,
-  }));
-
   return (
     <div className={style.bar}>
       <Dropdown
@@ -60,7 +51,11 @@ const SortAndFilter: React.FC<SortAndFilterBarProps> = ({
         value={valueSort}
         onChange={handleSort}
       />
-      <Dropdown values={optionsSortBy as any} value={valueSortBy} />
+      <Dropdown
+        values={optionsSortBy as any}
+        value={valueSortBy}
+        onChange={handleSortBy}
+      />
     </div>
   );
 };
