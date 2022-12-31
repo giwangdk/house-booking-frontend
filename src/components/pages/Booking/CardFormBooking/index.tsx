@@ -1,29 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useSelector } from 'react-redux';
-import { ICityResponse } from '../../../../helpers/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { ICityResponse, IHouse } from '../../../../helpers/types';
 import useAuth from '../../../../hooks/useAuth';
+import { setPickupPrice, setTotalPrice } from '../../../../redux/houseSlice';
 import { RootState } from '../../../../redux/store';
 import { getCities } from '../../../../services/service';
 import { Button, Error } from '../../../atoms';
 import { Card, Dropdown, InputLabel, InputPickup } from '../../../molecules';
-import {
-  DetailHouseProps,
-  FormBookingProps,
-} from '../../../molecules/interface';
 import style from './index.module.scss';
 import useForm from './useForm';
 import validateInfo from './validate';
 
-const CardFormBooking: React.FC<FormBookingProps> = ({
-  house,
-  currentPrice,
-  totalPrice,
-  pickupPrice,
-  isReqPickup,
-  handlePickupPrice,
-}): JSX.Element => {
+const CardFormBooking: React.FC = (): JSX.Element => {
   const {
     values,
     handleChange,
@@ -33,9 +23,12 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
     setValues,
     setCity,
     city,
-  } = useForm(validateInfo, totalPrice as number, isReqPickup);
+  } = useForm(validateInfo);
 
-  const { isLoading } = useSelector((state: RootState) => state.auth);
+  const { house, isReqPickup, pickupPrice, currentPrice } = useSelector(
+    (state: RootState) => state.house,
+  );
+  const dispatch = useDispatch();
   const { data } = useQuery<ICityResponse>('get-cities', () =>
     getCities().then((res) => res.data),
   );
@@ -44,19 +37,24 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
     label: item.name,
   }));
 
-  const { user } = useAuth();
-  console.log('city', city);
+  const { user, isLoggedIn } = useAuth();
 
   useEffect(() => {
-    if (user) {
+    if (isLoggedIn && user !== undefined) {
       setValues({
         ...values,
-        name: user.fullname as string,
-        email: user.email as string,
+        name: user?.fullname as string,
+        email: user?.email as string,
       });
       setCity(user?.city?.id as number);
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(setPickupPrice(house?.city.id === city ? 100000 : 300000));
+    isReqPickup &&
+      dispatch(setTotalPrice(Number(pickupPrice) + Number(currentPrice)));
+  }, [city]);
 
   return (
     <Card className={style.card__form_booking}>
@@ -88,18 +86,8 @@ const CardFormBooking: React.FC<FormBookingProps> = ({
           value={options?.find((item) => item.value === city) as any}
           onChange={handleChangeDropdown}
         />
-        <InputPickup
-          pickupPrice={pickupPrice}
-          handlePickupPrice={
-            handlePickupPrice as (val: number, isPickup: boolean) => void
-          }
-          isReqPickup={isReqPickup}
-          house={house}
-          city={city}
-        />
-        <Button type="submit" loading={isLoading}>
-          Submit
-        </Button>
+        <InputPickup city={city as number} />
+        <Button type="submit">Submit</Button>
       </form>
     </Card>
   );

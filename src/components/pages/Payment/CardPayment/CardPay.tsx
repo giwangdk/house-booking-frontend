@@ -1,3 +1,4 @@
+import { totalmem } from 'os';
 import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +16,7 @@ import ModalSuccessPayment from './ModalSuccessPayment';
 
 const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
   const { isLoggedIn } = useAuth();
-  const [image, setImage] = useState<string | Blob>('');
+  const [image, setImage] = useState<File>();
   const [show, setShow] = useState(false);
   const { mutateAsync, isLoading } = useMutation(submitTransaction);
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e?.target?.files?.[0];
-    setImage(file as Blob);
+    setImage(file as File);
   };
 
   const handleCloseModal = () => {
@@ -45,9 +46,11 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
     setShow(true);
   };
 
+  console.log(image);
+
   const handleSubmit = () => {
     const formData = new FormData();
-    formData.append('transfer_slip', image);
+    formData.append('transfer_slip', image as Blob);
     {
       isLoggedIn
         ? mutateAsync(data, {
@@ -55,11 +58,17 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
               toast.success('Payment Success');
               handleShowModal();
             },
+            onError: () => {
+              toast.error('Fail pay transactions!');
+            },
           })
         : submitReqConfirmation.mutate(formData, {
             onSuccess: () => {
               toast.success('Your Payment is waiting for confirmation');
               navigate('/');
+            },
+            onError: () => {
+              toast.error('Fail pay transactions!');
             },
           });
     }
@@ -76,15 +85,15 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
         {!isLoggedIn && (
           <div className={style.card__payment__pay__input}>
             <p>Upload your</p>
-            <InputUpload onChange={handleChange} />
+            <InputUpload onChange={handleChange} value={image} />
           </div>
         )}
         <Button
-          variant="tertiary"
           border="default"
           className={style.button}
           onClick={handleSubmit}
-          loading={isLoading}
+          loading={isLoading ? isLoading : submitReqConfirmation.isLoading}
+          disabled={isLoading}
         >
           I Have Completed Payment
         </Button>

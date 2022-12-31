@@ -36,7 +36,7 @@ const CardPaymentDetail: React.FC<CardPaymentProps> = ({
       </div>
       <div className={style.card__payment__detail__item}>
         <h6>Guest</h6>
-        <p>{reservation?.user?.fullname}</p>
+        <span>{reservation?.user?.fullname}</span>
       </div>
     </Card>
   );

@@ -25,6 +25,10 @@ const ModalSuccessPayment: React.FC<ModalPaymentProps> = ({
         </Button>
       </div>
       <div className={style.modal_qr}>
+        <div className={style.modal__qr__header}>
+          <h6>Booking Code</h6>
+          <p>{reservation?.booking_code}</p>
+        </div>
         {isMobile ? (
           <QRCode
             size={256}

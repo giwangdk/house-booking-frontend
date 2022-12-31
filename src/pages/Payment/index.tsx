@@ -8,13 +8,14 @@ import {
   Container,
   Header,
 } from '../../components';
+import { IReservation } from '../../helpers/types';
 import useAuth from '../../hooks/useAuth';
 import { getReservationByBookingCode } from '../../services/service';
 import style from './index.module.scss';
 
 const Payment = (): JSX.Element => {
   const { bookingCode } = useParams();
-  const [reservation, setReservation] = useState({});
+  const [reservation, setReservation] = useState<IReservation>({});
 
   const { isLoggedIn } = useAuth();
 
@@ -27,7 +28,9 @@ const Payment = (): JSX.Element => {
     }),
   );
 
-  const timeout = moment(data?.expired).diff(moment(), 'minutes');
+  const timeout = moment(reservation.expired).diff(moment(), 'minutes');
+
+  console.log(reservation.expired);
 
   return (
     <div className={style.payment}>

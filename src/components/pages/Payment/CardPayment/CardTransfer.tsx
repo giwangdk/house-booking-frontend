@@ -25,7 +25,7 @@ const CardTransfer: React.FC<CardPaymentProps> = ({
 
         <div className={style.card__payment__content__item}>
           <p>Total Price</p>
-          <p> Rp. {reservation?.total_price}</p>
+          <p className={style.price}> Rp. {reservation?.total_price}</p>
         </div>
       </div>
     </div>

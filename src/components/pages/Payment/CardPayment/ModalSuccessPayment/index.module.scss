@@ -16,3 +16,13 @@
     font-weight: $text-bold;
   }
 }
+
+.modal__qr {
+  &__header {
+    margin-bottom: 1rem;
+    p {
+      font-size: 1rem;
+      font-weight: $text-medium;
+    }
+  }
+}

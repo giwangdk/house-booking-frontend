@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authenticationReducer } from './authenticationSlice';
+import { houseReducer } from './houseSlice';
 
 const reducers = {
   auth: authenticationReducer,
+  house: houseReducer,
 };
 
 export const store = configureStore({

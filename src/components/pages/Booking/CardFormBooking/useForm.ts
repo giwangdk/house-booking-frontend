@@ -16,14 +16,16 @@ import { IReservation } from '../../../../helpers/types';
 import { useMutation, useQuery } from 'react-query';
 import useAuth from '../../../../hooks/useAuth';
 import { setUser } from '../../../../redux/authenticationSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../../redux/store';
 
 function useForm(
   validateInfo: (values: BookingProps) => BookingProps,
-  totalPrice: number,
-  isReqPickup: boolean,
 ): FormReturnBooking<BookingProps> {
   const { user, isLoggedIn } = useAuth();
+  const { totalPrice, isReqPickup } = useSelector(
+    (state: RootState) => state.house,
+  );
 
   const dispatch = useDispatch();
   if (isLoggedIn) {
@@ -80,7 +82,7 @@ function useForm(
       city_id: city,
       check_in: formattedCheckInDate,
       check_out: formattedCheckOutDate,
-      total_price: totalPrice,
+      total_price: totalPrice as number,
       house_id: parseInt(id as string),
       is_request_pickup: isReqPickup,
     };

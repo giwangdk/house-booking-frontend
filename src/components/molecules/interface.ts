@@ -46,19 +46,6 @@ export interface CalendarProps {
 
 export interface DetailHouseProps {
   house: IHouse;
-  currentPrice?: number | null;
-  totalPrice?: number | null;
-  isReqPickup?: boolean;
-  pickupPrice?: number | null;
-}
-
-export interface FormBookingProps {
-  currentPrice?: number | null;
-  house?: IHouse;
-  totalPrice?: number | null;
-  isReqPickup: boolean;
-  pickupPrice?: number | null;
-  handlePickupPrice?: (val: number, isPickup: boolean) => void;
 }
 
 export interface CarouselProps {
@@ -95,11 +82,7 @@ export interface InputRadioProps {
 }
 
 export interface InputPickupProps {
-  house?: IHouse;
-  city?: number;
-  pickupPrice?: number | null;
-  isReqPickup?: boolean;
-  handlePickupPrice: (val: number, isPickup: boolean) => void;
+  city: number;
 }
 
 export interface ModalProps {
@@ -110,7 +93,7 @@ export interface ModalProps {
 
 export interface InputUploadProps {
   name?: string;
-  value?: string | Blob;
+  value?: File;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

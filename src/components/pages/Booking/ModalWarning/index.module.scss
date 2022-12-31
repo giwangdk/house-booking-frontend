@@ -1,0 +1,33 @@
+@import '../../../../styles/variables';
+.modal {
+  &__header {
+    text-align: center;
+    h6 {
+      font-weight: $text-bold;
+      font-size: 1.5rem;
+      color: $danger;
+    }
+    display: grid;
+    grid-template-columns: 4fr 0.2fr;
+    border-bottom: 1px solid $danger;
+    padding-bottom: 1rem;
+  }
+
+  &__info {
+    text-align: center;
+    h5 {
+      font-weight: $text-medium;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-weight: $text-medium;
+      font-size: 1rem;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 1rem;
+  }
+}

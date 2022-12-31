@@ -106,3 +106,9 @@ export interface ModalEditProps {
   pickup?: IPickup;
   id?: number;
 }
+
+export interface ModalWarningProps {
+  handleCloseModal: () => void;
+  show: boolean;
+  handleExitModal: () => void;
+}

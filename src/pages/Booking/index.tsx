@@ -1,49 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   CardDetailBooking,
   CardFormBooking,
   Container,
+  ModalWarning,
 } from '../../components';
+import { DateContext } from '../../context/date-context';
 import { IHouse, IHouseDetailResponse } from '../../helpers/types';
+import {
+  setCurrentPrice,
+  setHouse,
+  setIsReqPickup,
+  setPickupPrice,
+  setTotalPrice,
+} from '../../redux/houseSlice';
+import { RootState } from '../../redux/store';
 import { getHouseById } from '../../services/service';
 import style from './index.module.scss';
 
 const Booking = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
-  const [currentPrice, setCurrentPrice] = useState<number>(0);
-  const [isReqPickup, setIsReqPickup] = useState<boolean>(false);
-  const [pickupPrice, setPickupPrice] = useState<number>(0);
-  const [totalPrice, setTotalPrice] = useState<number>(
-    (currentPrice as number) + pickupPrice,
+  const { checkin_date, checkout_date } = useContext(DateContext);
+  const { pickupPrice, isReqPickup } = useSelector(
+    (state: RootState) => state.house,
   );
-
+  const day = moment(checkout_date).diff(moment(checkin_date), 'days');
   const { data } = useQuery<IHouseDetailResponse>('get-house-by-id', () =>
-    getHouseById(id as string).then((res) => res.data),
+    getHouseById(id as string).then((res) => {
+      dispatch(setHouse(res.data.data));
+      return res.data;
+    }),
   );
-
-  const handlePickupPrice = (value: number, isPickup: boolean) => {
-    setIsReqPickup(isPickup);
-    setPickupPrice(value);
-
-    if (currentPrice !== undefined) {
-      setTotalPrice(currentPrice + value);
-    }
-
-    setTotalPrice(0 + value);
-  };
 
   useEffect(() => {
     sessionStorage.setItem('price', JSON.stringify(data?.data?.price));
-    const price = sessionStorage.getItem('price');
-    if (price !== undefined) {
-      setCurrentPrice(JSON.parse(price as string));
-      setTotalPrice(JSON.parse(price as string));
-    }
-    setCurrentPrice(data?.data?.price as number);
+    dispatch(setCurrentPrice(data?.data?.price as number));
+    dispatch(
+      setTotalPrice(
+        isReqPickup
+          ? Number(data?.data?.price) * day + pickupPrice
+          : Number(data?.data?.price) * day,
+      ),
+    );
   }, []);
+
+  const handleShowModal = () => {
+    setShow(true);
+  };
 
   useEffect(() => {
     const price = sessionStorage.getItem('price');
@@ -52,26 +63,28 @@ const Booking = (): JSX.Element => {
       data?.data?.price !== null &&
       JSON.parse(price as string) !== data?.data?.price
     ) {
-      alert('Price has been changed');
+      handleShowModal();
     }
   }, [data?.data?.price]);
+
+  const handleCloseModal = () => {
+    setCurrentPrice(data?.data?.price as number);
+    setShow(false);
+  };
+  const handleExitModal = () => {
+    setShow(false);
+    navigate('/');
+  };
 
   return (
     <div className={style.booking}>
       <Container className={style.booking__container}>
-        <CardFormBooking
-          currentPrice={currentPrice as number}
-          totalPrice={totalPrice}
-          isReqPickup={isReqPickup}
-          handlePickupPrice={handlePickupPrice}
-          pickupPrice={pickupPrice}
-        />
-        <CardDetailBooking
-          house={data?.data as IHouse}
-          pickupPrice={pickupPrice}
-          currentPrice={currentPrice}
-          totalPrice={totalPrice}
-          isReqPickup={isReqPickup}
+        <CardFormBooking />
+        <CardDetailBooking />
+        <ModalWarning
+          show={show}
+          handleCloseModal={handleCloseModal}
+          handleExitModal={handleExitModal}
         />
       </Container>
     </div>

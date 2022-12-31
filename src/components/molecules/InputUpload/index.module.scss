@@ -1,14 +1,21 @@
 @import '../../../styles/variables.scss';
-.form__input {
+.uploader {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.2rem;
-  min-height: 6.8rem;
+  align-items: center;
+  gap: 1rem;
 
   &__label {
-    font-size: 1.125rem;
-    font-weight: $text-medium;
-    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: white;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: $primary-light;
+    }
   }
 }
