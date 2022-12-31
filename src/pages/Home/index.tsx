@@ -3,6 +3,7 @@ import {
   Container,
   ListCardHouse,
   Pagination,
+  Search,
   SearchBar,
   SortAndFilter,
 } from '../../components';
@@ -59,7 +60,14 @@ const Home = (): JSX.Element => {
         return res.data;
       }),
     {
-      enabled: Boolean([val, checkinDate, checkoutDate, page]),
+      enabled: Boolean([
+        val,
+        sortVal,
+        sortByVal,
+        checkinDate,
+        checkoutDate,
+        page,
+      ]),
     },
   );
 

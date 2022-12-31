@@ -1,15 +1,6 @@
-import moment from 'moment';
-import React, { useContext, useState } from 'react';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { useQuery } from 'react-query';
-import { DateContext } from '../../../context/date-context';
-import { ICityResponse } from '../../../helpers/types';
-import { getCities } from '../../../services/service';
-import { Button } from '../../atoms';
+import React from 'react';
 import Dropdown from '../Dropdown';
-import InputDate from '../InputDate';
-import { SearchBarProps, SortAndFilterBarProps } from '../interface';
-import Search from '../Search';
+import { SortAndFilterBarProps } from '../interface';
 import style from './index.module.scss';
 
 const SortAndFilter: React.FC<SortAndFilterBarProps> = ({

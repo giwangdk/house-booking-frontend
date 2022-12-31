@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Button, ModalAddHouse, Table, TableHouses } from '../../../components';
+import {
+  Button,
+  ModalAddHouse,
+  Pagination,
+  Search,
+  SortAndFilter,
+  Table,
+  TableHouses,
+} from '../../../components';
 import { IHouse, IHouseResponse } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
 import { getHouses, getHousesHost } from '../../../services/service';
@@ -30,10 +38,15 @@ const Houses = (): JSX.Element => {
   const handleSortByVal = (e: any) => {
     setSortBy(e.value);
   };
-  const { data, isLoading } = useQuery<IHouseResponse>(['getHousesHost'], () =>
-    getHousesHost(
-      `searchBy=${val}&sort=${sortVal}&sortBy=${sortByVal}&page=${page}`,
-    ).then((res) => res.data),
+  const { data, isLoading } = useQuery<IHouseResponse>(
+    ['getHousesHost', val, page, sortByVal, sortVal],
+    () =>
+      getHousesHost(
+        `searchBy=${val}&sort=${sortVal}&sortBy=${sortByVal}&page=${page}`,
+      ).then((res) => res.data),
+    {
+      enabled: Boolean([val, sortVal, sortByVal, page]),
+    },
   );
   const [show, setShow] = useState(false);
 
@@ -44,6 +57,9 @@ const Houses = (): JSX.Element => {
   const handleShowModal = () => {
     setShow(true);
   };
+  const nPages = Math.ceil(
+    (data?.data.total as number) / (data?.data?.limit as number),
+  );
 
   return (
     <div className={style.houses__page}>
@@ -52,6 +68,15 @@ const Houses = (): JSX.Element => {
         <Button onClick={handleShowModal}>Add House</Button>
       </div>
       <div className={style.houses__page__content}>
+        <div className={style.houses__page__content__header}>
+          <SortAndFilter
+            valueSort={sort}
+            valueSortBy={sortBy}
+            handleSort={handleSortVal}
+            handleSortBy={handleSortByVal}
+          />
+          <Search handleSearch={handleSearch} value={value.searchBy} />
+        </div>
         <Table
           headers={[
             'ID',
@@ -69,6 +94,11 @@ const Houses = (): JSX.Element => {
           />
         </Table>
       </div>
+      <Pagination
+        nPages={nPages}
+        currentPage={page as number}
+        setCurrentPage={handlePagination}
+      />
       <ModalAddHouse show={show} handleCloseModal={handleCloseModal} />
     </div>
   );

@@ -1,8 +1,12 @@
-import moment from 'moment';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Pagination, Table, TableHouses } from '../../../components';
-import { DateContext } from '../../../context/date-context';
+import {
+  Pagination,
+  Search,
+  SortAndFilter,
+  Table,
+  TableHouses,
+} from '../../../components';
 import { IHouse, IHouseResponse } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
 import { getHouses } from '../../../services/service';
@@ -14,8 +18,11 @@ const Houses = (): JSX.Element => {
     searchBy: '',
     page: 1,
   });
-  const [houses, setHouses] = useState<IHouse[]>([]);
+  const [sortBy, setSortBy] = useState<string>('name');
+  const [sort, setSort] = useState<string>('asc');
   const val = useDebounce(value.searchBy, 500);
+  const sortByVal = useDebounce(sortBy, 500);
+  const sortVal = useDebounce(sort, 500);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });
@@ -23,15 +30,21 @@ const Houses = (): JSX.Element => {
   const handlePagination = (page: number) => {
     setPage(page);
   };
+  const handleSortVal = (e: any) => {
+    setSort(e.value);
+  };
+  const handleSortByVal = (e: any) => {
+    setSortBy(e.value);
+  };
+
   const { data, isLoading } = useQuery<IHouseResponse>(
-    ['getHouses', val, page],
+    ['getHouses', val, page, sortByVal, sortVal],
     () =>
       getHouses(`searchBy=${val}&page=${page}`).then((res) => {
-        setHouses(res.data.houses);
         return res.data;
       }),
     {
-      enabled: Boolean([val, page]),
+      enabled: Boolean([val, page, sortByVal, sortVal]),
     },
   );
 
@@ -47,6 +60,15 @@ const Houses = (): JSX.Element => {
         <h3 className={style.houses__page__header__title}>List Houses</h3>
       </div>
       <div className={style.houses__page__content}>
+        <div className={style.houses__page__content__header}>
+          <SortAndFilter
+            valueSort={sort}
+            valueSortBy={sortBy}
+            handleSort={handleSortVal}
+            handleSortBy={handleSortByVal}
+          />
+          <Search handleSearch={handleSearch} value={value.searchBy} />
+        </div>
         <Table
           headers={[
             'ID',
