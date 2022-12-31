@@ -24,10 +24,13 @@
   &__info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 0.6rem;
+    min-height: 3rem;
     h5 {
       font-size: 0.9rem;
       font-weight: $text-bold;
+      min-height: 2rem;
     }
     p {
       font-size: 0.8rem;

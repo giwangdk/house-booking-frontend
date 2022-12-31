@@ -13,6 +13,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     loading,
     size = 'medium',
     border = 'pill',
+    disabled,
     className,
   } = props;
   const classProps = classNames(
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     style[variant],
     style[size],
     style[border],
+    disabled && style.disabled,
     loading && style.loading,
   );
   return (
@@ -29,7 +31,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       data-testid="button-test-id"
       className={classProps}
       type={type}
-      disabled={loading}
+      disabled={disabled}
     >
       {loading ? (
         <div className={style.button__loading}>
