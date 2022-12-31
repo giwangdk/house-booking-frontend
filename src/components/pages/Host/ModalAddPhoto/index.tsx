@@ -13,7 +13,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
   handleCloseModal,
   house,
 }) => {
-  const [photos, setPhotos] = useState<Blob | undefined>();
+  const [photos, setPhotos] = useState<File>();
   const addPhoto = submitAddHousePhoto(house?.id as number);
   const submitPhoto = useMutation((data: FormData) => addPhoto(data));
 
@@ -26,7 +26,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('photo', photos as Blob);
+    formData.append('photo', photos as File);
 
     submitPhoto.mutate(formData, {
       onSuccess: async () => {
@@ -53,7 +53,7 @@ const ModalAddPhoto: React.FC<ModalAddProps> = ({
         className={style.card__house__profile__content}
         onSubmit={handleSubmit}
       >
-        <InputUpload onChange={handleChange} />
+        <InputUpload onChange={handleChange} value={photos} />
         <Button loading={submitPhoto.isLoading} type="submit">
           Submit
         </Button>

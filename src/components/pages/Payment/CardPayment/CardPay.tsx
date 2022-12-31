@@ -1,4 +1,3 @@
-import { totalmem } from 'os';
 import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';

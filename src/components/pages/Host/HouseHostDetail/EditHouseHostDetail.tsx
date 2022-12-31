@@ -59,7 +59,7 @@ const EditHouseHostDetail: React.FC<CardEditHouseProps> = ({
         </div>
         <div className={style.card__house__profile__content__item}>
           <InputLabel
-            label="Beda"
+            label="Beds"
             value={values.beds}
             type="number"
             name="beds"

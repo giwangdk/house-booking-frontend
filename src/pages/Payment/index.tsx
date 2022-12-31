@@ -9,7 +9,6 @@ import {
   Header,
 } from '../../components';
 import { IReservation } from '../../helpers/types';
-import useAuth from '../../hooks/useAuth';
 import { getReservationByBookingCode } from '../../services/service';
 import style from './index.module.scss';
 
@@ -17,11 +16,9 @@ const Payment = (): JSX.Element => {
   const { bookingCode } = useParams();
   const [reservation, setReservation] = useState<IReservation>({});
 
-  const { isLoggedIn } = useAuth();
-
   const getReservation = getReservationByBookingCode(`${bookingCode}`);
 
-  const { data } = useQuery('get-reservation', () =>
+  useQuery('get-reservation', () =>
     getReservation().then((res: { data: any }) => {
       setReservation(res.data?.data);
       return res.data;

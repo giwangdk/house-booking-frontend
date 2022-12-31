@@ -47,6 +47,10 @@ const CardGame = (): JSX.Element => {
     setShow(false);
   };
 
+  useEffect(() => {
+    setChance(game?.chance as number);
+  }, [game?.chance]);
+
   return (
     <Card className={style.card__game}>
       <div className={style.card__game__header}>

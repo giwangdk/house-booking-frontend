@@ -22,4 +22,5 @@ export interface FormReturnBooking<T> {
   city?: number;
   setValues: React.Dispatch<React.SetStateAction<T>>;
   setCity: React.Dispatch<React.SetStateAction<number | undefined>>;
+  isLoading: boolean;
 }

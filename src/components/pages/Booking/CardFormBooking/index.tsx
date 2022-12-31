@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
-import { ICityResponse, IHouse } from '../../../../helpers/types';
+import { ICityResponse } from '../../../../helpers/types';
 import useAuth from '../../../../hooks/useAuth';
 import { setPickupPrice, setTotalPrice } from '../../../../redux/houseSlice';
 import { RootState } from '../../../../redux/store';
 import { getCities } from '../../../../services/service';
-import { Button, Error } from '../../../atoms';
+import { Button } from '../../../atoms';
 import { Card, Dropdown, InputLabel, InputPickup } from '../../../molecules';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -23,6 +23,7 @@ const CardFormBooking: React.FC = (): JSX.Element => {
     setValues,
     setCity,
     city,
+    isLoading,
   } = useForm(validateInfo);
 
   const { house, isReqPickup, pickupPrice, currentPrice } = useSelector(
@@ -87,7 +88,9 @@ const CardFormBooking: React.FC = (): JSX.Element => {
           onChange={handleChangeDropdown}
         />
         <InputPickup city={city as number} />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" loading={isLoading} disabled={isLoading}>
+          Submit
+        </Button>
       </form>
     </Card>
   );

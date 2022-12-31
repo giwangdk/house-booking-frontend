@@ -25,7 +25,7 @@ function useForm(
     baths: (house?.detail?.baths as number) | 0,
   });
   const dataEdit = {
-    max_guest: values.max_guest,
+    max_guest: Number(values.max_guest),
     bedrooms: values.bedrooms,
     beds: values.beds,
     baths: values.baths,

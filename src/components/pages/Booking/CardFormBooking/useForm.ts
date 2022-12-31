@@ -112,6 +112,7 @@ function useForm(
     city,
     setValues,
     setCity,
+    isLoading,
   };
 }
 

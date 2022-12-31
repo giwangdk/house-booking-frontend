@@ -10,12 +10,10 @@ import {
   ModalWarning,
 } from '../../components';
 import { DateContext } from '../../context/date-context';
-import { IHouse, IHouseDetailResponse } from '../../helpers/types';
+import { IHouseDetailResponse } from '../../helpers/types';
 import {
   setCurrentPrice,
   setHouse,
-  setIsReqPickup,
-  setPickupPrice,
   setTotalPrice,
 } from '../../redux/houseSlice';
 import { RootState } from '../../redux/store';

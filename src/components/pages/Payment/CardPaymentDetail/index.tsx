@@ -10,9 +10,6 @@ const CardPaymentDetail: React.FC<CardPaymentProps> = ({
   const formattedCheckin = moment(
     moment(reservation?.check_in).toDate(),
   ).format('DD MMM YYYY');
-  const formattedCheckout = moment(
-    moment(reservation?.check_out).toDate(),
-  ).format('DD MMM YYYY');
 
   const nights = moment(reservation?.check_out).diff(
     moment(reservation?.check_in),
