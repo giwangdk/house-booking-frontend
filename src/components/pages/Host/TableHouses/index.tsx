@@ -13,22 +13,16 @@ import style from './index.module.scss';
 const TableHouses: React.FC<TableHousesProps> = (props) => {
   const { isLoading, houses } = props;
 
-  const deleteHouse = async (id: number) => {
-    console.log('hit me!');
-
-    submitDeleteHouse(id);
-  };
-
-  const { mutate, isLoading: loadingDelete } = useMutation(deleteHouse);
+  const submitDelete = useMutation((id: number) => submitDeleteHouse(id));
 
   const handleDeleteHouse = (id: number) => {
-    mutate(id, {
+    submitDelete.mutate(id, {
       onSuccess: (res) => {
         queryClient.invalidateQueries('get-houses');
+        toast.success('House has been deleted');
       },
     });
   };
-
   return (
     <tbody className={style.table__body}>
       {isLoading && (
@@ -111,7 +105,7 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
                   onClick={() => {
                     handleDeleteHouse(datum.id as number);
                   }}
-                  loading={loadingDelete}
+                  loading={submitDelete.isLoading}
                 >
                   Delete
                 </Button>
