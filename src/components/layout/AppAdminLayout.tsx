@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { AiFillCar, AiFillHome } from 'react-icons/ai';
+import { AiFillBook, AiFillCar, AiFillHome } from 'react-icons/ai';
 import { Outlet } from 'react-router-dom';
 import { Navbar, Sidebar } from '../molecules';
 import { Container } from '../organisms';
@@ -22,6 +22,11 @@ const menu = [
     path: '/admin/pickups',
     label: 'List Pickup',
     icon: <AiFillCar />,
+  },
+  {
+    path: '/admin/transactions-guest',
+    label: 'Transactions Guest',
+    icon: <AiFillBook />,
   },
 ];
 

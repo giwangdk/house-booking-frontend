@@ -68,10 +68,16 @@ export interface IReservation {
   booking_code?: string;
   is_request_pickup?: boolean;
   user?: IUser;
+  status_id?: number;
 }
 
 export interface ITransaction {
+  id?: number;
+  reservation_id?: number;
+  user_id?: number;
   booking_code?: string;
+  reservation?: IReservation;
+  transfer_slip?: string;
 }
 
 export interface ITopup {

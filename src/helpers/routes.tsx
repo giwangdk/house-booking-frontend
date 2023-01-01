@@ -18,6 +18,7 @@ const HousesAdmin = lazy(() => import('../pages/admin/Houses'));
 const PickupsAdmin = lazy(() => import('../pages/admin/Pickups'));
 const HouseDetailHost = lazy(() => import('../pages/host/Houses/Detail'));
 const Games = lazy(() => import('../pages/Games'));
+const TransactionGuest = lazy(() => import('../pages/admin/TransactionGuest'));
 
 export const router = createBrowserRouter([
   {
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
               {
                 path: '/admin/pickups',
                 element: <PickupsAdmin />,
+              },
+              {
+                path: '/admin/transactions-guest',
+                element: <TransactionGuest />,
               },
             ],
           },

@@ -1,0 +1,29 @@
+@import '../../../../styles/variables.scss';
+
+.table__body {
+  tr {
+    border: 1px solid #ededed;
+    &:nth-child(even) {
+      background-color: #ffffff;
+      background-color: #f7f7f7;
+    }
+    &:hover {
+      background-color: #f7f7f7;
+    }
+    td {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid #ededed;
+
+      a {
+        color: $tertiary-dark;
+      }
+      img {
+        width: 170px;
+      }
+    }
+    .credit {
+      color: #00bfa5;
+    }
+  }
+}

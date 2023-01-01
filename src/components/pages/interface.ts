@@ -4,6 +4,7 @@ import {
   IHousePhoto,
   IPickup,
   IReservation,
+  ITransaction,
 } from '../../helpers/types';
 
 export interface ListCardProps {
@@ -82,6 +83,10 @@ export interface TableHousesProps {
 
 export interface TablePickupsProps {
   pickups: IPickup[];
+  isLoading: boolean;
+}
+export interface TableTransactionsProps {
+  transactions: ITransaction[];
   isLoading: boolean;
 }
 export interface TableHousePhotos {
