@@ -17,4 +17,11 @@
       font-weight: $text-bold;
     }
   }
+  &__content {
+    &__header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
 }

@@ -4,6 +4,8 @@ import { useQuery } from 'react-query';
 import {
   ModalEditStatus,
   Pagination,
+  Search,
+  SortAndFilter,
   Table,
   TablePickups,
 } from '../../../components';
@@ -19,8 +21,12 @@ const Pickups = (): JSX.Element => {
     searchBy: '',
     page: 1,
   });
-  const [Pickups, setPickups] = useState<IPickup[]>([]);
+  const [sortBy, setSortBy] = useState<string>('name');
+  const [sort, setSort] = useState<string>('asc');
+
   const val = useDebounce(value.searchBy, 500);
+  const sortByVal = useDebounce(sortBy, 500);
+  const sortVal = useDebounce(sort, 500);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });
@@ -28,11 +34,21 @@ const Pickups = (): JSX.Element => {
   const handlePagination = (page: number) => {
     setPage(page);
   };
+  const handleSortVal = (e: any) => {
+    setSort(e.value);
+  };
+  const handleSortByVal = (e: any) => {
+    setSortBy(e.value);
+  };
+
+  const [pickups, setPickups] = useState<IPickup[]>();
+
   const { data, isLoading } = useQuery<IPickupResponse>(
     ['get-pickups', val, page],
     () =>
       getPickups(`searchBy=${val}&page=${page}`).then((res) => {
-        setPickups(res.data.Pickups);
+        setPickups(res.data.data.pickups);
+
         return res.data;
       }),
     {
@@ -44,17 +60,26 @@ const Pickups = (): JSX.Element => {
     (data?.data.total as number) / (data?.data?.limit as number),
   );
 
+  console.log(pickups);
+
   return (
     <div className={style.pickups__page}>
       <div className={style.pickups__page__header}>
         <h3 className={style.pickups__page__header__title}>List Pickups</h3>
       </div>
+
       <div className={style.pickups__page__content}>
-        <Table headers={['ID', 'Booking Code', 'User ID', 'Status']}>
-          <TablePickups
-            pickups={data?.data.pickups as IPickup[]}
-            isLoading={isLoading}
+        <div className={style.pickups__page__content__header}>
+          <SortAndFilter
+            valueSort={sort}
+            valueSortBy={sortBy}
+            handleSort={handleSortVal}
+            handleSortBy={handleSortByVal}
           />
+          <Search handleSearch={handleSearch} value={value.searchBy} />
+        </div>
+        <Table headers={['ID', 'Booking Code', 'User ID', 'Status']}>
+          <TablePickups pickups={pickups as IPickup[]} isLoading={isLoading} />
         </Table>
         <Pagination
           nPages={nPages}

@@ -21,7 +21,7 @@ import style from './index.module.scss';
 const ModalEditStatus: React.FC<ModalEditProps> = ({
   show,
   handleCloseModal,
-  id,
+  pickup,
 }) => {
   const { data } = useQuery<IPickupStatusResponse>('get-pickup-status', () =>
     getPickupStatus().then((res) => {
@@ -29,7 +29,7 @@ const ModalEditStatus: React.FC<ModalEditProps> = ({
     }),
   );
 
-  const [status, setStatus] = useState<number>(id as number);
+  const [status, setStatus] = useState<number>(pickup?.id as number);
   const options = data?.data?.map((item) => ({
     value: item.id,
     label: item.status,
@@ -38,7 +38,7 @@ const ModalEditStatus: React.FC<ModalEditProps> = ({
     setStatus(e.value);
   };
 
-  const updateStatus = submitUpdatePickupStatus(id as number);
+  const updateStatus = submitUpdatePickupStatus(pickup?.id as number);
   const submitStatus = useMutation((data: { pickup_status_id: number }) =>
     updateStatus(data),
   );
