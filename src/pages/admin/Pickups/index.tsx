@@ -44,24 +44,23 @@ const Pickups = (): JSX.Element => {
     (data?.data.total as number) / (data?.data?.limit as number),
   );
 
-
   return (
     <div className={style.pickups__page}>
       <div className={style.pickups__page__header}>
         <h3 className={style.pickups__page__header__title}>List Pickups</h3>
       </div>
       <div className={style.pickups__page__content}>
-        <Table headers={['ID', 'Reservation ID', 'User ID', 'Status']}>
+        <Table headers={['ID', 'Booking Code', 'User ID', 'Status']}>
           <TablePickups
             pickups={data?.data.pickups as IPickup[]}
             isLoading={isLoading}
           />
         </Table>
-        {/* <Pagination
+        <Pagination
           nPages={nPages}
           currentPage={page as number}
           setCurrentPage={handlePagination}
-        /> */}
+        />
       </div>
     </div>
   );

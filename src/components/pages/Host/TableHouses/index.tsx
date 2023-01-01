@@ -19,13 +19,12 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
     submitDeleteHouse(id);
   };
 
-  const { mutateAsync, isLoading: loadingDelete } = useMutation(deleteHouse);
+  const { mutate, isLoading: loadingDelete } = useMutation(deleteHouse);
 
   const handleDeleteHouse = (id: number) => {
-    mutateAsync(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries('getHousesHost');
-        toast.success('Delete house success');
+    mutate(id, {
+      onSuccess: (res) => {
+        queryClient.invalidateQueries('get-houses');
       },
     });
   };

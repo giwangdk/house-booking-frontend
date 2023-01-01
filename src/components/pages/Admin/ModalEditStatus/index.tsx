@@ -14,8 +14,8 @@ import {
   submitUpdatePickupStatus,
 } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { Dropdown, InputUpload, Modal } from '../../../molecules';
-import { ModalAddProps, ModalEditProps } from '../../interface';
+import { Dropdown, Modal } from '../../../molecules';
+import { ModalEditProps } from '../../interface';
 import style from './index.module.scss';
 
 const ModalEditStatus: React.FC<ModalEditProps> = ({
@@ -23,16 +23,14 @@ const ModalEditStatus: React.FC<ModalEditProps> = ({
   handleCloseModal,
   id,
 }) => {
-  const [pickupStatus, setPickupStatus] = useState<IPickupStatus[]>([]);
-  const { data } = useQuery<IPickupStatusResponse>('get-pickups', () =>
+  const { data } = useQuery<IPickupStatusResponse>('get-pickup-status', () =>
     getPickupStatus().then((res) => {
-      setPickupStatus(res.data.data.data);
-      return res.data.data.data;
+      return res.data.data;
     }),
   );
 
   const [status, setStatus] = useState<number>(id as number);
-  const options = pickupStatus?.map((item) => ({
+  const options = data?.data?.map((item) => ({
     value: item.id,
     label: item.status,
   }));

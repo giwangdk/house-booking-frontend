@@ -5,7 +5,7 @@ import {
   Search,
   SortAndFilter,
   Table,
-  TableHouses,
+  TableHousesAdmin,
 } from '../../../components';
 import { IHouse, IHouseResponse } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
@@ -40,19 +40,16 @@ const Houses = (): JSX.Element => {
   const { data, isLoading } = useQuery<IHouseResponse>(
     ['getHouses', val, page, sortByVal, sortVal],
     () =>
-      getHouses(`searchBy=${val}&page=${page}`).then((res) => {
+      getHouses(
+        `searchBy=${val}&page=${page}&sortBy=${sortByVal}&sort=${sortVal}`,
+      ).then((res) => {
         return res.data;
       }),
-    {
-      enabled: Boolean([val, page, sortByVal, sortVal]),
-    },
   );
 
   const nPages = Math.ceil(
     (data?.data.total as number) / (data?.data?.limit as number),
   );
-
-  console.log(data);
 
   return (
     <div className={style.houses__page}>
@@ -80,7 +77,7 @@ const Houses = (): JSX.Element => {
             'Action',
           ]}
         >
-          <TableHouses
+          <TableHousesAdmin
             houses={data?.data.houses as IHouse[]}
             isLoading={isLoading}
           />

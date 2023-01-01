@@ -89,4 +89,5 @@ export interface IPickup {
   user_id?: number;
   pickup_status_id?: IPickupStatus;
   pickup_status?: IPickupStatus;
+  reservation: IReservation;
 }

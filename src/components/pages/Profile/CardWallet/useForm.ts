@@ -58,6 +58,7 @@ function useForm(
         {
           onSuccess: () => {
             queryClient.invalidateQueries('get-user-wallet');
+            queryClient.invalidateQueries('get-user-game');
             handleCloseModal();
             toast.success('Topup Success');
           },

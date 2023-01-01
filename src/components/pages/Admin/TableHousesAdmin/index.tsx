@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+import { queryClient } from '../../../../helpers/queryClient';
+import { submitDeleteHouse } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { TablePickupsProps } from '../../interface';
-import ModalEditStatus from '../ModalEditStatus';
+import { TableHousesProps } from '../../interface';
 import style from './index.module.scss';
 
-const TablePickups: React.FC<TablePickupsProps> = (props) => {
-  const { isLoading, pickups } = props;
-  const [show, setShow] = useState<boolean>(false);
+const TableHousesAdmin: React.FC<TableHousesProps> = (props) => {
+  const { isLoading, houses } = props;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const submitDelete = useMutation((id: number) => submitDeleteHouse(id));
+
+  const handleDeleteHouse = (id: number) => {
+    submitDelete.mutate(id, {
+      onSuccess: (res) => {
+        queryClient.invalidateQueries('get-houses');
+        toast.success('House has been deleted');
+      },
+    });
+  };
 
   return (
     <tbody className={style.table__body}>
@@ -77,22 +87,26 @@ const TablePickups: React.FC<TablePickupsProps> = (props) => {
           </td>
         </tr>
       )}
-      {pickups ? (
-        pickups?.map((datum, index) => {
+      {houses ? (
+        houses?.map((datum, index) => {
           return (
             <tr key={datum?.id}>
               <td>{index + 1}</td>
-              <td>{datum?.reservation.booking_code}</td>
-              <td>{datum?.user_id}</td>
-              <td>{datum?.pickup_status?.status}</td>
+              <td>{datum?.name}</td>
+              <td>Rp. {datum?.price}</td>
+              <td>{datum?.description}</td>
+              <td>{datum?.location}</td>
+              <td>{datum?.city.name}</td>
               <td>
-                <Button onClick={handleShow}>Edit Status</Button>
+                <Button
+                  onClick={() => {
+                    handleDeleteHouse(datum.id as number);
+                  }}
+                  loading={submitDelete.isLoading}
+                >
+                  Delete
+                </Button>
               </td>
-              <ModalEditStatus
-                show={show}
-                handleCloseModal={handleClose}
-                id={datum.id}
-              />
             </tr>
           );
         })
@@ -103,4 +117,4 @@ const TablePickups: React.FC<TablePickupsProps> = (props) => {
   );
 };
 
-export default TablePickups;
+export default TableHousesAdmin;
