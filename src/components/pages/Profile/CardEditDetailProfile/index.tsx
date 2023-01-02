@@ -35,7 +35,12 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
           onChange={handleChange}
           message={errors?.address}
         />
-        <Button variant="secondary" type="submit" loading={isLoading}>
+        <Button
+          variant="secondary"
+          type="submit"
+          loading={isLoading}
+          disabled={isLoading}
+        >
           Submit
         </Button>
       </form>

@@ -41,6 +41,7 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
           minDate={moment(Date.now()).toDate()}
           startDate={checkin_date}
           endDate={checkout_date}
+          readOnly
         />
         <InputDate
           label="Checkout Date"
@@ -50,6 +51,7 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
           startDate={checkin_date}
           endDate={checkout_date}
           minDate={checkin_date}
+          readOnly
         />
         {checkout_date <= checkin_date && (
           <Error message="Checkout date must be greater than checkin date" />

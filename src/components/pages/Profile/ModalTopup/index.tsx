@@ -10,7 +10,8 @@ const ModalTopup: React.FC<ModalTopupProps> = ({
   show,
   handleCloseModal,
 }): JSX.Element => {
-  const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
+  const { values, handleChange, handleSubmit, errors, isLoading } =
+    useForm(validateInfo);
   return (
     <Modal show={show}>
       <div className={style.modal__header}>
@@ -34,7 +35,12 @@ const ModalTopup: React.FC<ModalTopupProps> = ({
           onChange={handleChange}
           message={errors?.amount}
         />
-        <Button type="submit" variant="primary__outline">
+        <Button
+          type="submit"
+          variant="primary__outline"
+          loading={isLoading}
+          disabled={isLoading}
+        >
           Submit
         </Button>
       </form>

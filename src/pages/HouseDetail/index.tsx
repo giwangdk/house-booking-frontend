@@ -6,6 +6,7 @@ import style from './index.module.scss';
 import { useQuery } from 'react-query';
 import { getHouseById } from '../../services/service';
 import { IHouseDetailResponse } from '../../helpers/types/response.interface';
+import Skeleton from 'react-loading-skeleton';
 
 const HouseDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +21,11 @@ const HouseDetail = (): JSX.Element => {
   return (
     <Container className={style.house__detail}>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </div>
       ) : (
         <>
           <CardHouseProfile house={data?.data as IHouse} />

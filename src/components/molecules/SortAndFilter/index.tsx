@@ -18,10 +18,6 @@ const SortAndFilter: React.FC<SortAndFilterBarProps> = ({
       value: 'price',
       label: 'Price',
     },
-    {
-      value: 'city',
-      label: 'City',
-    },
   ];
 
   const optionsSort = [

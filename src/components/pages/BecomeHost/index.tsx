@@ -42,7 +42,11 @@ const BecomeHost: React.FC<BecomeHostProps> = ({
       <div className={style.modal__host__body}>
         <p>Do you want to become host?</p>
         <div className={style.modal__host__body__button}>
-          <Button onClick={handleBecomeHost} loading={isLoading}>
+          <Button
+            onClick={handleBecomeHost}
+            loading={isLoading}
+            disabled={isLoading}
+          >
             Yes
           </Button>
           <Button onClick={handleCloseModal}>Cancel</Button>

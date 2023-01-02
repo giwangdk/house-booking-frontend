@@ -16,6 +16,7 @@ import { IHouseResponse } from '../../helpers/types/response.interface';
 import useDebounce from '../../hooks/useDebounce';
 import { DateContext } from '../../context/date-context';
 import moment from 'moment';
+import Skeleton from 'react-loading-skeleton';
 
 const Home = (): JSX.Element => {
   const { checkin_date, checkout_date } = useContext(DateContext);
@@ -79,7 +80,13 @@ const Home = (): JSX.Element => {
     <div className={style.home}>
       <SearchBar handleSearch={handleSearch} value={value.searchBy} />
       <Container>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <div>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </div>
+        )}
         <SortAndFilter
           valueSort={sort}
           valueSortBy={sortBy}

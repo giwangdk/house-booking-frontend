@@ -1,5 +1,4 @@
 import React from 'react';
-import useAuth from '../../../../hooks/useAuth';
 import { Button } from '../../../atoms';
 import { InputLabel } from '../../../molecules';
 import { CardEditDetailProfileProps } from '../../interface';
@@ -9,7 +8,6 @@ import useForm from './useForm';
 const CardEditPassword: React.FC<CardEditDetailProfileProps> = ({
   handleCloseEdit,
 }) => {
-  const { user } = useAuth();
   const { errors, values, handleChange, handleSubmit, isLoading } =
     useForm(handleCloseEdit);
 
@@ -35,7 +33,12 @@ const CardEditPassword: React.FC<CardEditDetailProfileProps> = ({
           onChange={handleChange}
           message={errors?.newPassword}
         />
-        <Button variant="secondary" type="submit" loading={isLoading}>
+        <Button
+          variant="secondary"
+          type="submit"
+          loading={isLoading}
+          disabled={isLoading}
+        >
           Submit
         </Button>
       </form>

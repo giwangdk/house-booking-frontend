@@ -16,6 +16,7 @@ const InputDate: React.FC<InputDateProps> = (props): JSX.Element => {
         endDate={props.endDate}
         selectsEnd={props.selectsEnd}
         minDate={props.minDate}
+        readOnly={props.readOnly}
       />
     </div>
   );
