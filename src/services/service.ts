@@ -26,6 +26,7 @@ export const submitUpdatePickupStatus = (id: number): any => {
 };
 export const getHouseById = (id: string): Promise<any> =>
   get(`${API_ACCOUNT}/house/${id}`)();
+export const getReservations = get(`${API_ACCOUNT}/reservations`);
 export const getReservationByBookingCode = (bookingCode: string): any => {
   return getWithoutHeader(`${API_ACCOUNT}/reservation/${bookingCode}`);
 };

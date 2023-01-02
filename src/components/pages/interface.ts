@@ -11,6 +11,9 @@ export interface ListCardProps {
   data: IHouse[];
 }
 
+export interface ListReservations {
+  data: IReservation[];
+}
 export interface TopupProps {
   amount: number | string;
 }

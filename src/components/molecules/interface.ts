@@ -7,7 +7,7 @@ import {
   PropsValue,
   SingleValue,
 } from 'react-select';
-import { IHouse, IHousePhoto } from '../../helpers/types';
+import { IHouse, IHousePhoto, IReservation } from '../../helpers/types';
 import { InputProps } from '../atoms/interface';
 
 export interface InputLabelProps extends InputProps {
@@ -33,6 +33,7 @@ export interface SearchProps {
 export interface CardProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 export interface CalendarProps {
@@ -46,6 +47,10 @@ export interface CalendarProps {
 
 export interface DetailHouseProps {
   house: IHouse;
+}
+
+export interface CardReservationProps {
+  reservation: IReservation;
 }
 
 export interface CarouselProps {

@@ -5,6 +5,7 @@ import AdminLayout from '../components/layout/AdminLayout';
 import AppAdminLayout from '../components/layout/AppAdminLayout';
 import AppHostLayout from '../components/layout/AppHostLayout';
 import HostLayout from '../components/layout/HostLayout';
+import Reservations from '../pages/Reservations';
 
 const Login = lazy(() => import('../pages/auth/Login'));
 const Register = lazy(() => import('../pages/auth/Register'));
@@ -19,7 +20,6 @@ const PickupsAdmin = lazy(() => import('../pages/admin/Pickups'));
 const HouseDetailHost = lazy(() => import('../pages/host/Houses/Detail'));
 const Games = lazy(() => import('../pages/Games'));
 const TransactionGuest = lazy(() => import('../pages/admin/TransactionGuest'));
-
 export const router = createBrowserRouter([
   {
     path: '/login',
@@ -59,6 +59,10 @@ export const router = createBrowserRouter([
           {
             path: 'game',
             element: <Games />,
+          },
+          {
+            path: 'reservations',
+            element: <Reservations />,
           },
         ],
       },

@@ -3,12 +3,23 @@ import {
   IHouse,
   IPickup,
   IPickupStatus,
+  IReservation,
   ITransaction,
 } from './entity.interface';
 
 export interface IHouseResponse {
   data: {
     houses: IHouse[];
+    page: number;
+    limit: number;
+    total: number;
+  };
+  message: string;
+}
+
+export interface IReservationResponse {
+  data: {
+    reservations: IReservation[];
     page: number;
     limit: number;
     total: number;

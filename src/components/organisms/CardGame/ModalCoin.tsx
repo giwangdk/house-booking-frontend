@@ -24,7 +24,7 @@ const ModalCoin: React.FC<ModalCoinProps> = ({
         onSuccess: () => {
           handleCloseModal();
           toast.success('Success redeem money');
-          queryClient.invalidateQueries('get-user-wallet');
+          queryClient.invalidateQueries('get-user-game');
         },
       },
     );

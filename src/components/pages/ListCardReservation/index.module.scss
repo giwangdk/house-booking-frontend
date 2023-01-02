@@ -1,0 +1,11 @@
+.list__card__house {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 1.5rem;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+}

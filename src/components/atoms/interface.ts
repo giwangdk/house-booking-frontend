@@ -18,6 +18,23 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
+export interface BadgeProps {
+  children: React.ReactNode;
+  className?: string;
+
+  variant?:
+    | 'primary'
+    | 'primary__outline'
+    | 'secondary'
+    | 'secondary__outline'
+    | 'tertiary'
+    | 'tertiary__outline'
+    | 'danger'
+    | 'success';
+  border?: 'default' | 'rounded' | 'pill';
+  size?: 'small' | 'medium' | 'large';
+}
+
 export interface ErrorProps {
   message: string | undefined;
 }

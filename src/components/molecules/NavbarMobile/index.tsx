@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { FaGamepad, FaHome, FaUser } from 'react-icons/fa';
+import { FaCalendarTimes, FaGamepad, FaHome, FaUser } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Container } from '../../organisms';
@@ -22,6 +22,7 @@ const NavbarMobile = (): JSX.Element => {
           <>
             <NavItem path="/game" icon={<FaGamepad />} />
             <NavItem path="/profile" icon={<FaUser />} />
+            <NavItem path="/reservations" icon={<FaCalendarTimes />} />
           </>
         )}
       </Container>

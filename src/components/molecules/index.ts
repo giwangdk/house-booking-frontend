@@ -14,6 +14,7 @@ import Modal from './Modal';
 import MenuProfile from './MenuProfile';
 import Sidebar from './Sidebar';
 import NavbarMobile from './NavbarMobile';
+import CardReservationUser from './CardReservationUser';
 import SortAndFilter from './SortAndFilter';
 
 export {
@@ -29,6 +30,7 @@ export {
   CarouselPhoto,
   InputPickup,
   Modal,
+  CardReservationUser,
   InputUpload,
   MenuProfile,
   Sidebar,

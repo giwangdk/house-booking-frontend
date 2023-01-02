@@ -68,6 +68,11 @@ const Navbar = (): JSX.Element => {
                   Games
                 </NavLink>
               </li>
+              <li className={style.list__item}>
+                <NavLink to="/reservations" className={classActive}>
+                  Reservations
+                </NavLink>
+              </li>
 
               <li className={style.list__item}>
                 <NavProfile onClick={handleShowMenu} />
