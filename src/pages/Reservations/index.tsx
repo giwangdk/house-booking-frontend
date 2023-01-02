@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, ListCardReservation } from '../../components';
 import style from './index.module.scss';
 import { useQuery } from 'react-query';
@@ -8,7 +8,7 @@ import { IReservation } from '../../helpers/types';
 
 const Reservations = (): JSX.Element => {
   const [reservations, setReservations] = useState<IReservation[]>();
-  const { data, isLoading } = useQuery<IReservationResponse>(
+  const { isLoading } = useQuery<IReservationResponse>(
     ['get-reservations'],
     () =>
       getReservations().then((res) => {
@@ -18,7 +18,7 @@ const Reservations = (): JSX.Element => {
   );
 
   return (
-    <div className={style.home}>
+    <div className={style.reservations}>
       <Container>
         {isLoading && <div>Loading...</div>}
         {<ListCardReservation data={reservations as IReservation[]} />}

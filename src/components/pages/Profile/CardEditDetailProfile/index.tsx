@@ -1,5 +1,4 @@
 import React from 'react';
-import useAuth from '../../../../hooks/useAuth';
 import { Button } from '../../../atoms';
 import { InputLabel } from '../../../molecules';
 import { CardEditDetailProfileProps } from '../../interface';
@@ -9,7 +8,6 @@ import useForm from './useForm';
 const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
   handleCloseEdit,
 }) => {
-  const { user } = useAuth();
   const { errors, values, handleChange, handleSubmit, isLoading } =
     useForm(handleCloseEdit);
 
