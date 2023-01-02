@@ -9,22 +9,20 @@ import style from './index.module.scss';
 const CardReservationUser: React.FC<CardReservationProps> = ({
   reservation,
 }): JSX.Element => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const navigate = useNavigate();
-
-  const handleCloseModal = () => {
-    setShow(false);
-    navigate(`/reservations`);
-  };
 
   const handleNavigateCard = () => {
     if (reservation?.status_id == 1) {
       navigate(`/payment/${reservation.booking_code}`);
-    } else {
-      console.log('haha');
+    }
+    if (reservation?.status_id == 2) {
       setShow(true);
     }
+  };
+  const handleCloseModalCard = () => {
+    setShow(false);
   };
 
   return (
@@ -53,7 +51,7 @@ const CardReservationUser: React.FC<CardReservationProps> = ({
       </div>
       <ModalSuccessPayment
         show={show}
-        handleCloseModal={handleCloseModal}
+        handleCloseModal={handleCloseModalCard}
         reservation={reservation}
       />
     </Card>

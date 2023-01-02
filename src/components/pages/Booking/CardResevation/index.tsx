@@ -46,11 +46,10 @@ const CardReservation: React.FC<DetailHouseProps> = ({ house }) => {
           label="Checkout Date"
           selected={checkout_date}
           onChange={handleChangeEndDate}
-          minDate={checkin_date}
           selectsEnd
           startDate={checkin_date}
           endDate={checkout_date}
-          excludeDates={[checkin_date]}
+          minDate={checkin_date}
         />
         {checkout_date <= checkin_date && (
           <Error message="Checkout date must be greater than checkin date" />
