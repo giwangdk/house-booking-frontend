@@ -11,7 +11,7 @@ const ModalSuccessPayment: React.FC<ModalPaymentProps> = ({
   handleCloseModal,
   reservation,
 }): JSX.Element => {
-  const isMobile = useMediaQuery(768);
+  const isMobile = useMediaQuery('(max-width: 768px)');
   return (
     <Modal show={show}>
       <div className={style.modal__header}>

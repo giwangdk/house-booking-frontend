@@ -1,7 +1,5 @@
 import React from 'react';
-import useMediaQuery from '../../hooks/useMediaQuery';
 import { Navbar } from '../molecules';
-import { Container } from '../organisms';
 import style from './index.module.scss';
 
 interface AuthLayoutProps {

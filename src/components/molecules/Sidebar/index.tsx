@@ -7,7 +7,7 @@ import style from './index.module.scss';
 
 const Sidebar: React.FC<SidebarProps> = ({ menu }): JSX.Element => {
   return (
-    <div className={style.sidebar}>
+    <div className={style.sidebar} id="navbar">
       <Link to="/" className={style.sidebar__brand}>
         <p>DigiHouse</p>
       </Link>

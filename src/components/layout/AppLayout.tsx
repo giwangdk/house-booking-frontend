@@ -4,13 +4,21 @@ import useMediaQuery from '../../hooks/useMediaQuery';
 import { Navbar, NavbarMobile } from '../molecules';
 
 const AppLayout = (): JSX.Element => {
-  const isMobile = useMediaQuery(768);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <>
-      {!isMobile && <Navbar />}
-      <Outlet />
-      {isMobile && <NavbarMobile />}
+      {!isMobile ? (
+        <>
+          <Navbar />
+          <Outlet />
+        </>
+      ) : (
+        <>
+          <NavbarMobile />
+          <Outlet />
+        </>
+      )}
     </>
   );
 };

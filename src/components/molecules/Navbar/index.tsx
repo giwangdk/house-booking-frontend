@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import { Container } from '../../organisms';
 import MenuProfile from '../MenuProfile';
 import NavProfile from '../NavProfile';
@@ -23,17 +24,17 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   useEffect(() => {
-    window.onscroll = () => {
-      if (window.pageYOffset > 0) {
-        document
-          .getElementById('navbar')!
-          .classList.add(style.navbar__scrolled);
-      } else {
-        document
-          .getElementById('navbar')!
-          .classList.remove(style.navbar__scrolled);
+    window.addEventListener('scroll', (event) => {
+      const navbar = document.getElementById('navbar')!;
+
+      if (navbar) {
+        if (window.pageYOffset > 0) {
+          navbar.classList.add(style.navbar__scrolled);
+        } else {
+          navbar.classList.remove(style.navbar__scrolled);
+        }
       }
-    };
+    });
   }, []);
 
   return (

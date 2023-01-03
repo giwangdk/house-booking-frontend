@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FaCalendarTimes,
   FaFileExcel,
@@ -18,21 +18,22 @@ import { decodedTokenType } from '../interface';
 
 const NavbarMobile = (): JSX.Element => {
   const { isLoggedIn } = useAuth();
-  const [decodedToken, setDecodedToken] = useState<decodedTokenType>()
+  const [decodedToken, setDecodedToken] = useState<decodedTokenType>();
 
   const cookie = new Cookies();
 
-
-  if (isLoggedIn){
-  const decodedToken: decodedTokenType  = jwt_decode(cookie.get('token'));
-  setDecodedToken(decodedToken)
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      const decodedToken: decodedTokenType = jwt_decode(cookie.get('token'));
+      setDecodedToken(decodedToken);
+    }
+  }, []);
 
   return (
-    <div className={style.navbar__wrapper}>
+    <div className={style.navbar__wrapper} id="navbar">
       <Container className={style.navbar}>
         <NavItem path="/" icon={<FaHome />} />
-        <NavItem path="/login" icon={<FaUser />} />
+        {!isLoggedIn && <NavItem path="/login" icon={<FaUser />} />}
         {isLoggedIn && (
           <>
             <NavItem path="/game" icon={<FaGamepad />} />

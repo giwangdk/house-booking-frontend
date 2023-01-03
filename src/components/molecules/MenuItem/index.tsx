@@ -9,7 +9,6 @@ const MenuItem: React.FC<MenuItemProps> = ({
   path,
   icon,
 }): JSX.Element => {
-  const isMobile = useMediaQuery(768);
   return (
     <div className={style.menu__item}>
       <Link to={path}>
