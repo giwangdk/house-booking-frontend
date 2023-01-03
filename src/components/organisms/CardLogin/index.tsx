@@ -10,11 +10,11 @@ import { useNavigate } from 'react-router-dom';
 
 const CardLogin = (): JSX.Element => {
   const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate('/register')
-  }
+    navigate('/register');
+  };
 
   const { isLoading } = useSelector((state: RootState) => state.auth);
 
@@ -31,6 +31,7 @@ const CardLogin = (): JSX.Element => {
           errors={errors?.email}
           onChange={handleChange}
           message={errors?.email}
+          required
         />
         <InputLabel
           label="Password"
@@ -41,10 +42,13 @@ const CardLogin = (): JSX.Element => {
           value={values.password}
           onChange={handleChange}
           message={errors?.password}
+          required
         />
         <Button loading={isLoading}>Submit</Button>
       </form>
-    <Button variant='primary__outline' onClick={handleNavigate}>Register</Button>
+      <Button variant="primary__outline" onClick={handleNavigate}>
+        Register
+      </Button>
     </div>
   );
 };

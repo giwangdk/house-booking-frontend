@@ -7,8 +7,15 @@
   min-height: 6.8rem;
 
   &__label {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
     font-size: 1.125rem;
     font-weight: $text-medium;
     margin-bottom: 0.2rem;
+
+    span {
+      color: $danger;
+    }
   }
 }

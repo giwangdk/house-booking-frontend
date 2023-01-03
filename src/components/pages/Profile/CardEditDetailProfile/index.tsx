@@ -16,7 +16,7 @@ const CardEditDetailProfile: React.FC<CardEditDetailProfileProps> = ({
       <form className={style.card__register} onSubmit={handleSubmit}>
         <InputLabel
           label="Full Name"
-          name="name"
+          name="fullname"
           type="text"
           placeholder="Enter your Fullname"
           value={values.fullname}

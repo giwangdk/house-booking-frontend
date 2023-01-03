@@ -34,12 +34,14 @@ export interface RegisterProps {
   email: string;
   address?: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface ErrorRegister {
   name: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface FormReturnRegister<T> {

@@ -44,7 +44,7 @@ function useForm(
 
     const dataEdit = {
       old_password: values.password,
-      new_password: values.password,
+      new_password: values.newPassword,
     };
 
     mutateAsync(dataEdit, {

@@ -13,6 +13,7 @@ import { InputProps } from '../atoms/interface';
 export interface InputLabelProps extends InputProps {
   label: string;
   message?: string | undefined;
+  required?: boolean;
 }
 
 export interface TextAreaProps {

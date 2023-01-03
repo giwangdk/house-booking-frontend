@@ -43,6 +43,7 @@ const CardRegister = (): JSX.Element => {
           errors={errors?.name}
           onChange={handleChange}
           message={errors?.name}
+          required
         />
         <InputLabel
           label="Address"
@@ -61,6 +62,7 @@ const CardRegister = (): JSX.Element => {
           value={values.email}
           onChange={handleChange}
           message={errors?.email}
+          required
         />
         <InputLabel
           label="Password"
@@ -70,6 +72,17 @@ const CardRegister = (): JSX.Element => {
           value={values.password}
           onChange={handleChange}
           message={errors?.password}
+          required
+        />
+        <InputLabel
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          value={values.confirmPassword}
+          onChange={handleChange}
+          message={errors?.confirmPassword}
+          required
         />
         <label className={style.label}>City</label>
         <Dropdown values={options as any} onChange={handleChangeDropdown} />

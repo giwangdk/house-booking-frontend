@@ -9,7 +9,6 @@ import {
   FormReturnRegister,
   RegisterProps,
 } from '../../../helpers/types';
-import { ActionMeta, SingleValue } from 'react-select';
 
 function useForm(
   validateInfo: (values: RegisterProps) => RegisterProps,
@@ -19,6 +18,7 @@ function useForm(
     address: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
   const [city, setCity] = useState(1);
   const [errors, setErrors] = useState<ErrorRegister>();
@@ -57,6 +57,7 @@ function useForm(
       Object.keys(errors?.name || {}).length === 0 &&
       Object.keys(errors?.email || {}).length === 0 &&
       Object.keys(errors?.password || {}).length === 0 &&
+      Object.keys(errors?.confirmPassword || {}).length === 0 &&
       isSubmitting
     ) {
       dispatch(setIsLoading(true));
