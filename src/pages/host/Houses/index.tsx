@@ -11,7 +11,7 @@ import {
 } from '../../../components';
 import { IHouse, IHouseResponse } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
-import { getHouses, getHousesHost } from '../../../services/service';
+import {  getHousesHost } from '../../../services/service';
 import style from './index.module.scss';
 
 const Houses = (): JSX.Element => {

@@ -1,4 +1,4 @@
-import moment from 'moment';
+
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useMutation } from 'react-query';
@@ -17,8 +17,8 @@ const TableHouses: React.FC<TableHousesProps> = (props) => {
 
   const handleDeleteHouse = (id: number) => {
     submitDelete.mutate(id, {
-      onSuccess: (res) => {
-        queryClient.invalidateQueries('get-houses');
+      onSuccess: () => {
+        queryClient.invalidateQueries('getHousesHost');
         toast.success('House has been deleted');
       },
     });

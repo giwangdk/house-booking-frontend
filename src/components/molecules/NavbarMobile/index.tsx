@@ -8,32 +8,31 @@ import {
   FaHome,
   FaUser,
 } from 'react-icons/fa';
-import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { Container } from '../../organisms';
-import MenuProfile from '../MenuProfile';
-import NavProfile from '../NavProfile';
 import style from './index.module.scss';
 import NavItem from './NavItem';
 import jwt_decode from 'jwt-decode';
 import Cookies from 'universal-cookie';
+import { decodedTokenType } from '../interface';
 
 const NavbarMobile = (): JSX.Element => {
   const { isLoggedIn } = useAuth();
-  const [showMenu, setShowMenu] = useState(false);
+  const [decodedToken, setDecodedToken] = useState<decodedTokenType>()
 
   const cookie = new Cookies();
 
-  const decodedToken: {
-    user: {
-      role: string;
-    };
-  } = jwt_decode(cookie.get('token'));
+
+  if (isLoggedIn){
+  const decodedToken: decodedTokenType  = jwt_decode(cookie.get('token'));
+  setDecodedToken(decodedToken)
+  }
 
   return (
     <div className={style.navbar__wrapper}>
       <Container className={style.navbar}>
         <NavItem path="/" icon={<FaHome />} />
+        <NavItem path="/login" icon={<FaUser />} />
         {isLoggedIn && (
           <>
             <NavItem path="/game" icon={<FaGamepad />} />

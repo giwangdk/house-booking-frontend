@@ -126,3 +126,10 @@ export interface SidebarProps {
     label: string;
   }[];
 }
+
+
+export interface decodedTokenType{
+  user:{
+    role: string;
+  }
+}
