@@ -91,3 +91,41 @@
     color: black;
   }
 }
+
+.success{
+  background-color: $success-secondary;
+
+  &:hover {
+    background-color: $success-secondary;
+  }
+
+  &__outline {
+    background-color: transparent;
+    border: 1px solid $success-primary;
+    color: $success-secondary;
+
+    &:hover {
+      background-color: $success-secondary;
+      color: white;
+    }
+  }
+}
+
+.danger{
+  background-color: $danger;
+
+  &:hover {
+    background-color: $danger;
+  }
+
+  &__outline {
+    background-color: transparent;
+    border: 1px solid $danger;
+    color: $danger;
+
+    &:hover {
+      background-color: $danger;
+      color: white;
+    }
+  }
+}

@@ -28,6 +28,8 @@ export interface CoinProps {
 
 export interface ModalCoinProps {
   handleCloseModal: () => void;
+  guess: string;
+  result: string;
   show: boolean;
   isWin: boolean;
 }

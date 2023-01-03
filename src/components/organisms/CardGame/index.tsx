@@ -1,5 +1,6 @@
 import { totalmem } from 'os';
 import React, { useEffect, useState } from 'react';
+import { GiHouse, GiHouseKeys } from 'react-icons/gi';
 import { toast } from 'react-toastify';
 import useAuth from '../../../hooks/useAuth';
 import { Button } from '../../atoms';
@@ -12,14 +13,14 @@ const CardGame = (): JSX.Element => {
   const { game } = useAuth();
 
   const [show, setShow] = useState(false);
-  const [guess, setGuess] = useState<'head' | 'hand'>('head');
+  const [guess, setGuess] = useState<'house' | 'key'>('house');
   const [chance, setChance] = useState(game?.chance as number);
-  const [result, setResult] = useState('head');
+  const [result, setResult] = useState('house');
   const [isLoading, setIsLoading] = useState(false);
 
-  const res = ['head', 'hand'];
+  const res = ['house', 'key'];
 
-  const handleGuess = (guess: 'head' | 'hand') => {
+  const handleGuess = (guess: 'house' | 'key') => {
     setGuess(guess);
   };
 
@@ -55,25 +56,27 @@ const CardGame = (): JSX.Element => {
     <Card className={style.card__game}>
       <div className={style.card__game__header}>
         <h5>Coin Toss Game</h5>
-        <p>Head (or) Hand</p>
+        <p>House (or) Key</p>
       </div>
       <p>Your Chance : {chance}</p>
       <Coin result={result} isLoading={isLoading} />
       <div className={style.card__game__play}>
         <h6>Your guess:</h6>
         <Button
-          onClick={() => handleGuess('head')}
-          variant={guess == 'head' ? 'secondary' : 'primary'}
+          onClick={() => handleGuess('house')}
+          variant={guess == 'house' ? 'secondary' : 'primary'}
           disabled={chance == 0}
+          className={style.card__game__play__button}
         >
-          Head
+           <GiHouse /> 
         </Button>
         <Button
-          onClick={() => handleGuess('hand')}
-          variant={guess == 'hand' ? 'secondary' : 'primary'}
+          onClick={() => handleGuess('key')}
+          variant={guess == 'key' ? 'secondary' : 'primary'}
           disabled={chance == 0}
+          className={style.card__game__play__button}
         >
-          Hand
+          <GiHouseKeys />
         </Button>
       </div>
       <Button
@@ -85,6 +88,8 @@ const CardGame = (): JSX.Element => {
       </Button>
       <ModalCoin
         show={show}
+        result={result} 
+        guess={guess}
         isWin={guess == result}
         handleCloseModal={handleCloseModal}
       />
