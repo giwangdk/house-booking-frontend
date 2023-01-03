@@ -3,13 +3,10 @@ import { toast } from 'react-toastify';
 
 import {
   ChangePasswordProps,
-  EditProfileProps,
   ErrorChangePassword,
   FormReturnChangePassword,
-  FormReturnEditProfile,
 } from '../../../../helpers/types/profile.interface';
-import useAuth from '../../../../hooks/useAuth';
-import { ChangePassword, EditUser } from '../../../../services/service';
+import { ChangePassword } from '../../../../services/service';
 import { useMutation } from 'react-query';
 import { queryClient } from '../../../../helpers/queryClient';
 import { useDispatch } from 'react-redux';
@@ -19,7 +16,6 @@ function useForm(
   handleCloseEdit: () => void,
   validateInfo: (values: ChangePasswordProps) => ChangePasswordProps,
 ): FormReturnChangePassword<ChangePasswordProps> {
-  const { user } = useAuth();
   const [errors, setErrors] = useState<ErrorChangePassword>();
   const [values, setValues] = useState<ChangePasswordProps>({
     password: '',

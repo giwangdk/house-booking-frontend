@@ -1,16 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import { ICityResponse } from '../../../../helpers/types';
 import { getCities } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import {
-  Card,
-  Dropdown,
-  InputLabel,
-  Modal,
-  TextAreaLabel,
-} from '../../../molecules';
+import { Dropdown, InputLabel, Modal, TextAreaLabel } from '../../../molecules';
 import { ModalAddProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -24,8 +18,6 @@ const ModalAddHouse: React.FC<ModalAddProps> = ({ show, handleCloseModal }) => {
     values,
     city,
     errors,
-    setValues,
-    setCity,
     isLoading,
   } = useForm(validateInfo, handleCloseModal);
   const { data } = useQuery<ICityResponse>('get-cities', () =>
