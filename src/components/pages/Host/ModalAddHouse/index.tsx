@@ -4,7 +4,13 @@ import { useQuery } from 'react-query';
 import { ICityResponse } from '../../../../helpers/types';
 import { getCities } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { Card, Dropdown, InputLabel, Modal } from '../../../molecules';
+import {
+  Card,
+  Dropdown,
+  InputLabel,
+  Modal,
+  TextAreaLabel,
+} from '../../../molecules';
 import { ModalAddProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -67,6 +73,12 @@ const ModalAddHouse: React.FC<ModalAddProps> = ({ show, handleCloseModal }) => {
           label="Location"
           value={values?.location}
           name="location"
+          onChange={handleChange}
+        />
+        <TextAreaLabel
+          label="Description"
+          value={values?.description}
+          name="description"
           onChange={handleChange}
         />
         <label htmlFor="">City</label>

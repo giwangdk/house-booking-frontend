@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import useMediaQuery from '../../../hooks/useMediaQuery';
 import { Container } from '../../organisms';
 import MenuProfile from '../MenuProfile';
 import NavProfile from '../NavProfile';
@@ -24,7 +23,7 @@ const Navbar = (): JSX.Element => {
       : style.navbar__menu__list__item__link;
 
   useEffect(() => {
-    window.addEventListener('scroll', (event) => {
+    window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar')!;
 
       if (navbar) {

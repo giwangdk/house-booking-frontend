@@ -15,6 +15,15 @@ export interface InputLabelProps extends InputProps {
   message?: string | undefined;
 }
 
+export interface TextAreaProps {
+  name?: string;
+  placeholder?: string;
+  value?: string | number | undefined;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+  label?: string;
+}
+
 export interface DropdownProps {
   name?: string;
   value?: PropsValue<string | number> | undefined;
@@ -127,9 +136,8 @@ export interface SidebarProps {
   }[];
 }
 
-
-export interface decodedTokenType{
-  user:{
+export interface decodedTokenType {
+  user: {
     role: string;
-  }
+  };
 }

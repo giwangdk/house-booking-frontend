@@ -8,7 +8,12 @@ export interface AddHouseProps {
   city_id?: number | string;
 }
 export interface FormReturnAddHouseProfile<T> {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (
+    e:
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
   setValues: React.Dispatch<React.SetStateAction<T>>;
@@ -36,7 +41,12 @@ export interface EditHouseProfileProps {
   city_id?: number;
 }
 export interface FormReturnEditHouseProfile<T> {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (
+    e:
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
   setValues: React.Dispatch<React.SetStateAction<T>>;

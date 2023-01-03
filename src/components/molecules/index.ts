@@ -16,6 +16,7 @@ import Sidebar from './Sidebar';
 import NavbarMobile from './NavbarMobile';
 import CardReservationUser from './CardReservationUser';
 import SortAndFilter from './SortAndFilter';
+import TextAreaLabel from './TextAreaLabel';
 
 export {
   Dropdown,
@@ -36,4 +37,5 @@ export {
   Sidebar,
   NavbarMobile,
   SortAndFilter,
+  TextAreaLabel,
 };

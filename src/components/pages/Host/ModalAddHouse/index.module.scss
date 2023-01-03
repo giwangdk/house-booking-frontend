@@ -9,6 +9,11 @@
   }
 }
 
+label {
+  font-size: 1.125rem;
+  font-weight: $text-medium;
+  margin-bottom: 0.2rem;
+}
 .modal__header {
   h6 {
     font-weight: $text-bold;

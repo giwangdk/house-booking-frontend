@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { ICityResponse, IHouse } from '../../../../helpers/types';
 import { getCities } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { Dropdown, InputLabel } from '../../../molecules';
+import { Dropdown, InputLabel, TextAreaLabel } from '../../../molecules';
 import { CardEditHouseProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -62,6 +62,12 @@ const EditHouseHostDetail: React.FC<CardEditHouseProps> = ({
           label="Location"
           value={values?.location}
           name="location"
+          onChange={handleChange}
+        />
+        <TextAreaLabel
+          label="Description"
+          value={values?.description}
+          name="description"
           onChange={handleChange}
         />
         <label htmlFor="">City</label>

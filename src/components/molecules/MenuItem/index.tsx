@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useMediaQuery from '../../../hooks/useMediaQuery';
 import { MenuItemProps } from '../interface';
 import style from './index.module.scss';
 

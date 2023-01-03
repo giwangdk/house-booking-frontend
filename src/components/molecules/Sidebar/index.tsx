@@ -1,5 +1,4 @@
 import React from 'react';
-import { AiFillHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarProps } from '../interface';
 import MenuItem from '../MenuItem';

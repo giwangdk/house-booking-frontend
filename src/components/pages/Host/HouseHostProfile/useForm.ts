@@ -35,6 +35,7 @@ function useForm(
 
   const handleChange = (
     e:
+      | React.ChangeEvent<HTMLTextAreaElement>
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
