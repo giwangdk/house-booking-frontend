@@ -15,7 +15,7 @@ const TableHousesAdmin: React.FC<TableHousesProps> = (props) => {
 
   const handleDeleteHouse = (id: number) => {
     submitDelete.mutate(id, {
-      onSuccess: (res) => {
+      onSuccess: () => {
         queryClient.invalidateQueries('get-houses');
         toast.success('House has been deleted');
       },

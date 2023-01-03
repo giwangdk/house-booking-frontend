@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { submitUpdatePickupStatus } from '../../../../services/service';
 import { Button } from '../../../atoms';
 import { TablePickupsProps } from '../../interface';
 import ModalEditStatus from '../ModalEditStatus';
@@ -13,9 +12,6 @@ const TablePickups: React.FC<TablePickupsProps> = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const updateStatus = (id: number) => {
-    submitUpdatePickupStatus(id);
-  };
   return (
     <tbody className={style.table__body}>
       {isLoading && (

@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import { setGame, setUser, setWallet } from '../../redux/authenticationSlice';
 import {

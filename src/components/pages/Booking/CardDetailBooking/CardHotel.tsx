@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/store';
-import { DetailHouseProps } from '../../../molecules/interface';
 import style from './index.module.scss';
 
 const CardHotel: React.FC = () => {

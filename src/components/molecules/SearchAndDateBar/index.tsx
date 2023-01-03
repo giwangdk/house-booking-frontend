@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { DateContext } from '../../../context/date-context';
 import { Button } from '../../atoms';

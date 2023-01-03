@@ -1,14 +1,9 @@
 import React, { Suspense } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 
 import { RouterProvider } from 'react-router-dom';
-import {
-  MutationCache,
-  QueryCache,
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query';
+import { QueryClientProvider } from 'react-query';
 import { router } from './helpers/routes';
 import { DateProvider } from './context/date-context';
 import { queryClient } from './helpers/queryClient';

@@ -64,7 +64,6 @@ export interface FormTopupReturn<T, T2> {
   isLoading: boolean;
   values: T;
   errors: T2 | undefined;
-  errorsMsg: string | undefined;
   handleShowModal: () => void;
 }
 

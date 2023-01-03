@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { submitAddHouse, submitEditHouse } from '../../../../services/service';
+import { submitAddHouse } from '../../../../services/service';
 import { useMutation } from 'react-query';
 import { queryClient } from '../../../../helpers/queryClient';
 import {
@@ -8,7 +8,6 @@ import {
   ErrorAddHouseProfile,
   FormReturnAddHouseProfile,
 } from '../../../../helpers/types/house_host.interface';
-import { IHouse } from '../../../../helpers/types';
 import { useNavigate } from 'react-router-dom';
 
 function useForm(
@@ -17,7 +16,6 @@ function useForm(
 ): FormReturnAddHouseProfile<AddHouseProps> {
   const [city, setCity] = useState<number | undefined>(1);
   const [errors, setErrors] = useState<ErrorAddHouseProfile>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState<AddHouseProps>({
     name: '',
@@ -55,7 +53,6 @@ function useForm(
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors(validateInfo(values));
-    setIsSubmitting(true);
     mutateAsync(data, {
       onSuccess: (res) => {
         queryClient.invalidateQueries('getHousesHost');

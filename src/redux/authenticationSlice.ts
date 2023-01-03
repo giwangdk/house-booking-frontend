@@ -9,9 +9,8 @@ import { Dispatch } from 'react';
 import { submitLogin } from '../services/auth.service';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router-dom';
 import { AuthState, IGame, IUser, IWallet, LoginProps } from '../helpers/types';
-import { getUserDetails, getWalletUser } from '../services/service';
 
 const cookies = new Cookies();
 

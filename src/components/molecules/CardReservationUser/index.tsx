@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Badge } from '../../atoms';
 import ModalSuccessPayment from '../../pages/Payment/CardPayment/ModalSuccessPayment';
 import Card from '../Card';

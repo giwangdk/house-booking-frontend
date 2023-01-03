@@ -1,15 +1,11 @@
-import moment from 'moment';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { queryClient } from '../../../../helpers/queryClient';
-import {
-  submitDeleteHouse,
-  submitDeleteHousePhoto,
-} from '../../../../services/service';
+import { submitDeleteHousePhoto } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { TableHousePhotos, TableHousesProps } from '../../interface';
+import { TableHousePhotos } from '../../interface';
 import style from './index.module.scss';
 
 const TableHouseHostProfile: React.FC<TableHousePhotos> = (props) => {

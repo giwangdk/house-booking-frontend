@@ -1,16 +1,13 @@
-import moment from 'moment';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import {
-  ModalEditStatus,
   Pagination,
   Search,
   SortAndFilter,
   Table,
   TablePickups,
 } from '../../../components';
-import { DateContext } from '../../../context/date-context';
-import { IHouse, IPickupResponse, IPickup } from '../../../helpers/types';
+import { IPickupResponse, IPickup } from '../../../helpers/types';
 import useDebounce from '../../../hooks/useDebounce';
 import { getPickups } from '../../../services/service';
 import style from './index.module.scss';
@@ -25,8 +22,6 @@ const Pickups = (): JSX.Element => {
   const [sort, setSort] = useState<string>('asc');
 
   const val = useDebounce(value.searchBy, 500);
-  const sortByVal = useDebounce(sortBy, 500);
-  const sortVal = useDebounce(sort, 500);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({ ...value, searchBy: e.target.value });

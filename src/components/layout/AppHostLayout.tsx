@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AiFillHome } from 'react-icons/ai';
 import { Outlet } from 'react-router-dom';
-import { Navbar, Sidebar } from '../molecules';
-import { Container } from '../organisms';
+import { Sidebar } from '../molecules';
 import style from './index.module.scss';
 
-interface AppHostLayoutProps {
-  children: React.ReactNode;
-  image?: string;
-  layout: string;
-}
 const menu = [
   {
     path: '/host/houses',

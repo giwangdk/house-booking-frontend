@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './index.module.scss';
-import { FaUserCircle, FaHandPaper } from 'react-icons/fa';
 import { CoinProps } from '../interface';
 import classNames from 'classnames';
 import { GiHouse, GiHouseKeys } from 'react-icons/gi';

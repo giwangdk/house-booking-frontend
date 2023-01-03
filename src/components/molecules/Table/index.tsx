@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './index.module.scss';
-import Skeleton from 'react-loading-skeleton';
 import { TableProps } from '../../organisms/interface';
 
 const Table: React.FC<TableProps> = (props) => {
-  const { headers, isLoading, children } = props;
+  const { headers, children } = props;
 
   return (
     <div className={style.table__container}>

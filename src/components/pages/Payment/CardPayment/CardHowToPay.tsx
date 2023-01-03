@@ -1,10 +1,8 @@
 import React from 'react';
-import useAuth from '../../../../hooks/useAuth';
 import { CardPaymentProps } from '../../../pages/interface';
 import style from './index.module.scss';
 
 const CardHowToPay: React.FC<CardPaymentProps> = () => {
-  const { isLoggedIn } = useAuth();
   return (
     <div className={style.card__payment__how}>
       <h6>How To Pay? </h6>

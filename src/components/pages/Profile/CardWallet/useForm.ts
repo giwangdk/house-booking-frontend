@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { FormTopupReturn } from '../../interface';
 import { ErrorTopup, TopupProps } from '../../../pages/interface';
@@ -12,19 +10,14 @@ import { queryClient } from '../../../../helpers/queryClient';
 function useForm(
   validateInfo: (values: TopupProps) => ErrorTopup,
 ): FormTopupReturn<TopupProps, ErrorTopup> {
-  const { user } = useAuth();
-
   const [values, setValues] = useState({
     amount: '',
   });
 
   const [errors, setErrors] = useState<ErrorTopup>();
-  const [errorsMsg, setErrorsMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [show, setShow] = useState(false);
   const { mutateAsync, isLoading } = useMutation(submitTopup);
-
-  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -76,7 +69,6 @@ function useForm(
     values,
     isLoading,
     errors,
-    errorsMsg,
   };
 }
 

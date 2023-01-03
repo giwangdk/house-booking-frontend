@@ -30,6 +30,6 @@ export interface FormReturnEditProfile<T> {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   values: T;
-  errors: ErrorEditProfile | undefined;
+  errors?: ErrorEditProfile | undefined;
   isLoading: boolean;
 }

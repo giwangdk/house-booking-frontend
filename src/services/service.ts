@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { IReservation, ITopup, ITransaction } from '../helpers/types';
 import {
   get,

@@ -1,16 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import { queryClient } from '../../../../helpers/queryClient';
+import { IPickupStatusResponse } from '../../../../helpers/types';
 import {
-  IPickupStatus,
-  IPickupStatusResponse,
-} from '../../../../helpers/types';
-import {
-  getPickups,
   getPickupStatus,
-  submitAddHousePhoto,
   submitUpdatePickupStatus,
 } from '../../../../services/service';
 import { Button } from '../../../atoms';

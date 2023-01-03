@@ -1,5 +1,4 @@
 import React from 'react';
-import { IHouse } from '../../../../helpers/types';
 import { DetailHouseProps } from '../../../molecules/interface';
 import style from './index.module.scss';
 

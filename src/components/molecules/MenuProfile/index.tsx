@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import useAuth from '../../../hooks/useAuth';
 import { Logout } from '../../../redux/authenticationSlice';
 import { Button } from '../../atoms';
 import Card from '../Card';

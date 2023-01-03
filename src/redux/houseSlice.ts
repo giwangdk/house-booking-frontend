@@ -1,5 +1,4 @@
 import { CaseReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import React from 'react';
 import { IHouse } from '../helpers/types';
 import { HouseState } from '../helpers/types/houser.interface';
 

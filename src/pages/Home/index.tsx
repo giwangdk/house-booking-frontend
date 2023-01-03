@@ -3,7 +3,6 @@ import {
   Container,
   ListCardHouse,
   Pagination,
-  Search,
   SearchBar,
   SortAndFilter,
 } from '../../components';
@@ -11,7 +10,6 @@ import style from './index.module.scss';
 import { useQuery } from 'react-query';
 import { IHouse } from '../../helpers/types';
 import { getHouses } from '../../services/service';
-import { toast } from 'react-toastify';
 import { IHouseResponse } from '../../helpers/types/response.interface';
 import useDebounce from '../../hooks/useDebounce';
 import { DateContext } from '../../context/date-context';

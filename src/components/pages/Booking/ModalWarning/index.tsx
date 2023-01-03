@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/store';
 import { Button } from '../../../atoms';
-import { InputLabel, Modal } from '../../../molecules';
+import { Modal } from '../../../molecules';
 import { ModalWarningProps } from '../../../pages/interface';
 import style from './index.module.scss';
 

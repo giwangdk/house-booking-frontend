@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './index.module.scss';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { SearchProps } from '../interface';
 
 const Search: React.FC<SearchProps> = ({

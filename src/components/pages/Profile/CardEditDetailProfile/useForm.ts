@@ -14,7 +14,6 @@ function useForm(
   handleCloseEdit: () => void,
 ): FormReturnEditProfile<EditProfileProps> {
   const { user } = useAuth();
-  const [errors, setErrors] = useState();
   const [values, setValues] = useState<EditProfileProps>({
     fullname: user?.fullname || '',
     address: user?.address || '',
@@ -55,7 +54,6 @@ function useForm(
     handleChange,
     handleSubmit,
     values,
-    errors,
     isLoading,
   };
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './index.module.scss';
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import { InputDateProps } from '../interface';
 
 const InputDate: React.FC<InputDateProps> = (props): JSX.Element => {

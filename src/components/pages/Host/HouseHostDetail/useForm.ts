@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import useAuth from '../../../../hooks/useAuth';
 import {
   submitAddHouseDetail,
   submitEditHouseDetail,

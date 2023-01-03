@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import jwt_decode from 'jwt-decode';
 import Cookies from 'universal-cookie';
 

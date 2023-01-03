@@ -1,17 +1,17 @@
 import moment from 'moment';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DateContext } from '../../../context/date-context';
-import useAuth from '../../../hooks/useAuth';
 import { setIsReqPickup, setTotalPrice } from '../../../redux/houseSlice';
 import { RootState } from '../../../redux/store';
 import { InputPickupProps } from '../interface';
 import style from './index.module.scss';
 import InputRadio from './InputRadio';
 
-const InputPickup: React.FC<InputPickupProps> = ({ city }) => {
-  const { house, pickupPrice, currentPrice, isReqPickup, totalPrice } =
-    useSelector((state: RootState) => state.house);
+const InputPickup: React.FC<InputPickupProps> = () => {
+  const { pickupPrice, currentPrice, isReqPickup, totalPrice } = useSelector(
+    (state: RootState) => state.house,
+  );
   const dispatch = useDispatch();
   const { checkin_date, checkout_date } = useContext(DateContext);
 

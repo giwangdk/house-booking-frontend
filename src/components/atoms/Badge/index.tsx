@@ -2,7 +2,6 @@ import React from 'react';
 import style from './index.module.scss';
 import { BadgeProps } from '../interface';
 import classNames from 'classnames';
-import { ClipLoader } from 'react-spinners';
 
 const Badge: React.FC<BadgeProps> = (props) => {
   const {

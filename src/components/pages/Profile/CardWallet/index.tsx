@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import { Button } from '../../../atoms';
 import { Card } from '../../../molecules';

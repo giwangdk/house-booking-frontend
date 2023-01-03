@@ -1,16 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
-import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
-import {
-  ICityResponse,
-  IHouse,
-  IHouseDetailResponse,
-} from '../../../../helpers/types';
-import { getCities, getHouseById } from '../../../../services/service';
+import React from 'react';
+import { IHouse } from '../../../../helpers/types';
 import { Button } from '../../../atoms';
-import { Card, Dropdown, InputLabel, Modal } from '../../../molecules';
-import { DetailHouseProps } from '../../../molecules/interface';
+import { InputLabel } from '../../../molecules';
 import { CardEditHouseProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -19,7 +11,7 @@ const EditHouseHostDetail: React.FC<CardEditHouseProps> = ({
   house,
   handleClose,
 }) => {
-  const { handleChange, handleSubmit, values, setValues, isLoading } = useForm(
+  const { handleChange, handleSubmit, values, isLoading } = useForm(
     handleClose,
     house as IHouse,
   );
