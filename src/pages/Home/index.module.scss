@@ -4,4 +4,10 @@
     margin-top: 0;
     margin-bottom: 5rem;
   }
+
+  &__loader {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

@@ -71,22 +71,31 @@ const CardFormBooking: React.FC = (): JSX.Element => {
           onChange={handleChange}
           message={errors?.name}
         />
-        <InputLabel
-          label="Email"
-          errors={errors?.email}
-          name="email"
-          type="email"
-          placeholder="Enter your email"
-          value={values.email}
-          onChange={handleChange}
-          message={errors?.email}
-        />
-        <label className={style.label}>City</label>
-        <Dropdown
-          values={options as any}
-          value={options?.find((item) => item.value === city) as any}
-          onChange={handleChangeDropdown}
-        />
+        {!isLoggedIn ? (
+          <>
+            <InputLabel
+              label="Email"
+              errors={errors?.email}
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              value={values.email}
+              onChange={handleChange}
+              message={errors?.email}
+            />
+            <label className={style.label}>City</label>
+            <Dropdown
+              values={options as any}
+              value={options?.find((item) => item.value === city) as any}
+              onChange={handleChangeDropdown}
+            />
+          </>
+        ) : (
+          <>
+            <InputLabel label="Email" value={user?.email} disabled />
+            <InputLabel label="City" value={user?.city?.name} disabled />
+          </>
+        )}
         <InputPickup city={city as number} />
         <Button type="submit" loading={isLoading} disabled={isLoading}>
           Submit

@@ -80,20 +80,21 @@ const Home = (): JSX.Element => {
     <div className={style.home}>
       <SearchBar handleSearch={handleSearch} value={value.searchBy} />
       <Container>
-        {isLoading && (
-          <div>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-          </div>
-        )}
         <SortAndFilter
           valueSort={sort}
           valueSortBy={sortBy}
           handleSort={handleSortVal}
           handleSortBy={handleSortByVal}
         />
-        {<ListCardHouse data={data?.data?.houses as IHouse[]} />}
+        {isLoading ? (
+          <div className={style.home__loader}>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </div>
+        ) : (
+          <ListCardHouse data={data?.data?.houses as IHouse[]} />
+        )}
         <Pagination
           nPages={nPages}
           currentPage={page as number}
