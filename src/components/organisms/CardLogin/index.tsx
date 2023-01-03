@@ -6,9 +6,15 @@ import useForm from './useForm';
 import { useSelector } from 'react-redux';
 import validateInfo from './validate';
 import { RootState } from '../../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 const CardLogin = (): JSX.Element => {
   const { values, handleChange, handleSubmit, errors } = useForm(validateInfo);
+  const navigate = useNavigate()
+
+  const handleNavigate = () => {
+    navigate('/register')
+  }
 
   const { isLoading } = useSelector((state: RootState) => state.auth);
 
@@ -38,6 +44,7 @@ const CardLogin = (): JSX.Element => {
         />
         <Button loading={isLoading}>Submit</Button>
       </form>
+    <Button variant='primary__outline' onClick={handleNavigate}>Register</Button>
     </div>
   );
 };

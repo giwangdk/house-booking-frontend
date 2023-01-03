@@ -1,4 +1,5 @@
 import React from 'react';
+import useMediaQuery from '../../hooks/useMediaQuery';
 import { Navbar } from '../molecules';
 import { Container } from '../organisms';
 import style from './index.module.scss';
@@ -14,6 +15,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   image,
   layout,
 }): JSX.Element => {
+
   return (
     <div className={style.auth__layout}>
       <Navbar />

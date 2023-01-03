@@ -1,6 +1,12 @@
 @import '../../styles/variables';
 
 .auth__layout {
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 5rem;
+  }
+    
+  
   &__content {
     display: flex;
     width: 100%;

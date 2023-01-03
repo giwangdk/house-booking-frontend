@@ -2,6 +2,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import { ICityResponse } from '../../../helpers/types';
 import { RootState } from '../../../redux/store';
@@ -19,9 +20,9 @@ const CardRegister = (): JSX.Element => {
     handleChangeDropdown,
     handleSubmit,
     errors,
-    city,
   } = useForm(validateInfo);
 
+  const navigate = useNavigate()
   const { isLoading } = useSelector((state: RootState) => state.auth);
   const { data } = useQuery<ICityResponse>('get-cities', () =>
     getCities().then((res) => res.data),
@@ -32,8 +33,16 @@ const CardRegister = (): JSX.Element => {
     label: item.name,
   }));
 
+
+  const handleNavigate = () => {
+    navigate('/login')
+  }
   return (
+<div className={style.card}>
+
+<h3>Register</h3>
     <form className={style.card__register} onSubmit={handleSubmit}>
+
       <InputLabel
         label="Full Name"
         name="name"
@@ -77,7 +86,9 @@ const CardRegister = (): JSX.Element => {
         Submit
       </Button>
     </form>
-  );
+    <Button variant='primary__outline' onClick={handleNavigate}>Login</Button>
+</div>
+  )
 };
 
 export default CardRegister;
