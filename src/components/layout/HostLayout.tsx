@@ -15,7 +15,6 @@ const HostLayout = (): JSX.Element => {
       role: string;
     };
   } = jwt_decode(cookie.get('token'));
-  console.log(decodedToken);
 
   if (decodedToken?.user?.role !== 'host') {
     return <Navigate to="/" state={{ from: location }} replace />;

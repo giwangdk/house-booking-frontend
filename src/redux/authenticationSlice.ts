@@ -110,7 +110,6 @@ export const Login =
   ): void => {
     dispatch(setIsLoading(true));
 
-    console.log(data);
     submitLogin(data)
       .then((res) => {
         cookies.set('token', res.data.data.access_token, {

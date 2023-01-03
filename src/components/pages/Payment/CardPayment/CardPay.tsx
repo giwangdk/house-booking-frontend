@@ -45,8 +45,6 @@ const CardPay: React.FC<CardPaymentProps> = ({ reservation }) => {
     setShow(true);
   };
 
-  console.log(image);
-
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append('transfer_slip', image as Blob);

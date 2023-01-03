@@ -16,8 +16,6 @@ const HouseDetail = (): JSX.Element => {
     () => getHouseById(id as string).then((res) => res.data),
   );
 
-  console.log(data);
-
   return (
     <Container className={style.house__detail}>
       {isLoading ? (

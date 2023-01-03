@@ -4,8 +4,6 @@ import { DetailHouseProps } from '../interface';
 import style from './index.module.scss';
 
 const CardHouse: React.FC<DetailHouseProps> = ({ house }): JSX.Element => {
-  console.log(house);
-
   const photo = house.photos;
 
   return (

@@ -16,8 +16,6 @@ const CardPaymentDetail: React.FC<CardPaymentProps> = ({
     'days',
   );
 
-  console.log(formattedCheckin);
-
   return (
     <Card className={style.card__payment__detail}>
       <div className={style.card__payment__detail__item}>

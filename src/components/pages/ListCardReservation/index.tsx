@@ -7,7 +7,6 @@ import style from './index.module.scss';
 const ListCardReservation: React.FC<ListReservations> = ({
   data,
 }): JSX.Element => {
-  console.log('hereee', data);
   return (
     <div className={style.list__card__house}>
       {data ? (

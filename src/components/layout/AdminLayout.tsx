@@ -15,7 +15,6 @@ const AdminLayout = (): JSX.Element => {
       role: string;
     };
   } = jwt_decode(cookie.get('token'));
-  console.log(decodedToken);
 
   if (decodedToken?.user?.role !== 'admin') {
     return <Navigate to="/" state={{ from: location }} replace />;

@@ -14,9 +14,6 @@ const InputPickup: React.FC<InputPickupProps> = ({ city }) => {
     useSelector((state: RootState) => state.house);
   const dispatch = useDispatch();
   const { checkin_date, checkout_date } = useContext(DateContext);
-  console.log(city, 'user city');
-  console.log(house?.city?.id, 'house city');
-  console.log(house?.city?.id === city, 'house city == user city');
 
   const handleIsPickup = () => {
     dispatch(setIsReqPickup(true));

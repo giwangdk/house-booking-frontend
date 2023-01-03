@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import { ICityResponse, IHouse } from '../../../../helpers/types';
 import { getCities } from '../../../../services/service';
 import { Button } from '../../../atoms';
-import { Card, Dropdown, InputLabel, Modal } from '../../../molecules';
-import { DetailHouseProps } from '../../../molecules/interface';
+import { Dropdown, InputLabel } from '../../../molecules';
 import { CardEditHouseProps } from '../../interface';
 import style from './index.module.scss';
 import useForm from './useForm';
@@ -19,16 +18,11 @@ const EditHouseHostDetail: React.FC<CardEditHouseProps> = ({
     handleChangeDropdown,
     handleSubmit,
     values,
-    city,
-    setValues,
-    setCity,
     isLoading,
   } = useForm(handleClose, house as IHouse);
   const { data } = useQuery<ICityResponse>('get-cities', () =>
     getCities().then((res) => res.data),
   );
-
-  console.log(house);
 
   const options = data?.data?.map((item) => ({
     value: item.id,

@@ -60,8 +60,6 @@ const Pickups = (): JSX.Element => {
     (data?.data.total as number) / (data?.data?.limit as number),
   );
 
-  console.log(pickups);
-
   return (
     <div className={style.pickups__page}>
       <div className={style.pickups__page__header}>

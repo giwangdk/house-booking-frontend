@@ -13,8 +13,6 @@ const CardDetailProfile: React.FC = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [isEditPassword, setIsEditPassword] = useState(false);
 
-  console.log(user?.city);
-
   const details = [
     {
       label: 'Full Name',

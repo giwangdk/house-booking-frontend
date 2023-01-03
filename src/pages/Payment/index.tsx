@@ -27,8 +27,6 @@ const Payment = (): JSX.Element => {
 
   const timeout = moment(reservation.expired).diff(moment(), 'minutes');
 
-  console.log(reservation.expired);
-
   return (
     <div className={style.payment}>
       <Header className={style.payment__header}>

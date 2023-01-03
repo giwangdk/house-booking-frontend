@@ -47,7 +47,6 @@ function useForm(
   };
   const handleChangeDropdown = (e: any) => {
     setCity(e.value);
-    console.log(city);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

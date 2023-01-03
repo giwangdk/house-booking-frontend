@@ -29,19 +29,14 @@ function useForm(
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    console.log(name, value);
-
     setValues({
       ...values,
       [name]: value,
     });
-    console.log(values);
   };
 
   const handleChangeDropdown = (e: any) => {
     setCity(e.value);
-    console.log(city);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,20 +59,14 @@ function useForm(
       Object.keys(errors?.password || {}).length === 0 &&
       isSubmitting
     ) {
-      console.log(data);
-
       dispatch(setIsLoading(true));
       submitRegister(data)
-        .then((res) => {
-          console.log(res);
-
+        .then(() => {
           toast.success('Register Success');
           navigate('/login');
         })
         .catch((err) => {
           dispatch(setIsError(true));
-          console.log(err);
-
           toast.error(err.response.data.message);
         })
         .finally(() => {
