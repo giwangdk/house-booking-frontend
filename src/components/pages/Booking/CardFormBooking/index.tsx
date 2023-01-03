@@ -70,6 +70,7 @@ const CardFormBooking: React.FC = (): JSX.Element => {
           errors={errors?.name}
           onChange={handleChange}
           message={errors?.name}
+          required
         />
         {!isLoggedIn ? (
           <>
@@ -82,6 +83,7 @@ const CardFormBooking: React.FC = (): JSX.Element => {
               value={values.email}
               onChange={handleChange}
               message={errors?.email}
+              required
             />
             <label className={style.label}>City</label>
             <Dropdown

@@ -1,11 +1,13 @@
 export interface ChangePasswordProps {
   password: string;
   newPassword: string;
+  confirmPassword: string;
 }
 
 export interface ErrorChangePassword {
   password: string;
   newPassword: string;
+  confirmPassword: string;
 }
 export interface FormReturnChangePassword<T> {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

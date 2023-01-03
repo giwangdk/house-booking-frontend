@@ -34,6 +34,7 @@ const ModalTopup: React.FC<ModalTopupProps> = ({
           placeholder="Enter the amount"
           onChange={handleChange}
           message={errors?.amount}
+          required
         />
         <Button
           type="submit"

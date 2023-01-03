@@ -60,6 +60,7 @@ const ModalAddHouse: React.FC<ModalAddProps> = ({ show, handleCloseModal }) => {
           onChange={handleChange}
           errors={errors?.name}
           message={errors?.name}
+          required
         />
         <InputLabel
           label="Price"
@@ -68,6 +69,7 @@ const ModalAddHouse: React.FC<ModalAddProps> = ({ show, handleCloseModal }) => {
           onChange={handleChange}
           errors={errors?.price}
           message={errors?.price}
+          required
         />
         <InputLabel
           label="Location"
